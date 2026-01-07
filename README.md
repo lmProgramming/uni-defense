@@ -100,3 +100,97 @@ Jak wygląda obrona? Macie wyznaczoną godzinę, przychodzicie do sali, jest 3-o
 3. **Python:** Pamiętaj o GIL przy pytaniach o wielowątkowość.
 
 Notatki są dobrą bazą, ale wymagają "przefiltrowania" przez bardziej formalny język techniczny. Powodzenia na obronie!
+
+## komisja
+
+---
+
+### 1. Dr inż. Paweł Myszkowski ("Ten wymagający")
+
+**Profil:** Specjalista od Sztucznej Inteligencji (SI), algorytmów metaheurystycznych i optymalizacji. Znany z tego, że jest konkretny, nie lubi "lania wody" i ceni zrozumienie tematu, a nie regułki. Bywa sarkastyczny.
+**Czego szuka:** Czy rozumiesz złożoność obliczeniową? Czy wiesz, jak działa algorytm "pod maską"?
+
+**Najbardziej prawdopodobne pytania z PDF (Priorytet Wysoki):**
+
+* **Pytanie 21: Metody optymalizacji.** To jest jego "konik". Musisz znać różnicę między metodami gradientowymi a bezgradientowymi.
+  * *Klucz:* Zrozumieć, o co chodzi w metodzie najszybszego spadku vs. algorytmy genetyczne.
+* **Algorytmy genetyczne i ewolucyjne.**
+  * *Klucz:* Znać pojęcia: genotyp, fenotyp, mutacja, krzyżowanie, funkcja przystosowania.
+* **Pytanie 11: Złożoność obliczeniowa (Big O).**
+  * *Klucz:* Nie myl O(n) z O(n^2). Pamiętaj, że dla niego wydajność jest kluczowa (w opiniach narzekał na brak profilera w projektach).
+* **Pytanie 10: Algorytmy sortowania.**
+  * *Klucz:* Złożoność QuickSort vs BubbleSort. Dlaczego QuickSort jest zazwyczaj szybszy?
+* **Pytanie 21 (Str. 27-28): Identyfikacja obiektów / Modele.**
+  * *Klucz:* Rozróżnienie modelu statycznego i dynamicznego.
+
+**Jak odpowiadać:** Krótko, zwięźle, technicznie. Używaj fachowego słownictwa (iteracja, zbieżność, funkcja celu). Jeśli zapyta o kod/algorytm, opisz kroki logiczne.
+
+---
+
+### 2. Dr inż. Marcin Pietranik ("Ten od Baz Danych")
+
+**Profil:** Specjalista od baz danych, systemów webowych i integracji systemów. Pro-studencki, ale ceniący logiczne myślenie. Nie cierpi archaicznych rozwiązań (jak MS Access w profesjonalnych zastosowaniach) i "szkolnych" definicji, które nie mają pokrycia w praktyce. Fan nowoczesnych rozwiązań (NoSQL).
+**Czego szuka:** Czy rozumiesz, dlaczego używasz danej bazy? Relacyjna czy NoSQL?
+
+**Najbardziej prawdopodobne pytania z PDF (Priorytet Wysoki):**
+
+* **Pytanie 24: Modele baz danych (Relacyjne vs NoSQL).**
+  * *Klucz:* To jest pewniak. Musisz wiedzieć, kiedy użyć SQL (spójność, ACID), a kiedy NoSQL (skalowalność, elastyczność schematu).
+* **Normalizacja.**
+  * *Klucz:* Znać postacie normalne (1NF, 2NF, 3NF), ale – uwaga – Pietranik ceni wiedzę praktyczną, więc wspomnij o **denormalizacji** w celach wydajnościowych (w systemach OLAP lub NoSQL).
+* **Pytanie 35: OLAP i wielowymiarowe modelowanie.**
+  * *Klucz:* Różnica między OLTP (transakcyjne, bieżące) a OLAP (analityczne, historyczne).
+* **Pytanie 22: Internet Rzeczy (IoT) i Big Data.**
+  * *Klucz:* Jak przechowywać ogromne ilości danych z sensorów? (Tu wchodzi NoSQL/Big Data).
+* **Pytanie 15: Protokoły warstwy aplikacji (HTTP, REST).**
+  * *Klucz:* Jako webowiec może zapytać o REST API.
+
+**Jak odpowiadać:** Praktycznie. Możesz powiedzieć: "Teoretycznie robi się tak, ale w praktyce przy dużych systemach robi się tak...". To zaplusuje.
+
+---
+
+### 3. Dr inż. Marcin Kawalerowicz ("Ten z Biznesu")
+
+**Profil:** CEO firmy software'owej, programista .NET, ekspert od inżynierii oprogramowania i jakości kodu. Człowiek z przemysłu, nie akademicki teoretyk.
+**Czego szuka:** Inżynierii oprogramowania, Wzorców Projektowych, testowania, cyklu życia oprogramowania (Agile).
+
+**Najbardziej prawdopodobne pytania z PDF (Priorytet Wysoki):**
+
+* **Pytanie 32: Wzorce projektowe.**
+  * *Klucz:* To jego chleb powszedni. Naucz się 3 przykładów na pamięć: Singleton (i dlaczego jest zły), Fabryka, Obserwator. Wiedza, kiedy ich użyć, jest kluczowa.
+* **Pytanie 26: Cykl życia oprogramowania (Waterfall vs Agile/Scrum).**
+  * *Klucz:* Kawalerowicz jest "agile'owcem". Zna Scruma na wylot. Różnice między podejściem zwinnym a kaskadowym.
+* **Pytanie 4: Programowanie obiektowe (OOP).**
+  * *Klucz:* Polimorfizm, Hermetyzacja, Dziedziczenie. Podstawy, ale w kontekście C#/Java.
+* **Pytanie 16: Techniki efektywnego programowania / Zarządzanie pamięcią.**
+  * *Klucz:* Unikanie wycieków pamięci, alokacja na stosie vs stercie.
+* **Pytanie 31: UML.**
+  * *Klucz:* Diagramy klas i sekwencji. Używane w dokumentacji projektowej.
+
+**Jak odpowiadać:** Biznesowo i inżyniersko. Odwołuj się do pracy w zespole, utrzymania kodu (maintainability) i testowalności.
+
+---
+
+### Szybka "ściąga" przygotowawcza (Plan działania)
+
+1. **Dla Myszkowskiego:**
+    * Otwórz **stronę 30** PDFa. Wykuj na blachę metody optymalizacji (Gradientowe vs Ewolucyjne).
+    * Otwórz **stronę 19**. Zrozum "O duże".
+    * Otwórz **stronę 16**. Zrozum QuickSort.
+
+2. **Dla Pietranika:**
+    * Otwórz **stronę 38**. Zrozum ACID.
+    * Otwórz **stronę 37**. Zrozum różnicę SQL vs NoSQL.
+    * Otwórz **stronę 39-41**. Przypomnij sobie 3 postacie normalne (to jest baza, którą musisz znać, żeby zdać u "bazodanowca").
+
+3. **Dla Kawalerowicza:**
+    * Otwórz **stronę 51-52**. Wybierz jeden wzorzec z każdego typu (Kreacyjny, Strukturalny, Behawioralny) i umiej go opisać.
+    * Otwórz **stronę 44**. Zrozum Model Spiralny i Kaskadowy (i dlaczego w IT wolimy Agile/Scrum, mimo że w PDF jest Kaskadowy).
+
+### Symulacja obrony (Przykładowy scenariusz)
+
+* **Myszkowski:** "Proszę omówić metody gradientowe w optymalizacji. Jak wyznaczamy kierunek spadku?" (Odpowiedź ze str. 30 – antygradient).
+* **Pietranik:** "Mamy system dla sklepu internetowego. Jaką bazę danych Pan wybierze i dlaczego? Co to jest transakcyjność?" (Odpowiedź: Relacyjna dla płatności ze względu na ACID/Spójność - str. 38, ewentualnie NoSQL dla koszyka/katalogu produktów).
+* **Kawalerowicz:** "Proszę wymienić i omówić wzorzec projektowy, który ułatwia tworzenie obiektów bez określania ich konkretnej klasy." (Odpowiedź: Fabryka - str. 52).
+
+Powodzenia! To dobra komisja, o ile nie będziesz ściemniać. Jak czegoś nie wiesz, spróbuj wydedukować lub nawiązać do praktyki – Pietranik i Kawalerowicz to docenią. Myszkowski może kręcić nosem, ale 2/3 głosów masz po swojej stronie.
