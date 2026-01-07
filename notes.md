@@ -166,3 +166,66 @@ Podstawowe pojęcia:
 - Polimorfizm: jak kot dziedziczy po zwierzęciu to można traktować go tak i tak, czyli wsadzić do listy zwierząt i traktować jak zwierzę, bez zwracania uwagi na konkretny typ.
 - Modyfikator dostępu: metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
 - Hermetyzacja: modyfikatory dostępu, interfejsy przydają się do implementacji hermetyzacji. Chodzi o to, aby dla innych klas najważniejszy był głównie wynik którego potrzebują od klasy, a nie wewnętrzna implementacja. Czyli klasa powinna udostępniać minimum metod i publicznych pól, aby inne klasy musiały w kontrolowany sposób ją mutować / uzyskiwać z niej wynik.
+
+Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie większe gry komputerowe są napisane w tym paradygmacie, ale też dużo aplikacji desktopowych, mobilnych, backendów, frontendów, systemy operacyjne...
+
+## 5. Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów
+
+Podstawowe operacje na zbiorach:
+
+Suma zbiorów A + B czyli zbiór do którego należą wszystkie elementy w zbiorze A i w zbiorze B
+Różnica zbiorów A - B czyli wszystkie elementy zbioru A, poza tymi, które są w zbiorze B (jest też różnica symetryczna taki xor)
+Iloczyn A i B czyli wszystkie elementy będące naraz w zbiorze A i B
+Dopełnienie A czyli wszystkie elementy, które są poza A w jakimś zbiorze dostępnych wartości U (czyli U - A) (U to zbiór wszystkich możliwych wartości)
+Iloczyn kartezjański A x B czyli wszystkie możliwe pary każdy element a R b zebrane w pary uporządkowane.
+Pary uporządkowane to takie, że jeśli (a,b) = (c,d), to a=c i b=d
+Przynależność A e B gdy każdy element A znajduje się również w zbiorze B
+
+Własności działań na zbiorach:
+Operacje sumy, różnicy są przemienne
+
+```txt
+A * (B + C) = (A * B) + (A * C)
+A + (B * C) = (A + B) * (A + C)
+A + (B + C) = (A + B) + C
+A * (B * C) = (A * B) * C
+A \ B = A * B`
+(A * B)` = A` + B`
+(A + B)` = A` * B`
+```
+
+Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.
+Funkcje mozna składać, np h(x) = f(g(x)) = (f o g)(x)
+Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja  
+
+Relacja to podzbiór iloczynu kartozjańskiego
+Relacje mogą mieć wiele własności
+
+- Symetryczna - jeśli x R b, to b R x
+- Zwrotna - każde x jest x R x
+- Przechodnia - jeśli x R y i y R z, to x R z
+- Antysymetryczna - jeśli x R y i y R x, to x = y (takie wnioskowanie z symetrii)
+- Spójna - wszystkie elementy są w parze z wszystkimi innymi (przynajmniej w jedną stronę)
+
+Relacja jest relacją równoważności, gdy jest zwrotna, symetryczna i przechodnia (taki graf trochę niekierunkowy)
+
+Rachunek zdań
+
+```txt
+                    implikacja        xnor
+ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b (a => b) ∧ (b => a)    
+00  0      0        1       1         1                             
+10  0      1        0       1         0
+01  0      1        1       0         0
+11  1      1        1       1         1
+```
+
+negacja to wiadomo
+
+zdania są równoważne, gdy mają równe wartości logiczne dla wszystkich możliwości np. a = a * a
+tautologia jest zawsze prawdziwa np. p + p` = 1
+
+Mamy kwantyfikatory A; V (dla każdego; istnieje)
+Czyli np. Ax; x w zbiorze R; x*x >= 0
+Vx; x w zbiorze R; x = 123.25
+Oba to prawda
