@@ -229,3 +229,45 @@ Mamy kwantyfikatory A; V (dla każdego; istnieje)
 Czyli np. Ax; x w zbiorze R; x*x >= 0
 Vx; x w zbiorze R; x = 123.25
 Oba to prawda
+
+## 6. Deterministyczne automaty skończone - definicja, zastosowania
+
+Chodzi o takie fajne rzeczy jak regex czy lekser.
+Jest to abstrakcyjna maszyna stanów o skończonej liczbie stanów, która na podstawie aktualnie czytanej litery i aktualnego stanu (na początku pusty) przechodzi do kolejnego stanu. Gdy znajdzie się w stanie oznaczonym jako akceptujący (końcowy), przerywa działanie, klasyfikując czytane słowo/tekst do języka regularnego, do rozpoznawania którego jest zbudowane.
+
+![alt text](imgs/6/deterministyczny_automat_skonczony.png)
+
+Formalnie, automat skończony to uporządkowana piątka ```A = <K, T, M, K0, H>```
+K = niepusty skończony zbiór - stanów
+T = niepusty skończony zbiór - alfabet
+M = relacja przejścia K x T -> K
+K0 e K - stany początkowe
+H e K - stany końcowe/akceptowalne
+
+Lekser jest używany w kompilatorach i interpreterach.
+Regex jest wykorzystywany przy wytwarzaniu oprogramowania głównie do walidacji inputu użytkownika, znalezienie odpowiedniego tekstu/tekstów, zamienienia fragmentów tekstu.
+
+Przykłady regexa:
+znalezienie wszystkich słów w tekście (litery między innymi znakami)
+
+```regex
+[a-zA-Z]+
+```
+
+znalezienie wszystkich słów zaczynającego się na "pies"
+
+```regex
+pies[a-zA-Z]*
+```
+
+znalezienie liczb o długości 5
+
+```regex
+\d\d\d\d\d
+```
+
+walidacja maila lvl easy
+
+```regex
+.+@.+\..+
+```
