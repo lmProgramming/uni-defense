@@ -271,3 +271,22 @@ walidacja maila lvl easy
 ```regex
 .+@.+\..+
 ```
+
+## 7. Przykładowe architektury komputerów: von Neumana, Princeton, Harvard
+
+Komputer składa się z CPU (jednostki centralnej), magistrali, pamięci. CPU składa się z rejestrów, ALU (matematyka) i jednostki sterującej.
+
+Ze względu na liczbę strumieni danych a instrukcji powstała Taksonomia Flynna o 4 rodzajach:
+
+- SISD - najprostsze, jeden ciąg instrukcji i jeden danych
+- SIMD - np. GPU, te same instrukcje są wywoływane dla różnych porcji danych (ale CPU też może być)
+- MISD - dąży do zmniejszenia marginesu błędu przez redundancję obliczeń (bardzo rzadkie, misje kosmiczne)
+- MIMD - wiele programów ma różne dane (komputery osobiste)
+
+von Neumann / Princeton
+Von Neumann i Princeton to dwie różne nazwy na tą samą architekturę komputerów. Charakteryzuje się przechowywaniem instrukcji razem z danymi. Instrukcje mogą łatwo modyfikować inne instrukcje. Problem, jaki występuje, to von Neumann/Princeton bottleneck, czyli ograniczenie wykonywania instrukcji przez czytanie danych (bottleneck). System powinien mieć skończoną i kompletną listę instrukcji.
+
+Harvardzka
+Rozdzielenie instrukcji od danych do osobnych szyn. Łagodzi to wcześniej opisany problem bottleneck.
+
+Większość komputerów i GPU korzysta ze zmodyfikowanej architektury Harvardzkiej, optymalizującej działanie. Logicznie jest to von Neumann, ale fizycznie ścieżki i cache są rozdzielone dla instrukcji i danych.
