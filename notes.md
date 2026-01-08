@@ -305,3 +305,54 @@ Dodatkowe porównanie:
 RISC: 1 zegar i ograniczony tryb adresowania. CISC wykorzystuje wielodostępne tryby adresowania.
 RISC: ustalony format instrukcji 32 bity. CISC: zmienne zakresy od 16-64 bitów na instrukcję.
 RISC: sterowana na stałe bez konieczności pamięci sterującej. CISC kiedyś wymagało pamięci kontrolnej (ROM), ale teraz można tak jak RISC
+
+## 9 Grafy. Drzewa rozpinające. Cykle Eulera i Hamiltona. Spójność. Algorytmy przechodzenia po grafie
+
+Graf to taka struktura danych, która składa się z wierzchołków, połączonych z innymi wierzchołkami krawędziami. Wierzchołki, krawędzie i same grafy mogą mieć różne własności, w zależności od typu grafu.
+
+Typy grafów:
+
+- etykietowane: wierzchołki są podpisane
+- ważone: każda krawędź ma wagę (liczba, zazwyczaj pozytywna, ale może być też ujemna/zerowa, choć niektóre algorytmy przestają wtedy działać)
+- skierowane: krawędź ma początkowy wierzchołek i końcowy wierzchołek (mogą być te same, ale jest kierunek)
+- nieskierowane: krawędź łączy 2 wierzchołki w 2 strony, można nim przejść w obie strony
+- spójne: z każdego wierzchołka można się dostać do każdego innego
+- niespójne: istnieją wierzchołki, między którymi nie da się wyznaczyć drogi
+- Eulerowskie: ma cykl Eulera
+- Hamiltonowski: ma cykl Hamiltona
+- regularne: każdy wierzchołek tego samego stopnia, czyli równa ilość krawędzi z każdego wierzchołka
+
+Droga: lista krawędzi od wierzchołka początkowego do końcowego
+Ścieżka: droga co nie powtarza wierzchołków
+Cykl (droga zamknięta): A -> B -> A
+Pętla: A -> A
+Drzewo: graf spójny acykliczny (czyli nie ma żadnego cyklu)
+
+Drzewo rozpinające: podgraf grafu zawierający wszystkie jego wierzchołki, ale pomijając krawędzie tworzące cykle. Dzięki temu jest niecykliczny i jest spójny. Dany graf może mieć wiele drzew rozpinających
+
+W drzewach binarnych (są drzewami rozpinającymi) krawędzie mają najwyżej (i zazwyczaj dokładnie) dwójkę dzieci. Są one oznaczone jako lewe i prawe. Krawędzie, które nie mają dzieci, to liście (leaf). Korzeniem jest główny rodzic.
+
+Cykle Eulera i Hamiltona
+Cykl Eulera: można stworzyć drogę, rozpoczynającą się w jakimś wierzchołku, i przejść przez wszystkie krawędzie dokładnie raz
+Cykl Hamiltona: można stworzyć drogę, rozpoczynającą się w jakimś wierzchołku, przechodzącą przez wszystkie wierzchołki raz, prócz początkowego, w którym trzeba skończyć.
+Ścieżka Hamiltona:
+
+Spójność: chodzi o to, że z każdego wierzchołka można by się dostać do każdego innego.
+
+Algorytmy przechodzenia po drzewie rozpinającym (w akademii zazwyczaj dotyczą drukowania etykiet/indeksów w jakiejś kolejności grafu):
+
+- DFS (depth first search): chciwe, eksplorują ściężki jak najgłębiej, zanim sprawdzą inne (rekurencyjne)
+  - pre order: zaczyna w głównym wierzchołku i wykonuje dla niego taki sam algorytm jak dla reszty, czyli najpierw operuje na sobie, potem idzie ciągle do lewego dziecka, jak je wyczerpie, to prawe, a potem wraca do rodzica (noo w przypadku korzenia rodzica nie ma, to koniec algorytmu).
+  - post order: pre order, ale operacja na wierzchołku dopiero na końcu, najpierw dzieci
+  - in order: najpierw wykonuje algorytm dla lewego dziecka, potem wypisuje siebie, potem prawego
+- BFS (breadth first search): jakby założenie, że każda ścieżka ma tyle samo potencjału (iteracyjne)
+  - często takie drzewa binarne są w postaci idealnie skonstruowanej do takiej iteracji, bo korzeń ma indeks 0, lewe dziecko 1, prawe 2, lewe lewego 3 itd.
+  - level order - zwykły bfs
+
+Są inne ale te najwazniejsze
+
+Niektóre starają się stworzyć minimalne drzewo rozpinające, czyli dla grafu ważone takie, których suma wag krawędzi jest najmniejsza możliwa (minimalna)
+
+Djikstra to algorytm zachłanny (BFS), mający szybko znaleźć połączenie dwóch krawędzi o najmniejszej wadze. Działa tylko dla wag nieujemnych
+
+Travelling Salesman problem można wspomnieć, mrówczano-feromonowe rozwiązanie
