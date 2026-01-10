@@ -505,3 +505,33 @@ Stosuje się tu wiele protokołów, do przeglądania internetu, maili, zdalnego 
 - TELNET - emulacja zdalnego terminala na innym komputerze, niebezpieczny przez przesyłanie jawnego tekstu
 - SSH (port 22) - szyfrowana emulacja zdalnego terminala na innym komputerze
 - DHCP (dynamic host configuration protocol) - dynamiczna konfiguracja adresów IP, bramy, adresów serwerów DNS urządzeń
+
+## 16. Techniki efektywnego programowania - przykłady
+
+Na bazie labów z TEP:
+
+- Pliki należy dzielić na .h z deklaracją struktury klasy (nazwa, metody i podział na publiczne i prywatne, pola) i .cpp z implementacją metod
+- Zmienne, klasy i metody należy nazywać deskryptywnie, unikać jedno literowych nazw zmiennych, prócz iteratorów np. (for size_t i = 0;)
+- Należy stosować wszędzie jedną konwencję kodowania, dotyczącą się nazywania struktur, zmiennych, ale też pilnowania wcięć (automatyczne formattery kodu)
+- Klasa nie powinna zawierać metod niepowiązanych ściśle z nią (np. BigInteger z metodą makeUppercase)
+- Tak samo metoda powinna skupić się na 1 rzeczy, a niepowiązane wydzielić do innych metod
+- Klasa nie powinna mieszać różnych warstw, np. BigInteger nie powinien jednocześnie implementować BigInteger, jak i metod jej drukowania/pobierania danych od użytkownika (metody publiczne od tego)
+- Jak najmniej (najlepiej zero) pól publicznych. Dane takie należy setować konstruktorem i metodami, oraz otrzymywać metodami
+- Unikać domyślnych wartości pól, lepiej ustawić je jako domyślne w konstruktorze czy przypisać wartość w metodach
+- W C++ do metod przekazywać obiekty przez referencję/wskaźnik, zamiast bezpośrednio, bo wtedy obiekt się kopiują (a jego wskaźniki same się nie skopiują)
+- Korzystanie z inteligentnych wskaźników w nowoczesnym C++, aby zautomatyzować destrukcję obiektów, gdy inne obiekty przestaną na ten obiekt wskazywać
+- Korzystanie z std::move w celu uniknięcia kopiowania danych (przenosi je, stary obiekt jest w stanie jakby pustym, bezpiecznym do destrukcji)
+- Nie zwalniać pamięci dwukrotnie dla tego samego obiektu
+- Implementacja i używanie algorytmów o niskiej złożoności
+- Zamiana rekurencji na iterację (brak ryzyka stack overflow + szybsze, bo alokowanie ramek trwa i wymaga pamięci)
+- Parallelizacja kodu przy użyciu wątków
+- Zarządzać pamięcią - zero wycieków - każdy obiekt alokowany dynamicznie trzeba usunąć używając delete, listy delete[] (ale czasem elementy listy trzeba jeszcze wcześniej usunąć osobno)
+- Program powinien być odporny na każdy możliwy input użytkownika
+- Unikać break (poza switchem) czy continue, bo psują one naturalny przebieg funkcji. Często można to załatwić, korzystając z odpowiedniej rodzaju loop, albo wydzielić do osobnej funkcji i wykorzystywać return. Kontrowersyjna opinia prowadzącego - unikać wyjątków, bo one też utrudniają śledzenie przebiegu.
+- Absolutny zakaz goto
+- Zaprzyjaźnianie klas - friend tylko wtedy, kiedy jest faktycznie potrzebne
+- Jak najmniej mutowalnych zmiennych globalnych - najlepiej 0. Const jak najbardziej jest ok, trzeba go tylko wydzielić do pliku .h z constami albo do odpowiedniej klasy .h. Unikać mutowalne, bo ciężko się to debuguje, powstaje "spaghetti code" i ciężej parallelizować
+- Jedna klasa = 1 plik header, chyba, że są mocno powiązane, to można
+- Jeśli ten sam blok instrukcji powtarza się, należy go wydzielić do funkcji lub metody. Nawet jeśli się nie powtarza, ale jest to osobna funkcja od reszty, należy to wydzielić i dać deskryptywną nazwę. Moją zasadą jest to, że prawie każdy komentarz można zastąpić wydzieleniem do funkcji czy metody.
+- O kod i architekturę należy dbać, a dodanie i utrzymywanie testów sprawi, że refactoring jest znacznie mniej bolesny (często jest się mądrym po pełnej implementacji, i wtedy można wprowadzić abstrakcje)
+- Usuwać nieużywane zmienne, klasy, metody - z kontrolą wersji nic nie zginie
