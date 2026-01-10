@@ -467,3 +467,22 @@ Składa się z 7 warstw:
 - Warstwa aplikacji - np. http vs https vs poczta itd
 
 Swoją drogą, chrome i edge korzystają z tego samego portu 443? Tak, bo tworzą sobie sockety w OS! Stamtąd wysyłają i tam dostają dane
+
+## 14. Protokoły warstwy łącza danych. Sieć Ethernet. Stos protokołów internetowych TCP/IP
+
+note dla mnie: Datagram (UDP) to jakby segment (TCP)
+
+Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request indentyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
+
+Ethernet to rodzina technologii działającej na warstwie łącza danych oraz fizycznej z modelu OSI. Jest to standard dla sieci lokalnej LAN. Ethernet wykorzystuje i opisuje ramki, schemat okablowania, złącza jak końcówki RJ45 w warstwie fizycznej OSI, aby przekazać dane, np. od routera do komputera.
+Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eleminujący kolizje), choć logicznie działa jak magistrala (broadcast)
+Ethernet 2 (teraz najczęściej używany) korzysta z ramki z adresem MAC, określającej fizyczny adres urządzenia, typ transmisji i CRC do detekcji błędów.
+
+TCP/IP to model oparty na OSI, upraszczający go do 4 warstw. Stos protokołów internetowych TCP/IP składa się z 4 warstw
+
+- Warstwa dostępu do sieci: połączenie warstwy fizycznej i łącza danych. Przypisanie adresu fizycznego MAC. Przypisanie ramek
+- Warstwa internetowa: odpowiednik warstwy sieciowej z OSI. Przypisanie adresu logicznego IP. Protokoły IPV4, IPV6. Podział na pakiety
+- Warstwa transportowa: implementacja warstwy transportowej z OSI. Przypisanie portu (np. 80 dla HTTP, 443 dla HTTPS). Tutaj występują największe różnice między TCP a UDP. Podział na segmenty.
+  - TCP: protokół zapewniający otrzymanie danych i ewentualną retransmiję w przypadku błędów. Gwarantuje też kolejność. Jednostka: segment
+  - UDP: protokół nie gwarantujący otrzymania wszystkich danych, za to znacznie szybszy. Przydatny, gdy program będzie działać w przypadku utraty części danych (np. streamowanie filmu). Jednostka datagram
+- Warstwa aplikacji: wykorzystuje protokoły HTTP, SMTP - email, DNS - nazwy domen. Jedyna warstwa, z jaką użytkownik ma bezpośredni kontakt.
