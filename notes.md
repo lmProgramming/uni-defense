@@ -535,3 +535,30 @@ Na bazie labów z TEP:
 - Jeśli ten sam blok instrukcji powtarza się, należy go wydzielić do funkcji lub metody. Nawet jeśli się nie powtarza, ale jest to osobna funkcja od reszty, należy to wydzielić i dać deskryptywną nazwę. Moją zasadą jest to, że prawie każdy komentarz można zastąpić wydzieleniem do funkcji czy metody.
 - O kod i architekturę należy dbać, a dodanie i utrzymywanie testów sprawi, że refactoring jest znacznie mniej bolesny (często jest się mądrym po pełnej implementacji, i wtedy można wprowadzić abstrakcje)
 - Usuwać nieużywane zmienne, klasy, metody - z kontrolą wersji nic nie zginie
+
+## 17. Zarządzanie pamięcią. Typowe problemy. Wskaźniki
+
+W C++ programista ma bezpośredni dostęp do zarządzania pamięcią, inaczej niż w językach jest C\# czy Python, gdzie jest garbage collector, a każdy typ jest opakowany w obiekt.
+
+Są dwa miejsca alokacji. Alokacja dynamiczna przydziela na stercie (heap), a automatyczna na stosie (stack).
+
+Automatyczna alokacja polega na zwykłym zadeklarowaniu zmiennej, np. inta czy nawet klasy, bez użycia keyworda new. Takie zmienne alokowane są w bloku, i kiedy blok zostanie zakończony, dla obiektów z tego stosu wywołany będzie automatycznie destruktor. Jest to więc wygodne dla programisty, ale ogranicza czas życia tylko do tej jednej funkcji.
+
+Dynamiczna alokacja pozwala na tworzenie obiektów długo żyjących oraz przekazywanie im innym metodom, ale jest znacznie trudniejsza z perspektywy programisty. W C++ to programista zarządza poprawną alokacją i dealokacją dynamicznych obiektów. Używa się do tego wskaźników. Do alokacji używa się głównie keyworda ```new```, a do destrukcji ```delete```, np.
+
+```cpp
+int* foo = new int;
+*foo = 5;
+delete foo;
+// bez delete memory leak
+```
+
+Tutaj na stosie stworzona zostanie zmienna foo, i dzięki new int zaalokuje sobie odpowiednio dużo miejsca na int (ileś bajtów) i zapamięta adres. Potem weźmie ten adres, interpretując go jako int zapisze tam int 5. Potem po delete foo ze sterty zostaną usunięte dynamicznie alokowane dane. Potem foo zostanie usunięte ze stosu (delete nie usuwa zmiennej, tylko daje znać, że ten adres jest teraz nieużywany i dostępny do alokacji).
+
+W przypadku, gdy programista zapomni dealokować dynamicznie alokowane dane, zostaną one zwolnione przez system operacyjny dopiero po zakończeniu działania całego programu. Tworzy to memory leak, który może z czasem wyczerpać zasoby komputera.
+
+W C++ nowo alokowane zmienne nie czyszczą zaalokowanej sobie pamięci, czyli znajdują już się tam bity. Trzeba na to uważać zwłaszcza przy wskaźnikach, które bez odpowiedniej inicjalizacji mogą wskazywać na adresy niezalokowane przez komputer dla programu (crash) lub zmieniając taką zmienną, zmienić przypadkiem dane dla zupełnie innej zmiennej,
+
+Arraye w C++ działają jak wskaźniki w wielu kontekstach. Jeśli odwołamy się do elementu poza listą, np. elementu 5. dla 3 elementowej listy, operujemy po prostu na pamięci o adresie = adres arraya + 5. Powoduje to ten sam error lub błąd, co opisany wyżej.
+
+Arraye mogą być arrayem wskaźników w C++. Tak samo wskaźnik może wskazywać na wskaźnik - trzeba dodać odpowiednią liczbę gwiazdek do kodu. Używając delete, trzeba pamiętać o usunięciu danych z każdego stopnia wskaźnika, inaczej mamy memory leak. Do destrukcji arraya trzeba użyć ```delete[]```, ale ta sama uwaga jest aktualna dla arraya arrayi (arraya wskaźników) - trzeba dla każdego elementu delete/delete[] wykonać.
