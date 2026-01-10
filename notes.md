@@ -562,3 +562,29 @@ W C++ nowo alokowane zmienne nie czyszczą zaalokowanej sobie pamięci, czyli zn
 Arraye w C++ działają jak wskaźniki w wielu kontekstach. Jeśli odwołamy się do elementu poza listą, np. elementu 5. dla 3 elementowej listy, operujemy po prostu na pamięci o adresie = adres arraya + 5. Powoduje to ten sam error lub błąd, co opisany wyżej.
 
 Arraye mogą być arrayem wskaźników w C++. Tak samo wskaźnik może wskazywać na wskaźnik - trzeba dodać odpowiednią liczbę gwiazdek do kodu. Używając delete, trzeba pamiętać o usunięciu danych z każdego stopnia wskaźnika, inaczej mamy memory leak. Do destrukcji arraya trzeba użyć ```delete[]```, ale ta sama uwaga jest aktualna dla arraya arrayi (arraya wskaźników) - trzeba dla każdego elementu delete/delete[] wykonać.
+
+## 18. Dobór paradygmatów programowania do rozwiązywania problemów informatycznych
+
+Paradygmat określa sposób myślnenia, aby rozwiązać problemy jako programista. Najważniejszy podział paradygmatów to podział na paradygmat deklaratywny i imperatywny. W deklaratywnym instrukcje dotyczą tego, jaki wynik chcemy osiągnąć (rezultat), a imperatywne, jakie kroki ma dokładnie wykonać program, aby osiągnąć wynik (kroki).
+
+Najwazniejsze podparadygmaty paradygmatu deklaratywnego:
+
+- Funkcyjny: brak mutowalnego stanu. Program to wywołanie funkcji, a każdą funkcję można w każdym przypadku zastąpić jej wartością (bo nie ma skutków ubocznych). Funkcje to obywatele pierwszej rangi: funkcje mogą zwracać funkcje, przyjmować je jako argumenty czy mogą być częścią samych struktur danych. Plusy: jasny kod, łatwiejszy w utrzymaniu, brak problemów z współbieżnością. Minusy są takie, że nie nadaje się do każdego problemu (np. gry) i wymaga innego sposobu myślenia. Przykłady języków to Ocaml czy Scala.
+- Logiczny: pojęcie ograniczeń, przydatny do matematyki, formalny. Przykłady to np. Prolog, dziś jest mniej używany.
+- SQL i jemu podobne również należą do paradygmatu deklaratywnego (ale ani ściśle logiczny ani funkcyjny).
+
+Najważniejsze podparadygmaty paradygmatu imperatywnego:
+
+- Proceduralny: logiczny podział kodu na procedury (funkcje), co zwiększa czytelność i zmniejsza ryzyko błędu.
+- Obiektowy: jest zarówno strukturalny, jak i proceduralny. Zapisanie wielu struktur jako obiekty, stworzone z klas. Klasy to instrukcje, jak stworzyć obiekt. Intuicyjny paradygmat, gdyż łatwo zrozumieć, że instancja klasy ma własny stan (wartość atrybutów) i własne metody, które mogą zmieniać jej stan. Bardzo popularny paradygmat.
+- Event-driven - wydarzenia (wywołane przez użytkownika lub nie) są obsługiwane przez klasy i funkcje, dzięki czemu powiązania są mniej ścisłe.
+
+Należy pamiętać, że granica między oba paradygmatami się zaciera. Współcześnie w bardzo wielu popularnych językach imperatywnych wprowadzono wiele możliwości z paradygmatu funkcyjnego. Np. w Pythonie, bezproblemowe jest przekazanie funkcji jako argument, tworzenie lambd itd. W językach funkcyjnych również często możliwe jest używanie zmiennych, ale wtedy nie są czysto funkcyjne.
+
+Aby wybrać odpowiedni paradygmat, należy wziąć pod uwagę następujące czynniki:
+
+- doświadczenie zespołu
+- wielkość projektu (obiektowy dobry do dużych)
+- wymogi współbieżności (funkcyjny)
+- wymogi szybkości działania (imperatywny bliżej jest działania komputera)
+- wymóg udowodnienia działania (funkcyjny, logiczny)
