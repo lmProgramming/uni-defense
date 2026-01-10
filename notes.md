@@ -628,3 +628,17 @@ Należy wybrać paradygmat imperatywny, gdy:
 - potrzebujemy bogatego ekosystemu bibliotek z języków jak C++, C\#, Python
 
 Na końcu wspomnę, że granica między paradygmatami się zaciera. Większość imperatywnych języków wspiera funkcyjne elementy (lambdy, przekazywanie funkcji jako argumentów, zwracanie ich...), a w językach funkcyjnych można dodać mutowalny stan, choć wtedy nie są czysto funkcyjne.
+
+## 20. Abstrakcyjne typy danych i ich realizacja w językach programowania
+
+Wiele języków implementuje podstawowe, przydatne struktury danych w bibliotekach standardowych. Ich implementacja nie jest jawna i ważna dla dewelopera - najważniejszy jest kontrakt ADT, który jest zadeklarowany. Czyli to, jakie są dozwolone metody (np. Get, Add, Pop...) oraz gwarantowane zachowania (np. pierwszy wchodzi pierwszy wychodzi). Różne implementacje mogą używać tego samego kontraktu, aby być lepiej przystosowanym do specyficznych przypadków użycia i optymalizacji - tak więc kontrakt całkowicie ignoruje implementację. W wielu językach można wykorzystać do tego słowa kluczowe ```interface``` albo ```abstract class```, i różne implementacje dziedziczą po klasie abstrakcyjnej lub implementują interfejs.
+
+List, czyli rozszerzalną i modyfikowalną tablicę elementów, można zaimplementować na wiele sposobów. Częstą implementacją listy jest stworzenie pod spodem tablicy, która gdy zostanie wypełniona, jest rozszerzana o ileś elementów, zachowując bufor. Inną implementacją, wspierającą szybkie usuwanie/dodawanie elementów na początku i środku, jest linked list. Zaimplementowana jest w postaci grafu, gdzie węzły są połączone z następnikami (i często z poprzednikami). Dla programisty ważne jest to, iż mimo bardzo różnią się implementacyjnie, może wykorzystać ich wspólny kontrakt/interejs. Np. w C\# jest interfejs IList, który jest implementowany przez List, jest też LinkedList, ale implementuje ICollection.
+
+Stack: pierwszy wchodzi, ostatni wychodzi. Czyli element dodany jako ostatni jest pierwszy w kolejce do pozyskania. KLasa Stack
+
+Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będącę w strukturze danych są pierwsze w kolejce do pozyskania. W tym przypadku w C\# jest PriorityQueue, który nadpisuje domyślne zachowanie - ustala kolejkę wychodzenia na podstawie "priorytetu" ustalonego wcześniej dla obiektu. Implementacje Queue (FIFO), PriorityQueue, ConcurrentQueue (bezpieczna wątkowo).
+
+Hash Map / Dictionary: zawiera unikalne klucze, do których przypisana jest wartość. Gwarantuje szybki dostęp do wartości dla kluczy. W C\# ADT to IDictionary, implementowane przez Dictionary, SortedList (klucze posortowane), ConcurrentDictionary (wielowątkowe).
+
+Warto zauważyć, że ADT to teoria, ale język może powstrzymywać dewelopera przed niepoprawnym użyciem struktury danych. Np. LinkedList nie implementuje interfejsu IList, ponieważ indeksowanie jest wolne w pętli (a indekser mógłby być cyrkularny).
