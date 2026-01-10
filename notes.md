@@ -449,3 +449,21 @@ Są 3 główne architektury jądra:
 - jądro monolityczne - ścisłe powiązanie ze sobą wszystkich zadań systemu operacyjnego. Łatwiejsze w stworzeniu, jest szybkie i lepiej zarządza pamięcia, ale mogą też wystąpić problemy przy dużej bazie kodu czy częstszym zatrzymaniem pracy systemu przez np. podłączenie urządzenia, do którego nie ma sterowników albo błąd w sterowniku nadpisze coś gdzie indziej w jądrze i zcrashe'uje komputer. Najważniejszy przykład to Linux
 - mikrokernel - podzielenie zadań na wiele różnych serwerów. Zwiększa skomplikowanie, ale zmniejsza to, jak ściśle powiązane są elementy systemu. Rzadki w użyciu do desktopów, częstszy w systemach embedded
 - jądro hybrydowe - łączy jądro monolityczne z mikrokernel. Jądro monolityczne dla najważniejszych zadań, które muszą być szybkie, ale delegacja części innych do własnych serwisów. Najważniejszy przykład to Windows, macOS
+
+## 13. Model warstwowy OSI
+
+OSI to teoretyczny model referencyjny do komunikacji internetowej między komputerami. Jest to baza dla innych standardów, np. modelu TCP/IP. Powstał w latach siedemdziesiątych, aby rozwiązać problem ustandaryzowania komunikacji między sprzętami różnych firm.
+
+Składa się z 7 warstw:
+
+- Warstwa fizyczna - zakodowanie danych w postaci bitów. Dodatkowo medium ich transportu, np. kabel RJ45, fale wi-fi.
+- Warstwa łącza danych - odbiór i przesył danych, oraz weryfikacji poprawności (CRC) danych. Przypisywany jest adres MAC. Np. ethernet
+- Warstwa sieciowa - zarządzanie routowaniem danych do odpowiedniego celu. Dołącza adres IP
+- Warstwa transportowa - segmentacja danych oraz przypisanie portu (80 dla HTTP, 443 for HTTPS). 2 metody:
+  1. UDP - bez komunikacji zwrotnej, czy otrzymało się pakiet. Przydatne, gdy nie jest krytyczne otrzymać każdy pakiet, np. w niektórych grach czy streamingu
+  2. TCP - złożony sposób przekazania informacji, z naciskiem na niezawodne otrzymanie uporządkowanych danych. Kroki: deklaracji chęci otrzymania informacji, gotowości do odebrania, samego przesłania, a na końcu potwierdzenia odbioru. Najczęściej stosowany, gdyż większość komunikacji internetowej jest krytycznie ważna, i trzeba być pewnym, że na każdym kroku nie popełniono błędu
+- Warstwa sesji - rozpoczęcie, kończenie, zarządzanie sesją wymiany danych
+- Warstwa prezentacji - kompresja i dekompresja danych, zapisanie ich w odpowiednim formacie, kodowaniu i zaszyfrowanie (np. TLS). Deklaracja formatu pliku przesyłanego
+- Warstwa aplikacji - np. http vs https vs poczta itd
+
+Swoją drogą, chrome i edge korzystają z tego samego portu 443? Tak, bo tworzą sobie sockety w OS! Stamtąd wysyłają i tam dostają dane
