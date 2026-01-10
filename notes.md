@@ -420,3 +420,32 @@ Wykorzystuje się 3 notacje:
 Notacja O: najlepsze górne ograniczenie, czyli jak O(n^2), to algorytm też jest być O(n^3), ale Big O = O(n^2)
 Notacja Omega: asymptotyczne dolne ograniczenie złożoności, czyli lepiej niż O(n) nie będzie, ale może być O(n^2)
 Notacja Theta: ścisłe ograniczenie. Może być tylko, kiedy Omega=O. Wtedy Theta=Omega=O.
+
+## 12. Warstwowa struktura systemu operacyjnego, pojęcie jądra systemu
+
+System operacyjny to złożony system informatyczny, który zarządzaja zasobami sprzętowymi komputera, umożliwia sprawne wykonywanie zadań, tworząc dla nich środowisko i je kontrolując. Pośredniczy między sprzętem a aplikacjami użytkownika.
+
+Główne zadania systemu operacyjnego to:
+
+- Planowanie i przydzielanie czasu procesora poszczególnym zadaniom
+- Kontrola i przydział pamięci operacyjnej uruchomionym zadaniom
+- Mechanizmy synchronizacji i komunikacji między zadaniami
+- Wsparcie systemu plikowego
+- Obsługa sprzętu i zapewnienie zadaniom dostępu do niego
+- Użycie powłoki do przyjmowania poleceń od użytkownika i wyświetlanie mu informacji zwrotnych
+
+Warstwy systemu operacyjnego:
+
+- Sprzęt: warstwa fizyczna, hardware komputera
+- Sterowniki: programy do komunikacji między samym jądrem, a urządzeniami (elementami fizycznymi)
+- Jądro systemu operacyjnego (później opisane)
+- Powłoka systemowa: program umożliwiający użytkownikowi komunikację z systemem operacyjnym, np. w formie tekstowej (bash, powershell) lub graficznej (gnome, cinammon). Aplikacje komunikują się z jądrem poprzez API i wywołania systemowe.
+
+Jądro systemu realizuje zadania systemu operacyjnego.
+Planista czasu procesora, przełącznik zadań, synchronizacja i komunikacja między zadaniami, obsługa przerwań i urządzeń, obsługa pamięci i jej ochrona.
+
+Są 3 główne architektury jądra:
+
+- jądro monolityczne - ścisłe powiązanie ze sobą wszystkich zadań systemu operacyjnego. Łatwiejsze w stworzeniu, jest szybkie i lepiej zarządza pamięcia, ale mogą też wystąpić problemy przy dużej bazie kodu czy częstszym zatrzymaniem pracy systemu przez np. podłączenie urządzenia, do którego nie ma sterowników albo błąd w sterowniku nadpisze coś gdzie indziej w jądrze i zcrashe'uje komputer. Najważniejszy przykład to Linux
+- mikrokernel - podzielenie zadań na wiele różnych serwerów. Zwiększa skomplikowanie, ale zmniejsza to, jak ściśle powiązane są elementy systemu. Rzadki w użyciu do desktopów, częstszy w systemach embedded
+- jądro hybrydowe - łączy jądro monolityczne z mikrokernel. Jądro monolityczne dla najważniejszych zadań, które muszą być szybkie, ale delegacja części innych do własnych serwisów. Najważniejszy przykład to Windows, macOS

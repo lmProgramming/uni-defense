@@ -4,6 +4,12 @@
 
 Jak wygląda obrona? Macie wyznaczoną godzinę, przychodzicie do sali, jest 3-osobowa komisja i zadają Wam 3 pytania z zakresu egzaminu dyplomowego (ze strony wydziału lub programu studiów). Opracowania tych zagadnień Wam wyślę, mamy klika wersji, w zależności kto w jaką ocenę celuje, ale sprawdźcie, czy jakieś nowe zagadnienia Wam nie wskoczą. Pytań do Waszego ZPI na obronie nie ma, z racji tego, że to nie jest inżynierka, tylko zwykły kurs, więc przygoda z ZPI się kończy w połowie grudnia i już się do tego nie wraca (no chyba że chcecie sprzedawać ten projekt gdzieś, tak też można xd), ale na obronie są tylko 3 pytania ze studiów. Pytania dobierane są różnie, niektóre komisje losują, niektóre wybierają pod siebie, czyli takie tematy, na których się znają, a niektóre nawet pozwalają sobie wybrać pytania xd. Jak traficie? nie wiadomo, ale jak już będziecie znali składy komisji, to mogę tam o co niektórych powiedzieć jakieś wskazówki. Ale w większości przypadków pytania wybierane są przez komisję i z takich tematów, z których się znają, więc polecam się wtedy z takich pytań najlepiej przygotować, bo bardzo duża szansa, że padną. Jak już wybiorą pytania, to dają Wam kartkę z tymi zaznaczonymi, albo każą Wam zaznaczać no i możecie zacząć odpowiadać w dowolnej kolejności na nie. Mówicie tyle co wiecie i dopóki nie powiedzą Wam, że można przejść dalej. Czasem o coś dopytają, to też zależy od komisji, na ile miłe te pytania będą, ale starajcie się mówić cały czas, niekoniecznie wszystko musi być w 100% poprawne, ale ważne, żeby “brzmiało mądrze” i nie mieli kiedy Wam przerwać, bo wtedy ryzyko, że zadadzą jakieś pytanie, na które możecie nie znać odpowiedzi. Ważne, żeby cokolwiek powiedzieć i nie zacinać się. Po odpowiedzeniu na te 3 pytania poproszą Was na chwilkę o wyjście z sali, naradzą się i poproszą Was z powrotem, gdzie pogratulują, ogłoszą ostateczną ocenę i 3 uściski prezesów z gratulacjami dla nowego inżyniera :))) Możecie wtedy iść i robić sobie uroczystą fotkę pod A-1 z logiem PWr, tylko pamiętajcie, że my nie mamy żadnej pracy inżynierskiej, więc jeśli chcecie taką fotkę z pracą, to albo musicie od kogoś pożyczyć, albo samemu sobie wydrukować jakąś Waszą dokumentację projektu, albo kupić samą okładkę xd
 
+## co wypadło
+
+```txt
+37. Wyrażenia i dyrektywy MDX.
+```
+
 ## todo
 
 ### 1. Układy cyfrowe (s. 1-2)
