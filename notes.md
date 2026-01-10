@@ -39,7 +39,6 @@ W układach sekwencyjnych wyjścia w nich zależą nie tylko od wejść, ale te�
 A w kombinacyjnych, wyjścia zależą bezpośrednio od wejść (funkcja wejść na wyjścia).
 
 Przerzutniki - układy sekwencyjne, które są w stanie zapamiętać stan i przekazać go dalej. Czyli nie są prostą funkcją wejść na wyjścia, bo do takiej funkcji jako argument trzeba dołączyć ich aktualny stan. Czyli posiadają wewnętrzny stan, który może zmieniać się w czasie i wpływa na działanie takiego układu (wyjście będzie rózne dla tych samych wejść przy różnych stanach)
-kombinatoryjne
 
 Przykłady:
 
@@ -162,7 +161,7 @@ Podstawowe pojęcia:
 - Interfejsy: kontrakt zobowiązujący klasę do implementacji metod z interfejsu i sprawiający, że inne części kodu mogą prawidłowo oczekiwać, że klasa potrafi wszystko w kontrakcie
 - Klasa abstrakcyjna: klasa oznaczona keywordem ```abstract```. Pewnie posiada metody abstrakcyjne z samą sygnaturą metody (nazwa, argumenty, return value). Nie można bezpośrednio instancjonować, dopiero nieabstrakcyjne klasy dziedziczące mogą.
 - Przesłanianie metody: nadpisanie działania metody w klasie dziedziczącej. Często wykorzystuje się np. ```base().TaMetoda();```, ale nie trzeba
-- Przeciążanie metody: zdefiniowanie metody parę razy w klasie, ale każda z różnymi argumentami. Przydatne, gdy klasa akceptuje różne metody wywołania. Częstą praktyką jest to, że wszystkie te metody zwracają wynik z jednej, głównej, wybranej, która przyjmuje argumenty w dogodnej postaci. Np. w Unity instancja obiektu w scenie może mieć pozycję, rotację, rodzica... różnego rodzaju typ layera... każda metoda przekazuje argumenty jakiejś jednej.\
+- Przeciążanie metody: zdefiniowanie metody parę razy w klasie, ale każda z różnymi argumentami. Przydatne, gdy klasa akceptuje różne metody wywołania. Częstą praktyką jest to, że wszystkie te metody zwracają wynik z jednej, głównej, wybranej, która przyjmuje argumenty w dogodnej postaci. Np. w Unity instancja obiektu w scenie może mieć pozycję, rotację, rodzica... różnego rodzaju typ layera... każda metoda przekazuje argumenty jakiejś jednej.
 - Polimorfizm: jak kot dziedziczy po zwierzęciu to można traktować go tak i tak, czyli wsadzić do listy zwierząt i traktować jak zwierzę, bez zwracania uwagi na konkretny typ.
 - Modyfikator dostępu: metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
 - Hermetyzacja: modyfikatory dostępu, interfejsy przydają się do implementacji hermetyzacji. Chodzi o to, aby dla innych klas najważniejszy był głównie wynik którego potrzebują od klasy, a nie wewnętrzna implementacja. Czyli klasa powinna udostępniać minimum metod i publicznych pól, aby inne klasy musiały w kontrolowany sposób ją mutować / uzyskiwać z niej wynik.
@@ -450,6 +449,8 @@ Są 3 główne architektury jądra:
 - mikrokernel - podzielenie zadań na wiele różnych serwerów. Zwiększa skomplikowanie, ale zmniejsza to, jak ściśle powiązane są elementy systemu. Rzadki w użyciu do desktopów, częstszy w systemach embedded
 - jądro hybrydowe - łączy jądro monolityczne z mikrokernel. Jądro monolityczne dla najważniejszych zadań, które muszą być szybkie, ale delegacja części innych do własnych serwisów. Najważniejszy przykład to Windows, macOS
 
+Są 2 tryby procesora: użytkownika (ograniczony) i jądra (root)
+
 ## 13. Model warstwowy OSI
 
 OSI to teoretyczny model referencyjny do komunikacji internetowej między komputerami. Jest to baza dla innych standardów, np. modelu TCP/IP. Powstał w latach siedemdziesiątych, aby rozwiązać problem ustandaryzowania komunikacji między sprzętami różnych firm.
@@ -486,3 +487,21 @@ TCP/IP to model oparty na OSI, upraszczający go do 4 warstw. Stos protokołów 
   - TCP: protokół zapewniający otrzymanie danych i ewentualną retransmiję w przypadku błędów. Gwarantuje też kolejność. Jednostka: segment
   - UDP: protokół nie gwarantujący otrzymania wszystkich danych, za to znacznie szybszy. Przydatny, gdy program będzie działać w przypadku utraty części danych (np. streamowanie filmu). Jednostka datagram
 - Warstwa aplikacji: wykorzystuje protokoły HTTP, SMTP - email, DNS - nazwy domen. Jedyna warstwa, z jaką użytkownik ma bezpośredni kontakt.
+
+## 15. Protokoły warstwy aplikacji
+
+Warstwa aplikacji to najwyższa warstwa w modelu OSI czy TCP/IP. Jest to jedyna warstwa, z jaką użytkownik ma prawie bezpośrednio do czynienia.
+
+Stosuje się tu wiele protokołów, do przeglądania internetu, maili, zdalnego terminala, zdalnego systemu plików. Oto część najważniejszych:
+
+- HTTP (port 80) - służy do przesyłania hipertekstu (WWW, API). Protokół bezstanowy
+- HTTPS (port 443) - szyfrowana przez TLS wersja HTTP. Ukrywa url, body, headery requestów, nie szyfrując tylko domeny na początku
+- DNS (port 53) - tłumaczy znane ludziom adresy stron np. onet.pl na adres ip tej strony (głównie UDP)
+- POP3 - do odbioru maili
+- IMAP - POP3 + zarządzanie zdalnymi folderami na serwerze
+- SMTP - do przesyłania maili wraz z załącznikami
+- FTP - interaktywne przesyłanie plików między serwerami
+- NfS - udostępnianie systemów plików (dysków sieciowych)
+- TELNET - emulacja zdalnego terminala na innym komputerze, niebezpieczny przez przesyłanie jawnego tekstu
+- SSH (port 22) - szyfrowana emulacja zdalnego terminala na innym komputerze
+- DHCP (dynamic host configuration protocol) - dynamiczna konfiguracja adresów IP, bramy, adresów serwerów DNS urządzeń
