@@ -588,3 +588,43 @@ Aby wybrać odpowiedni paradygmat, należy wziąć pod uwagę następujące czyn
 - wymogi współbieżności (funkcyjny)
 - wymogi szybkości działania (imperatywny bliżej jest działania komputera)
 - wymóg udowodnienia działania (funkcyjny, logiczny)
+
+## 19. Programowanie funkcyjne a programowanie imperatywne
+
+Paradygmaty w programowaniu dzielą się na 2 główne paradygmaty i ich podparadygmaty.
+Jednym z tych 2 paradygmatów jest paradygmat deklaratywny, a drugim imperatywny.
+Programowanie funkcyjne wywodzi się z paradygmatu deklaratywnego, więc jest na innym "poziomie" niż imperatywne.
+Paradygmat imperatywny dzieli się na podparadygmaty, jak strukturalny (bloki kodu, bez goto), aż po proceduralne (podział na procedury) i obiektowe.
+
+Paradygmat deklaratywny skupia się na rezultacie - programista podaje to, czego oczekuje jako wynik i to komputer tworzy listę kroków, które wykona. Programowanie imperatywne skupia się na krokach, jest to więc lista instrukcji, jakie programista podaje komputerowi.
+
+Paradygmat funkcyjny to jeden z podparadygmatów deklaratywnego (inne to np. logiczny). Program to wywołanie 1 funkcji, która:
+
+- nie ma skutków ubocznych (brak stanu, które funkcje modyfikują, output jest deterministyczny z inputu - przezroczystość referencyjna)
+- każdą funkcję można zastąpić jej rezultatem
+- nie zmienia się wartości zmiennych (immutability), ale można tworzyć nowe
+- funkcje to obywatele pierwszej klasy, co oznacza, że funkcje mogą otrzymywać inne funkcje jako argumenty, dynamicznie je tworzyć, zwracać jako wynik
+
+Często wykorzystywany jest mechanizm rekurencji (funkcja wywołuje samą siebie, ale z innymi argumentami). Języki, które są funkcyjne, to np. Ocaml albo Scala. Paradygmat jest mniej popularny niż imperatywne alternatywy, gdyż wymaga innego sposobu myślenia, a także nie każdy program da się w nim zaprojektować. Może być mniej wydajny (duży stos przez rekurencję - tail call optimization pomaga, ciągłe tworzenie nowych zmiennych zajmuje czas), gdyż paradygmat imperatywny jest bliżej tego, jak działają komputery. Dużym plusem jest możliwość udowodnienia działania, jest to dobra metoda do rozwiązań mocno matematycznych.
+
+Paradygmat imperatywny dzieli się na różne podparadygmaty. Wykorzystują zmienne, pętle, modyfikowalny stan. Opiszę proceduralny oraz obiektowy.
+
+- Proceduralny: podział programu na procedury (funkcje), otrzymujące argumenty, zwracające wynik i modyfikujące globalny/lokalny stan. Znacznie zwiększa czytelność i ułatwia współpracę z innymi programistami, umożliwia pisanie większych baz kodu. Jednak trudno utrzymać duże bazy kodu, w których lepszym paradygmatem będzie obiektowy.
+- Obiektowy: również wykorzystuje funkcje, ale zawiera je wewnątrz obiektów (metody). Obiekty powstają z klasy, która jest instrukcją, jak wytworzyć daną strukturę danych. Obiekty mają atrybuty (mutowalny stan wewnętrzny) i metody (funkcje, operujące na konkretnej instancji klasy). Paradygmat obiektowy jest intuicyjny, bo w rzeczywistości również mamy obiekty, które mają własności, a także mogą wykonywać czynności / mogą być na nich wykonywane czynności. Dobry do pracy w dużych projektach. Da się w nim zrobić praktycznie każdą aplikację (webową, desktopową, mobilną, grę, złożony systemy...)
+
+Należy wybrać paradygmat funkcyjny, gdy:
+
+- gdy zespół posiada takie doświadczenie
+- rozwiązujemy problem stricte matematyczny
+- potrzebujemy łatwo wspieranej współbieżności (nie ma stanu, więc nie ma możliwości desynchronizacji wątków)
+- potrzebujemy dowodu działania
+
+Należy wybrać paradygmat imperatywny, gdy:
+
+- gdy zespół posiada takie doświadczenie
+- tworzymy program z bardzo zmiennym stanem
+- projekt ma być duży
+- projekt bazuje na modelowaniu rzeczywistych encji i ich interakcji
+- potrzebujemy bogatego ekosystemu bibliotek z języków jak C++, C\#, Python
+
+Na końcu wspomnę, że granica między paradygmatami się zaciera. Większość imperatywnych języków wspiera funkcyjne elementy (lambdy, przekazywanie funkcji jako argumentów, zwracanie ich...), a w językach funkcyjnych można dodać mutowalny stan, choć wtedy nie są czysto funkcyjne.
