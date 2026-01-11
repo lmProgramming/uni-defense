@@ -471,7 +471,7 @@ Swoją drogą, chrome i edge korzystają z tego samego portu 443? Tak, bo tworz�
 
 ## 14. Protokoły warstwy łącza danych. Sieć Ethernet. Stos protokołów internetowych TCP/IP
 
-note dla mnie: Datagram (UDP) to jakby segment (TCP)
+note dla mnie: Datagram (UDP) to jakby segment (TCP). Dlaczego nie używać adresu MAC zamiast IP? Bo IP jest hierarchiczne i z drugiego końca świata wiadomo, do kogo uderzać po kolei, a MAC to jak nazwa człowieka/adres domu bez miasta i ulicy
 
 Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request indentyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
 
@@ -674,3 +674,39 @@ Numeryczne metody optymalizacji nie produkują zazwyczaj dokładnego wyniku, ale
 - Algorytmy genetyczne i ewolucyjne: ileś osobników, każdy z własnym "genotypem" czyli zbiorem liczb które wstawiamy do funkcji, iteracyjnie usuwa się słabsze osobniki zastępując je krzyżówką mocniejszych / genetyczną mutacją pojedynczych. Celowo wprowadza się elementy losowe, aby wyjść z minimów lokalnych.
 
 Funkcje kary dodają do funkcji kosztu wartość powiązaną z tym, jak daleko punkt wychodzi poza ograniczony zakres. Funkcja bariery dodaje składnik do funkcji rosnący do nieskończoności wraz z zbliżaniem się do barier (ograniczeń).
+
+## 22. Specyfika Internetu Rzeczy, obszary zastosowań, rozwiązywanie problemów z adresowaniem dużej liczby urządzeń, ich rozproszeniem i bardzo dużą ilością generowanych danych
+
+Internet rzeczy dotyczy integracji urządzeń elektronicznych (rzeczy) z kategorii embedded, które są połączone w sieć i przesyłają między sobą pomiary oraz reagują na sygnały.
+
+Obszary zastosowań są bardzo szerokie, są to np.:
+
+- Przemysł - kontrola lini produkcyjnej, monitorowanie i zarządzanie procesami produkcyjnymi, wczesne wykrywanie awarii, usprawnianie procesów
+- Transport - zarządzanie flotą pojazdów, optymalizacja tras, monitorowanie warunków pogodowych, czujniki w dużych pojazdach jak samoloty/statki
+- Zdrowie - monitorowanie stanu pacjenta, zarządzanie systemami opieki zdrowotnej
+- Smart home - różne czujniki, sterowanie światłami, wentylacją, temperaturą i warunkami roślin itd.
+- Elementy miejskie - sygnalizacja świetlna, tablice z rozkładem jazdy, systemy kolejek
+
+Urządzenia mają mikrokontrolery i każde ma warstwę fizyczną, są podłączone do internetu przez Wi-Fi, kable Ethernet, LPWAN, sieci komórkowe
+
+Z racji dużej liczby urządzeń, występują problemy z wyczerpaniem dostępnych adresów IPv4, gdyby przypisać je statycznie. Jest na to parę rozwiązań:
+
+- Główny serwer ma pulę dostępnych adresów IP. Udostępnia on adres urządzeniu dynamicznie tylko wtedy, kiedy musi się skontaktować przez internet, a po zakończeniu komunikacji adres wraca do puli
+- Używanie IPv6 dla znacznie większej puli adresów
+- Adresowanie przy użyciu unikalnego adresu fizycznego MAC
+- Adresowanie przy użyciu przypisanych nazw za pomocą DNS mapującego nazwę na IP
+
+Dodatkowo, samo adresowanie (przypisanie początkowego adresu IP) w dużych systemach IoT jest wyzwaniem. Do tego przydaje się DHCP (dynamic host configuration protocol)
+
+Z racji, że urządzenia są rozproszone na bardzo różne obszary - w innych państwach i regionach, w obszarach ze słabą/zawodną siecią Wi-Fi, wykorzystuje się szereg rozwiązań
+
+- Wykorzystanie platformy chmurowej dużych firm, jak AWS od Amazon czy Microsoft Azure
+- Wykorzystywanie kabli do niezawodnego połączenia, WiFi, Bluetooth, GSM, LTE, w zależności które ma najwięcej sensu i połączenie paru sposobów
+
+Trzeba pamiętać o odpowiednim zaprojektowaniu sieci, aby wspierała dużą przepustowość. Jeśli chodzi o bezpieczeństwo, nie zapominać o autoryzacji i autentykacji urządzeń, szyfrowaniu np. TLS,
+
+Z racji, że urządzenia mogą generować ogromne ilości danych (np. czujniki w samolocie terabajty w skali lotu), wykorzystuje się szereg rozwiązań:
+
+- Wykorzystanie platformy chmurowej jak Microsoft Azure czy AWS, które oferują ogrom miejsca na zapisanie danych
+- Wykorzystanie edge computing (przetwarzanie na urządzeniach na granicach sieci), aby filtrować/agregować dane przed przesyłką dalej
+- Lokalizacja usług analitycznych fizycznie blisko urządzeń
