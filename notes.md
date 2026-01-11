@@ -354,7 +354,7 @@ Niektóre starają się stworzyć minimalne drzewo rozpinające, czyli dla grafu
 
 Djikstra to algorytm zachłanny (BFS), mający szybko znaleźć połączenie dwóch krawędzi o najmniejszej wadze. Działa tylko dla wag nieujemnych
 
-Travelling Salesman problem można wspomnieć, mrówczano-feromonowe rozwiązanie
+Travelling Salesman problem można wspomnieć (cykl hamiltona!), mrówczano-feromonowe rozwiązanie
 
 ## 10. Pojęcie algorytmu. Algorytmy sortowania. Algorytmy wyszukiwania
 
@@ -641,4 +641,36 @@ Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będącę
 
 Hash Map / Dictionary: zawiera unikalne klucze, do których przypisana jest wartość. Gwarantuje szybki dostęp do wartości dla kluczy. W C\# ADT to IDictionary, implementowane przez Dictionary, SortedList (klucze posortowane), ConcurrentDictionary (wielowątkowe).
 
-Warto zauważyć, że ADT to teoria, ale język może powstrzymywać dewelopera przed niepoprawnym użyciem struktury danych. Np. LinkedList nie implementuje interfejsu IList, ponieważ indeksowanie jest wolne w pętli (a indekser mógłby być cyrkularny).
+Warto zauważyć, że ADT to teoria, ale język może powstrzymywać dewelopera przed niepoprawnym użyciem struktury danych. Np. LinkedList nie implementuje interfejsu IList, ponieważ indeksowanie jest wolne w pętli (a iterator mógłby być cyrkularny).
+
+## 21. Algorytmy identyfikacji obiektów statycznych. Analityczne i numeryczne metody optymalizacji
+
+Obiekty statyczne to obiekty o stałej strukturze właściwości, które można zmierzyć. Wyjście zależy wyłącznie od aktualnego wejścia, a nie od czasu czy historii.
+
+Algorytm identyfikacji obiektu statycznego służy do tego, aby na podstawie analizy danych dla pewnych statycznych obiektów wytworzyć model przewidujące pewne właściwości w zależności od parametrów wejściowych - czyli obiekt identyfikacji. Np. mamy obiekty statyczne: zdjęcia kotów zapisane w odpowiednim formacie, wykorzystując ten sam standard RGB, i chcemy przewidzieć rasę kota ze zdjęcia.
+
+Algorytm ten składa się z kroków.
+
+- Pierwszy to określenie obiektu identyfikacji: zrozumienie problemu, własności fizycznych. Wynikiem tego punktu jest określenie kształtu wektora danych wejściowych i wyjściowych, oraz określenie charakteru zakłóceń mogących wpływać na kształt danych. Zrozumienie celu badań
+- Określenie klasy modeli: dobranie odpowiedniego modelu (regresja liniowa, model fizyczny, sieć neuronowa) do problemu, na podstawie jego charakterystyk. Warto przeprowadzić analizę zjawisk fizykochemicznych lub analizę wymiarową (analiza sugerująca sposób przekształcenia/korelacje między danymi). Do problemu rozpoznania ras kotów prawdopodobnie najlepiej nadawałaby się sieć neuronowa
+- Ogranizacja eksperymentu - 2 sposoby: bierna i czynna. W czynnej przeprowadzamy dodatkowo planowanie eksperymentu, związane z identyfikacją danych, które mogłyby zakłócić algorytm przez niereprezentatywne własności, np. obrazki o zbyt niskiej jakości, dane, które po analizie numerycznej można określić jako błedne dane - anomalie. Określenie parametrów eksperymentów takich jak długość serii pomiarowej i ustalenie technik eksperymentu - anotatorów, wybór narzędzia pomiarowego
+- Opracowanie algorytmu identyfikacji - wybieramy sposób szukania modelu, np. optymalizacja wag sieci neuronowej gradientowo albo uzycie algorytmu genetycznego. Także dobranie funkcji i metody kosztu (F1 score, entropia)
+- Realizacja algorytmu identyfikacji - napisanie kodu, który implementuje algorytm
+
+Metody optymalizacji dotyczą znalezienia minimum/maksimum funkcji, dla podanych ograniczeń, jednej lub wielu zmiennych. Podam przykłady działania dla szukania minimum, bo do tego są często wykorzystywane (szukanie jak najmniejszej wartości dla funkcji kary/kosztu). Każdą funkcję można też przekształcić, aby szukać w niej maksimum zamiast minimum tym samym sposobem, co dla szukania minimum.
+
+Analityczne metody produkują dokładny wynik, ale wymagają zaawansowanych umiejętności matematycznych dla skomplikowanych funkcji (np. z wieloma parametrami), lub stają się wtedy zupełnie niemożliwe. Polegają na operacji przekształceń funkcji.
+
+Metody analityczne:
+
+- Klasyczna metoda to wyznaczanie ekstremum - znalezienie minimum/maksimum funkcji dla wejść, gdzie pochodna funkcji wynosi 0.
+- Metoda mnożników Lagrange - mając ograniczenie równościowe, możemy znaleźć punkty, gdzie gradient funkcji = lambda * gradient ograniczenia. Następnie należy rozwiązać to równania i sprawdzić punkty kandydujące znajdujące się w ograniczeniu
+- Metoda Kuhn-Tucker uogalnia metodę Lagrange do ograniczeń nierównościowych.
+
+Numeryczne metody optymalizacji nie produkują zazwyczaj dokładnego wyniku, ale nadają się do prawie każdej funkcji. Działają na operacjach na liczbach zamiast przekształceń funkcji. Zazwyczaj są wykonywane przez komputer, z racji wymagania wielokrotnego obliczania funkcji w wielu pętlach. Metody można podzielić na te bez ograniczeń i z ograniczeniami.
+
+- Metoda podziału odcinka: dla funkcji jednoargumentowych, odrzucamy iteracyjnie przedziały, gdzie funkcja wydaje się rośnąć
+- Gradientowe: obliczamy pochodną, i podążamy w jej kierunku (dla maksimum, dla szukania minimum w kierunku antygradientu). Szeroko wykorzystywane w optymalizacji przez sieci neuronowe funkcji kosztu.
+- Algorytmy genetyczne i ewolucyjne: ileś osobników, każdy z własnym "genotypem" czyli zbiorem liczb które wstawiamy do funkcji, iteracyjnie usuwa się słabsze osobniki zastępując je krzyżówką mocniejszych / genetyczną mutacją pojedynczych. Celowo wprowadza się elementy losowe, aby wyjść z minimów lokalnych.
+
+Funkcje kary dodają do funkcji kosztu wartość powiązaną z tym, jak daleko punkt wychodzi poza ograniczony zakres. Funkcja bariery dodaje składnik do funkcji rosnący do nieskończoności wraz z zbliżaniem się do barier (ograniczeń).
