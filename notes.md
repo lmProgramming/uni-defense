@@ -828,3 +828,30 @@ SQL ma parę podjęzyków, każdy odpowiedzialny za część funkcjonalności.
 - DDL (definition) - CREATE, DROP, ALTER - zarządzanie strukturami jak tabele, indeksy
 - DCL (control) - GRANT, REVOKE - zarządzanie użytkownikami i ich dostępami
 - TCL (transaction control) - COMMIT, ROLLBACK - zarządzanie transakcjami
+
+## 26. Modele cyklu życia oprogramowania
+
+Modele cyklu życia oprogramowania dotyczą filozofii wobec podziału zadań dotyczących tworzenia oprogramowania na części składowe. Typowo dotyczą one podziału na etapy jak planowanie, implementacja, testy, a także poziom współpracy z biznesem czy podział na dostarczane produkty.
+
+Modele
+
+- Waterfall (kaskadowy/wodospad) - tradycyjny model wytwarzania oprogramowania. Dzieli się na ściśle określone etapy jak zbieranie wymagań, analiza wymagań, projektowanie, implementacja, testy i wdrożenie. Model jest ciekawy, ale trudny do wykonania w praktyce przez wiele powodów. Głównym powodem jest to, jak zmienne są wymagania - zbieranie ich to długi proces, wymagania zawsze zmieniają się z czasem, niezrozumienie potrzeb biznesowych kończy się niepraktycznym produktem. Innym powodem jest to, że traci się czas przez tak sztywny podział na etapy, które potem i tak są choć częściowo mieszane ze sobą. Dziś dumnie odchodzi się od waterfalla, ale czysty waterfall jest po prostu niemożliwy do spełnienia w rzeczywistości. Dodatkową praktyczną wadą jest możliwość poczucia klienta, że jest odsunięty od projektu, a po miesiącach może oczekiwać czegoś innego.
+- Iteracyjny - najpierw ogólna analiza wymagań, a potem osobne waterfalle dla dostarczania produktu w iteracjach
+- Spiralny - próba formalizacji podejścia iteracyjnego. Dodaje analizę ryzyka w każdej iteracji (monitorując uwagi użytkownika). Cykliczne powtarzanie planowania, analizy ryzyka, konstrukcja (mały waterfall), ocena przez klienta
+- V - waterfall, ale z rozbudowaną fazą testów z podziałem na testy modułów, integracyjne, walidacyjne i akceptacji, co zapewnia znacznie wyższą jakość produktu.
+- Prototypowy - dostarczamy prototyp za prototypem (szybko stworzone przybliżenie produktu o niskiej jakości), aby na końcu użyć innego modelu do stworzenia porządnej aplikacji. Wymagania będą wtedy bardzo dojrzałe i gotowe do implementacji
+
+W 2001 powstał manifest Agile (zwinny), w którym twórcy zaznaczyli 4 punkty, wynikające z ich doświadczenia i zrozumienia, że wymagania będą się ciągle zmieniać, a spełnienie ich w ostatecznej formie da klientowi większą konkurencyjność.
+
+Oto punkty:
+
+- LUDZIE ponad procesy i narzędzia
+- DZIAŁAJĄCY SOFTWARE ponad dokumentacją
+- WSPÓŁPRACA Z KLIENTEM ponad renegocjacją kontraktu
+- AKCEPTACJA ZMIANY zamiast wykonywania planu
+
+Idea jest taka, że elementy po prawej są ważne, ale po lewej ważniejsze.
+
+Scrum był z jedną z metod, która istniała przed manifestem Agile, ale po nim została uznana jako dobra, generalna implementacja Agile. Zakłada przyrostowe dostarczanie produktu klientowi, przydzielając do najbliższego sprintu (1-4 tygodnie) zadania do zrobienia. Występuje Scrum Master starający się usuwać blokady i wspierać zespół. Produkt Backlog to uporządkowana lista wymagań (user stories). Do każdego sprintu występuje planowanie sprintu (stworzenie Sprint Backlog) i recenzja oraz retrospekcja sprintu. Codziennie jest Daily Scrum (standup/daily), gdzie zespół się synchronizuje.
+
+Scrum, jak i agile, charakteryzuje się częstym feedbackiem od biznesu, szybką reakcją na zmiany wymagań, nacisk na działające oprogramowanie i samoorganizację zespołu.
