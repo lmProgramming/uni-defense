@@ -710,3 +710,41 @@ Z racji, że urządzenia mogą generować ogromne ilości danych (np. czujniki w
 - Wykorzystanie platformy chmurowej jak Microsoft Azure czy AWS, które oferują ogrom miejsca na zapisanie danych
 - Wykorzystanie edge computing (przetwarzanie na urządzeniach na granicach sieci), aby filtrować/agregować dane przed przesyłką dalej
 - Lokalizacja usług analitycznych fizycznie blisko urządzeń
+
+## 23. Rozwiązania sprzętowe wspierające komunikację i protokoły komunikacyjne wykorzystywane w sprzęcie wbudowanym i Internecie Rzeczy
+
+Rozwiązania sprzętowe rozróżnia się w zależności od wielkości sieci, w której urządzenia muszą się komunikować. Wyróżnia się 4 grupy:
+
+- PAN (Personal Area Network) i HAN (Home Area Network). Maksymalne odległości od urządzeń w tej grupie to od paru centymetrów (RFID, NFC) do kilkunastu metrów (Bluetooth Low Power, WiFi). Dotyczy urządzeń znajdujących się na ciele i wewnątrz ciała, sensorów i urządzeń w smart home / laboratorium domowym. Dzięki bardzo niskiemu zasięgowi, komunikacja wymaga bardzo mało energii, dlatego urządzenia mogą wyjątkowo długo działać na baterii.
+- LAN (Local Area Network) - dotyczy skali biurowca / zakładu pracy. Główne rozwiązania to WiFi, Ethernet, ewentualnie Bluetooth 5. Wymaga więcej energii niż PAN, dlatego urządzenia są zwykle podłączone do sieci energetycznej.
+- WAN (Wide Area Network) - skala obszarów geograficznych - miast, regionów. Zwyczajowo ograniczone do GSM (2G, 3G, 4G, 5G), ale od pewnego czasu udało się stworzyć rozwiązania pobierające znacznie mniej prądu, jak rodzina technologii LPWAN
+
+Protokoły komunikacyjne w warstwie aplikacji:
+
+- AMQP (Advanced Message Queue Protocol) - połączenia punkt-punkt. Exchange, Message Queue i Binding. Skuteczna, niezawodna wymiana wiadomości - TCP
+- CoAP (Constrained App Protocol) - ograniczona przepustowość, UDP do lekkich wiadomości klient - serwer HTTP
+- DDS (Distributed Data Service) - peer to peer, zarządza wszystkim setupem i łączeniem sieci
+- MQTT (Message Queue Telemetry Transmission) - subscribe and publish, protokół wykorzystujący zdarzenia. Bardzo prosty i oszczędny energetycznie. Najbardziej popularny w IoT, idealny do broadcastowania informacji. TCP, może być uspany
+
+Protokoły komunikacyjne w warstwie transportowej:
+
+- TCP - stara się zagwarantować dostarczenie, bezstratny, zajmuje więcej czasu przez handshake's, dzieli dane na uporządkowane segmenty
+- UDP - nie oczekuje informacji zwrotnej, czy wiadomość została dostarczona. Bardzo prosty i wydajny
+
+Warstwa sieciowa:
+
+- 6LoWPAN - bezprzewodowa sieć osobista o niskim poborze mocy IPv6. Kompresja i enkapsulacja nagłówków. Niski pobór mocy
+- IP - IPv4 lub IPv6
+
+Warstwa łącza danych:
+
+- LPWAN - low power wide area network - 500 metrów do 10 km, zoptymalizowane prądowo
+
+Warstwa fizyczna:
+
+- Bluetooth: szeroko stosowane, wariant niskiego poboru mocy to Bluetooth Low Energy
+- NFC - bardzo krótki zasięg, różnego rodzaju karty
+- RFID - może zasilać pasywne tagi energią z fali radiowj, komunikując się z nimi
+- Ethernet - kabelki
+
+Przykłady hardware to Raspberry PI (cały komputer z Python), Arduino - ESP32 (C)
