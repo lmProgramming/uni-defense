@@ -748,3 +748,52 @@ Warstwa fizyczna:
 - Ethernet - kabelki
 
 Przykłady hardware to Raspberry PI (cały komputer z Python), Arduino - ESP32 (C)
+
+## 24. Modele baz danych. Relacyjna baza danych. Normalizacja. Transakcje
+
+Modele baz danych:
+
+- Hierarchiczny: przypomina system plików / drzewo. Dane przechowywane są w dokumentach (rekordach), a każdy dokument ma dokładnie jednego rodzica (prócz korzenia). W przypadku, gdy dokument dostanie drugiego rodzica, dokument jest kopiowany pod tego rodzica, i każdy ma już jednego rodzica tylko. Usunięcie węzła usuwa również wszystkie jego dzieci
+- Sieciowy: hierarchiczny, ale umożliwia relację N-N. Informacja w dokumentach oraz przebiegu połączeń sieci
+- Obiektowy: bliski paradygmatowi obiektowemu z języków programowania, dane opierają się na obiektach
+- noSQL:
+  - Dokumentowa: dane zawarte są w dokumentach i przechowywane jako JSON / BSON (binarny JSON). Przypominają gotową formę, która jest wysyłana przez API. Dokumenty mają klucz i bazy danych wspierają język zapytań, pozwalający przesłać tylko potrzebne informacje. Grupowanie dokumentów w wiadra, kolekcje itd. Dokumenty mogą mieć i tak różne pola typowo
+  - Grafowa: składa się z węzłów i połączeń, a same połączenia również są ważną częścią bazy danych. Przydatne w przypadku skomplikowanych struktur danych
+  - Klucz-wartość: każdy klucz jest unikalny, i wartość jest szybko wyszukiwalna. Czyli tabela z kolumnami klucz i wartość. Hashmapa. Koszyk zakupów, informacje o sesji
+  - Rodzina kolumn: przechowuje dane po kolumnach zamiast po wierszach, przydatne, gdy np. analiza wykorzystuje tylko część kolumn, albo jak struktura jest rozproszona i szerokie wiersze
+- Relacyjny
+
+Relacyjna baza danych to fundament nowoczesnych baz danych, wykorzystując język SQL w jego różnych wariantach, aby większość produktów IT działała.
+Opiera się na relacjach i związkach między nimi. Relacja to jest tabela, czyli struktura zawierająca atrybuty (kolumny) oraz wiersze (krotki). Nazwa atrybutu w skali tabeli musi być unikalna i mieć ustalony typ danych. Kolejność atrybutów jest bez znaczenia. Każdy wiersz opisuje wszystkie atrybuty w relacji. Superklucz to zbiór atrybutów identyfikujących wiersz, klucz kandydujący to jeden z superkluczy, klucz główny to zazwyczaj 1-2 kolumny identyfikujące wiersz powstaje z klucza kandydującego. Związki między tabelami polegają na kolumnach odwołujących się do kluczy głównych innych tabel (klucze obce).
+
+Stosuje się 3 rózne typy związków:
+
+- Jeden do jeden (1-1) - max jedna tabela do max jednej tabeli (w przypadku braku połączenia wykorzystać NULL), np. users: user_id, name; user_profile: profile_id; unique user_id, profile
+- Jeden do wielu (1-N) - max jedna tabela do 0-wielu tabel. Czyli users: user_id, name; transactions: transaction_id, user_id, money...
+- Wiele do wielu (N-N) - wiele tabel może być połączone do wielu tabel. Realizowane przez użycie tabeli asocjacyjnej z dwoma kolumnami - klucze A i B. Typowy przykład to studenci i kursy, czyli students: student_id; courses: course_id, student_course: student_id, course_id
+
+Postać normalna służy do tego, aby przekształcić źle zorganizowaną bazę danych z redundancjami/anomaliami w prostą w utrzymaniu i usunięciu redundancji. Aby być w x NF, trzeba być w x-1 NF
+Postacie normalne:
+
+1. Pierwsza postać normalna wymaga użycia klucza głównego, dane atomowe, brak atrybutów wielowartościowych
+2. Druga postać normalna: wydzielenie kolumn do tabel, które zależne są w całości tylko od części klucza złożonego, na przykład źle orders: product_id, buyer_id, x buyer_name, x product_price
+3. Trzecia postać normalna: wydzielić każdą kolumnę zależną od innej kolumny niż klucz do osobnych tabel (przechodnia zależność), np. źle employees: employee_id, department_id, department_name
+
+Jest więcej postaci normalnych (4 NF, 5 NF), ale deweloperzy zazwyczaj ograniczają się do trzech. Trzeba też pamiętać, że niekiedy warto niestety zdenormalizować krytyczne dla wydajności tabele, ale takie wypadki trzeba dokładnie badać. Ale często przyspiesza to przez lepsze indeksy, mniej danych do przetworzenia
+
+Transakcje:
+
+Niektóre czynności na bazie danych relacyjnej powinny być wykonane w całości albo w ogóle. Na przykład kupując coś, ale po drodze okaże się, że jednak brakuje pieniędzy, odrzuca się całą transakcję, nie wykonując żadnej czynności.
+
+ACID (SQL):
+
+- atomic - każda operacja to osobny byt i wszystko albo nic
+- consistency (spójność) - każdy stan i przejście są poprawne
+- izolacja - równolegle uruchomione tranzakcje nie wpływają na siebie i są izolowane (jakby sekwencyjne)
+- durability (trwałość) - dane są permanentne i na dysk, nawet w przypadku awarii
+
+BASE (noSQL):
+
+- Basically Available - bez izolacji, priorytet na odpowiedzi, nawet nie w pełni poprawne
+- Soft State - nie jest ciągle spójne
+- Eventually consistent - ale w końcu będzie spójne
