@@ -852,6 +852,41 @@ Oto punkty:
 
 Idea jest taka, że elementy po prawej są ważne, ale po lewej ważniejsze.
 
-Scrum był z jedną z metod, która istniała przed manifestem Agile, ale po nim została uznana jako dobra, generalna implementacja Agile. Zakłada przyrostowe dostarczanie produktu klientowi, przydzielając do najbliższego sprintu (1-4 tygodnie) zadania do zrobienia. Występuje Scrum Master starający się usuwać blokady i wspierać zespół. Produkt Backlog to uporządkowana lista wymagań (user stories). Do każdego sprintu występuje planowanie sprintu (stworzenie Sprint Backlog) i recenzja oraz retrospekcja sprintu. Codziennie jest Daily Scrum (standup/daily), gdzie zespół się synchronizuje.
+Scrum był z jedną z metod, która istniała przed manifestem Agile, ale po nim została uznana jako dobra, generalna implementacja Agile. Zakłada przyrostowe dostarczanie produktu klientowi, przydzielając do najbliższego sprintu (1-4 tygodnie) zadania do zrobienia. Występuje Scrum Master starający się usuwać blokady i wspierać zespół. Produkt Backlog to uporządkowana lista wymagań (user stories). Do każdego sprintu występuje planowanie sprintu (stworzenie Sprint Backlog) i recenzja oraz retrospekcja sprintu. Codziennie jest Daily Scrum (standup/daily), gdzie zespół się synchronizuje. Niestety, scrum czasem degeneruje się do micromanagement'u deweloperów.
 
 Scrum, jak i agile, charakteryzuje się częstym feedbackiem od biznesu, szybką reakcją na zmiany wymagań, nacisk na działające oprogramowanie i samoorganizację zespołu.
+
+## 27. Metodyki wytwarzania oprogramowania
+
+Metodyki wytwarzania oprogramowania to całe filozofie inżynierii oprogramowania, czyli proces obejmujący wszystkie czynności systematycznie wykonywane w celu wytworzenia oprogramowania. Każda organizacja ma unikalne szczegóły wpływające na metodykę. Metodyki stosuje się, aby stworzyć jakościowy produkt, zmniejszyć ryzyko niepowodzenia, zwiększyć dogłębne zrozumienie projektu i umożliwić pracę zespołową. Każda metodyka ma następujące cechy:
+
+- Zakres: które fazy wytwarzania oprogramowania są objęte metodyką, a także jakie role i aktywności są definiowane
+- Rozmiar: liczba elementów kontrolowanych przez metodykę (dokumentacja, opisy technik, miary jakości)
+- Ceremoniał (stopień formalizacji) - jak ważne i precyzyjne są dokumenty wytwarzane podczas wytwarzania oprogramowania
+- Komunikacja z klientem: jak przebiega
+- Widzialność: łatwość oceny, czy projekt jest wykonywany zgodnie z metodyką
+- Waga: iloczyn rozmiaru i ceremoniału. Podział na lekkie/zwinne i ciężkie.
+- Paradygmat: strukturalny czy obiektowy, ale to bardziej historycznie.
+
+Metodyki ciężkie charakteryzują się dużą liczbą ról, artefaktów, dokumentacji. Proces wytwórczy bardzo ważny. Wymaga wysokiej dyscypliny. I najważniejsze: mniejsza podatność na zmiany wymagań.
+
+Przykłady metodyk ciężkich:
+
+- RUP (rational unified process) - iteracyjna i przyrostowa metodyka w IBM. Skupia się na wysokiej jakości wykonania, architektura oparta o komponenty, iteracyjne opracowywanie produktu, kojarzy mi się z UML. Dzieli się na 4 fazy (po każdej przekazanie klientowi):
+  1. rozpoczęcie - sformułowanie zadania biznesowego i opracowanie wstepnego modelu przypadków użycia
+  2. opracowanie - opracowanie architektury systemu, użytkowników, ról, plan całego projektu
+  3. konstrukcja - budowa komponentów
+  4. przekazanie - szkolenie użytkowników, testy akceptacyjne
+
+Metodyki lekkie/zwinne powstały w sprzeciwie do ciężkich. W manifeście Agile z 2001 roku wymieniono 4 punkty:
+
+- LUDZIE I INTERAKCJE ponad procesy i narzędzia
+- DZIAŁAJĄCY SOFTWARE ponad skrupulatną dokumentację
+- WSPÓŁPRACA Z KLIENTEM zamiast renegocjacji kontraktu
+- AKCEPTACJA ZMIAN zamiast wykonywania planu
+
+Przykłady metodyk lekkich
+
+- AUG (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
+- Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd, pair programming. Dla zespołu: continuous integration, collective code.
+- Scrum - nie jset pełną metodyką wytwarzania, narzuca jedynie sposób organizacji pracy. Podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
