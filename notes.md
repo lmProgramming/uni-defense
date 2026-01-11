@@ -789,7 +789,7 @@ ACID (SQL):
 
 - atomic - każda operacja to osobny byt i wszystko albo nic
 - consistency (spójność) - każdy stan i przejście są poprawne
-- izolacja - równolegle uruchomione tranzakcje nie wpływają na siebie i są izolowane (jakby sekwencyjne)
+- izolacja - równolegle uruchomione transakcje nie wpływają na siebie i są izolowane (jakby sekwencyjne)
 - durability (trwałość) - dane są permanentne i na dysk, nawet w przypadku awarii
 
 BASE (noSQL):
@@ -797,3 +797,34 @@ BASE (noSQL):
 - Basically Available - bez izolacji, priorytet na odpowiedzi, nawet nie w pełni poprawne
 - Soft State - nie jest ciągle spójne
 - Eventually consistent - ale w końcu będzie spójne
+
+## 25. Język SQL. Charakterystyka. Podjęzyki
+
+Język SQL (Structured Query Language) jest używany w praktycznie każdej relacyjnej bazie danych. SQL jest językiem deklaratywnym wysokiego poziomu – użytkownik opisuje co chce uzyskać, a silnik bazy decyduje jak to wykonać, korzystając z optymalizatora i indeksów. Charakteryzuje się prostą, czytelną składnią.
+
+Typowa kwerenda SQL to
+
+```sql
+SELECT user_name AS "First name", department_name
+FROM user
+LEFT JOIN department ON department.department_id = user.department_id
+WHERE age > 60 
+```
+
+Podstawowe elementy języka to polecenia, klauzule, wyrażenia, predykaty, średniki kończące polecenie, komentarze (uważać na SQL Injection przy nieparametryzowanych zapytaniach)
+
+Język wspiera użycie indeksów, optymalizator zapytań + execution plan automatycznie optymalizuje kwerendy. Język ma wiele wariantów, różniących się lekko składnią, wspieranymi typami i konkretnymi bazami danych, w których działają. Jest wykorzystywany wyłącznie do komunikacji z relacyjną bazą danych.
+
+Dodatkowe cechy: ograniczenie do tylko określonych typów danych (bez np. list - 1 NF) typu INT, VARCHAR, CHAR, NUMERIC, FLOAT, DATE + wiele więcej
+
+Łączenie tabel polega na użycia słowa kluczowego ```JOIN```, z możliwościami użycia ```LEFT JOIN``` (wszystko z lewej nawet jeśli null), ```RIGHT JOIN``` (analogicznie w prawo), ```INNER JOIN``` (spełnia warunek po obu stronach). Wielkość liter słów kluczowych czy wcięcia nie mają znaczenia. Można aliasować nazwy używając ```AS 'xyz'```. Najczęściej używany jest FROM aby wybrać tabelę, SELECT aby wybrać zwrócone atrybuty, WHERE aby filtrować, GROUP BY aby grupować, HAVING aby filtrować grupy, wcześniej omówione JOIN.
+
+Prócz samego wybierania danych, SQL wspiera dodawanie wierszy, usuwanie, aktualizowanie, dodawanie tabel, tworzenie baz danych, użytkowników, zarządzanie bezpieczeństwem, transakcjami i wiele więcej
+
+SQL ma parę podjęzyków, każdy odpowiedzialny za część funkcjonalności.
+
+- DQL (query) - SELECT + klauzule jak WHERE, GROUP, HAVING - używane do kwerendowania danych
+- DML (manipulation) - INSERT, UPDATE, DELETE - używane do tworzenia, aktualizowania i usuwania wierszy
+- DDL (definition) - CREATE, DROP, ALTER - zarządzanie strukturami jak tabele, indeksy
+- DCL (control) - GRANT, REVOKE - zarządzanie użytkownikami i ich dostępami
+- TCL (transaction control) - COMMIT, ROLLBACK - zarządzanie transakcjami
