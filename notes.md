@@ -890,3 +890,62 @@ Przykłady metodyk lekkich
 - AUG (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
 - Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd, pair programming. Dla zespołu: continuous integration, collective code.
 - Scrum - nie jset pełną metodyką wytwarzania, narzuca jedynie sposób organizacji pracy. Podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
+
+## 28. Zastosowanie list, zbiorów i słowników w języku Python
+
+Listy, zbiory i słowniki to podstawowe struktury danych w Pythonie.
+
+Lista: tablica ze zmienną długością, przechowująca obiekty. Każdy typ w Pythonie jest obiektem, a listy nie mają przypisanego typu, więc można mieszać niepowiązane ze sobą typy w liście (choć trzeba pamiętać, że technicznie są powiązane, bo każde dziedziczy po podstawowym typie Object). Listę w Pythonie deklaruje się bardzo prosto: jako dwa nawiasy kwadratowe, oraz opcjonalnie elementy po przecinku. Np.
+
+```py
+moja_lista = [1, "pies", 3]
+```
+
+Różne struktury danych można również castować do listy i zapisać je w takiej formie. Aby wytworzyć listę populowaną liczbami od 1 do 100 z krokiem 5, można napisać
+
+```py
+moja_lista_2 = list(range(1, 100, 5))
+```
+
+Listy stosuje się do przechowania obiektów w odpowiedniej kolejności, bez zwracania uwagi na cechy obiektów (takie jak ich typ czy to, że są duplikaty).
+
+Można stosować podstawowy operatory na dwóch listach, np. wygodnym sposobem dodania list jest
+
+```py
+list_1 = [3, 4]
+list_2 = [1, 2]
+list_2 += list_1
+```
+
+Lista implementuje również operatory mutacji jej, jak append do dodania elementu na końcu, pop usuwające element o danym indeksie (lub na końcu), remove usuwające dany element i więcej. Na listach można również wywołać funkcję sorted() i dostać wynik posortowany wg. naszej lambdy. Listę można również skonstruować używając składni typu
+
+```py
+[i * i / 2 for i in range(0, 10)]
+```
+
+Dostęp po indeksie to O(1).
+
+Zbiory (set): kolejna struktura danych kolekcyjna. Tworzy się metodą set, przyjmującą kolekcję. Jest nieposortowana i nie przyjmuje duplikatów, to znaczy dodanie elementu do set doda go tylko, jeśli się tam nie znajduje. Trzeba nadpisać magiczne metody __eq__ i __hash__, jeśli chcemy traktować 2 instancje klasy o tych atrybutach jako równe, bo dla instancji klas porównanie będzie nie na podstawie ich wartości, a tego, czy referencują ten sam obiekt. Szybkie sprawdzanie, czy obiekt jest w set: O(1). Listę czasem przemienia się w set chociaż na chwilę, by pozbyć się duplikatów. Można nawet pisać
+
+```py
+list_1 = list(set(list_1))
+```
+
+Słownik: zbiór danych typu unikatowy klucz -> wartość. Metoda dict lub uzycie ```{ "Polska": "polacy", "Niemcy": "niemcy" }```. Bardzo szybki dostęp do uzyskania wartości dla klucza dzięki implementacji hash mapy - optymistycznie O(1), pesymistycznie O(n). Aby hashmapa działała, klucze muszą być niemutowalne - hashowalne. Często używany w zadaniach algorytmicznych do zwiększenia optymalizacji. Z ```collections``` można zaimportować ```defaultdict```, aby przypisać domyślną wartość, dla kluczy których nie ma
+
+```py
+d = defaultdict(list)
+print(d["moj-klucz"])
+> []
+```
+
+Bez obaw, że klucza wcześniej nie było. Parę metod iteracji z uwagi na jej charakter, można
+
+```py
+for value in my_dict.values():
+  ...
+for key, value in my_dict.items():
+  ...
+```
+
+note: kolizje hashy rzadkie, ale jak są, to wywołanie __eq__
