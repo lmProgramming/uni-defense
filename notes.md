@@ -997,3 +997,30 @@ Aby uniknąć wyścigów, stosuje się:
 - lock - zapewnia wyłączny dostęp do zasobu
 - queue - bezpieczna współbieżnie metoda przekazywania danych
 - semaphore - ogranicza liczbę wątków mających dostęp do zasobu
+
+## 31. UML jako język specyfikacji projektu. Diagramy i ich zastosowanie
+
+UML (Unified Modelling Language) to język pół-formalny, służący do modelowania różnych systemów informatycznych, mający wspomóc projektowanie systemu i służyć jako dokumentacja. Półformalny, ponieważ jest to bardziej zbiór narzędzi z mniej lub bardziej ogólnymi instrukcjami, jak je wykorzystać. Ujednolicił sposób opisywania dziedziny problemu. Reprezentacja graficzna wielu diagramów pozwala szybko wykryć pewne problemy. UML to nie język programowania, jest abstrakcyjny i agnostyczny od języka, ale niektóre diagramy najlepiej pasują do paradygmatu obiektowego.
+
+UML wykorzystuje bardzo wiele diagramów, o różnym poziomie szczegółowości / spojrzenia na system. Najważniejszy podział to na statyczne (opis struktury danych, użytkowników, itd.) i behawioralny (interakcje między elementami, rozkład w czasie, logika)
+
+Najważniejsze diagramy statyczne:
+
+- Diagram klas: powiązany z paradygmatem obiektowym. Przekłada się w dużej mierze na klasy, jakie będą w projekcie i w bazie danych, a także na relacje między nimi. Bardzo ważny
+  - miedzy obiektami występują różne relacje/związki. Na każdym końcu mają mnogość relacji (1 użytkownik ma wiele zakupów). Klasy mogą być powiązane (asocjacja). Szczególne przypadki asocjacji to agregacja (obiekt wykorzystuje inny, ale mogą istnieć osobno) i kompozycja (cykl życia obiektu jest zależny od innego - rodzica, usuwasz rodzica - usuwasz childa)
+  - często podaje się, prócz nazw klas, atrybuty, metody, można podać typy, modyfikatory dostępu i wiele więcej
+  - generalizacja = dziedziczenie
+  - klasy asocjacyjne
+- Diagram obiektów: szczegółowe modelowaniu możliwych instancji obiektów dla klas z diagramu klas
+- Diagram pakietów: logiczna struktura systemu (namespaces)
+- Diagram wdrożenia: fizyczna struktura systemu, przydatny dla DevOps, jak wdrożyć projekt, z jakich elementów składa się technicznie
+
+Diagramy behawioralne:
+
+- Diagram przypadków użycia jest bardzo przydatny dla biznesu, jako diagram nietechniczny. Pokazuje, jacy aktorzy (rodzaj użytkownika) mogą osiągnąć jakie cele w systemie. Powinien być mało techniczny, a każdy cel powinien przynosić wartość biznesową użytkownika (jakiś zysk dla niego)
+- Diagram interakcji: ważna podkategoria diagramów behawioralnych. Modeluje przepływ sterowania z naciskiem na komunikację między obiektami.
+  - Diagram sekwencji: jak dany przypadek użycia może być technicznie spełniony, często przez konkretne warstwy w architekturze oprogramowania
+- Diagram aktywności: przedstawia sekwencyjne i współbieżne przepływy sterowania i danych między czynnościami. Przypomina diagram blokowy
+- Diagram maszyny stanów: opisuje możliwe stany obiektu i jego przejścia (transakcja - opłacony, do opłacenia, odrzucony...)
+
+Minusem UML jest to, że różne osoby mogą mieć przeciwstawne wizje, jak diagramy powinny być modelowane. Diagramy UML zajmują dodatkowo dużo czasu do wykonania. W procesie modelowania można odkryć różne informacje o wymaganiach biznesowych, ale w przypadku faktycznie nowych wymagań, występuje potrzeba modyfikacji diagramu. W dzisiejszych projektach o metodyce zwinnej wykorzystuje się tylko część diagramów, często o niskiej formalności
