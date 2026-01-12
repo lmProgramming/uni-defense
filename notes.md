@@ -949,3 +949,26 @@ for key, value in my_dict.items():
 ```
 
 note: kolizje hashy rzadkie, ale jak są, to wywołanie __eq__
+
+## 29. Różnice i podobieństwa języków Java i Python
+
+Python i Java to języki wysokiego poziomu, wieloplatformowe i używane na całym świecie przez miliony ludzi. Mają dużo różnic i podobieństw.
+
+Podobieństwa:
+
+- Wysokiego poziomu - nie pozwalają na zarządzanie programiście pamięcią
+- Oba mają Garbage Collector do usuwania nieużywanych adresów pamięci
+- Wieloplatformowe, wykorzystując przejściowe etapy między kodem maszynowym a własnym kodem (o nich później w różnicach)
+- Silne typowanie - zmienne mają typy i nie są niejawnie konwertowane na inne, jak np. w JavaScript
+
+Różnice:
+
+- Typowanie statyczne dla Javy - zmienne mają określone typy, typowanie dynamiczne dla Pythona - typ zmiennych może się zmieniać, przez co mogą wystąpić błędy przy operacjach niedozwolonych na danym typie. W Pythonie dodano typowanie - można ale nie trzeba przydzielić zmiennym, funkcjom, parametrom dozwolony typ/typy, ale jest to tylko informacja do sprawdzenia przy statycznej analizie kodu - nie ma wpływu na działanie
+- "boilerplate" kodu - dla Javy przyjęło się pisać objętościowo dużo kodu, oraz samo napisanie tych samych funkcji zajmuje więcej miejsca, niż dla Pythona. Dodatkowo Python ma dużo bibliotek i bogatą bibliotekę standardową, umożliwiającą skracanie niektórych wyrażeń. Ogólnie czas wytwarzania oprogramowania jest krótszy w Pythonie, również dzięki specyfikacji wybieranych frameworków
+- Paradygmat: Java mocno obiektowy, i ma bogaty system słów kluczowych dla klas, dziedziczenia, interfejsów, modyfikatory dostępu itd. Python wspiera różne paradygmaty: również bardzo często jest wykorzystywany obiektowo, ale też funkcyjnie czy ogólnie imperatywnie. Python jest prostszy, jeśli chodzi o obiektowość - nie ma np. interfejsów, a multiinheritance - wielokrotne dziedziczenie. Występuje duck typing i można zaimportować klasy abstrakcyjne. Chociaż takie abstrakcje mogą być mniej intuicyjne dla programisty. Nowocześnie Java wprowadziła elementy funkcyjne, jak lambdy.
+- Java jest kompilowana do kodu bajtowego, wykonywany przez maszynę wirtualną JVM. Python jest skryptowy - interpretowany. Też jest kompilowany do kodu bajtowego, ale nie jako jawny proces przed uruchomieniem
+- Pamięć: inicjalizacja JVM zajmuje dużo pamięci, ale potem reszta programu stosunkowo mniej niż Python
+- Szybkość: Java jest znacznie szybsza dzięki kompilacji do JIT. Aby przyspieszyć Python, można napisać biblioteki w językach niższego poziomu, jak np. C
+- WielowątkowośćL Java wspiera prawdziwy multithreading, a w Pythonie jest GIL ograniczający mozliwość wątków działających równoległe na wielu rdzeniach w jednym procesie
+
+Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Java, poza backendem, do skomplikowanych systemów jak bankowe, też okazjonalnie do aplikacji desktopowych i mobilnych.
