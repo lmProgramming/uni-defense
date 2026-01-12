@@ -972,3 +972,28 @@ Różnice:
 - WielowątkowośćL Java wspiera prawdziwy multithreading, a w Pythonie jest GIL ograniczający mozliwość wątków działających równoległe na wielu rdzeniach w jednym procesie
 
 Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Java, poza backendem, do skomplikowanych systemów jak bankowe, też okazjonalnie do aplikacji desktopowych i mobilnych.
+
+## 30. Zasady programowania równoległego w języku skryptowym Python
+
+Proces a wątek: proces to program z własną przestrzenią adresową. Wątki działają w ramach jednego procesu, mogą współużywać pamięć i może być ich wiele dla procesu. Stworzenie wątku dla komputera ma mniejszy narzut niż procesu, ale oba mają różne zastosowania. Dzięki wątkom i procesom możemy osiągnąć szybszą i bardziej responsywną aplikację, przez zrównoleglenie obliczeń, czytania pliku czy odpowiedzi na requesty HTTP.
+
+GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O.
+Dlatego w Python wątki przydają się do operacji I/O (dysk, sieć, baza danych), a procesy do zadań CPU-intensive.
+
+Główne zagrożenia
+
+- Jeden z nich to równoległy dostęp do pliku, gdy różne wątki/procesy czytają i nadpisują naraz plik. Przez to, na przykład od momentu czytania pliku do zapisania danych mógł on się zmienić.
+- Race condition występuje, gdy poprawny wynik zależy od poprawnej kolejności wykonywania zadań przez wątki/procesy. Programista może źle przewidzieć, kiedy które procesy/wątki się skończą, przez co program zadziała w sposób nieprzewidziany. Dodatkowo wątki dzielą pamięć, i jest ryzyko nadpisanie globalnych stanów przez nie w sposób nieprzewidziany.
+- Deadlock (zakleszczenie): wątki blokują się nawzajem, oczekując na zasoby wzajemnie zajęte.
+
+Do programowania równoległego w Pythonie wykorzystuje się 3 biblioteki: threading, asyncio i multiprocessing
+
+Threading / concurrent.futures.ThreadPoolExecutor: wątki. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np.
+Asyncio: wielozadaniowość kooperacyjna. Czyli chodzi o kontrolowanie przepływu sterowania programu tak, aby nie zatrzymywał się tylko na wykonywaniu pewnego zadania, a ignorował np. wybranie opcji przez użytkownika. Czyli jeden wątek, pętla zdarzeń, zadania same oddają sterowanie (bo czekają na coś). Lżejsze niż wątki/procesy, ale nie wykonuje kodu równolegle
+Multiprocessing / concurrent.futures.ProcesPoolExecutor: procesy. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np. Aby przekazać dane między procesami, używa się Queue/Pipe, serializujących dane
+
+Aby uniknąć wyścigów, stosuje się:
+
+- lock - zapewnia wyłączny dostęp do zasobu
+- queue - bezpieczna współbieżnie metoda przekazywania danych
+- semaphore - ogranicza liczbę wątków mających dostęp do zasobu
