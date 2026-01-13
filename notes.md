@@ -101,7 +101,7 @@ Dodatkowo, jeśli jakieś wartości są niepewne, to funkcja jest niezupełna i 
 ![alt text](imgs/2/zbiory_wartosci.png)
 
 Tablice Karnaugh można wykorzystać do uproszczenia, czyli minimalizacji funkcji boolowskich. Najlepiej działa, gdy liczba wejść jest niewielka, więc zacznę od przypadku cztero argumentowego. Gdy rozpiszemy tabelę prawdy dla cztero argumentowej funkcji z zachowaniem kodu grey'a (czyli kolumny i wiersze różnią się od sąsiadów wartością tylko 1 argumentu - bez tego te prostokąty byłyby bez sensu), to mamy te 0 i 1. Typowo kolumny to AB, a wiersze CD, bo można grupować w takiej tablicy argumenty w takie ciągi. Zaczynamy od narysowania największego prostokąta/ów, którego każdy bok jest potęgą 2 (1, 2, 4...), i wszystkie komórki wewnątrz są 1 (lub X dla niezdefiniowanych). Każdy krok algorytmu to wzięcie aktualnego N (pole tego kwadratu), znajdowanie kwadratów o takim polu które mają 1 lub X tylko w sobie. Potem dzielimy N przez 2 i ciągle robimy to samo, aż wszystkie 1 będą w prostokącie/prostokątach (mogą być naraz w dwóch, jeśli to optymalne). No i wynik to na logikę można zauważyć, że w takich prostokątach 1/2... argumenty się nie zmieniają i przedstawić funkcję np. jako ```Y = B*!C*D + A*B*!D```. Na logikę jak jest 1 w kwadracie gdzie A=0 i C=1 no to (!A*C). Prostokąty mogą przechodzić przez "ściany" tabeli na drugą stronę.
-Alternatywnie mozna zrobić to samo, ale szukać 0 to ```Y = !(B*D) + !(!A*CD)```
+Alternatywnie można zrobić to samo, ale szukać 0 to ```Y = !(B*D) + !(!A*CD)```
 Tablice Karnaugh do max 4-6 zmiennych. Dla więcej niż 4 zmiennych, trzeba brać pod uwagę osie symetrii.
 
 ## 3. Programowanie strukturalne - zasady. Przegląd instrukcji strukturalnych
@@ -194,10 +194,10 @@ A \ B = A * B`
 ```
 
 Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.
-Funkcje mozna składać, np h(x) = f(g(x)) = (f o g)(x)
+Funkcje można składać, np h(x) = f(g(x)) = (f o g)(x)
 Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja\
 
-Relacja to podzbiór iloczynu kartozjańskiego
+Relacja to podzbiór iloczynu kartezjańskiego
 Relacje mogą mieć wiele własności
 
 - Symetryczna - jeśli x R b, to b R x
@@ -348,7 +348,7 @@ Algorytmy przechodzenia po drzewie rozpinającym (w akademii zazwyczaj dotyczą 
   - często takie drzewa binarne są w postaci idealnie skonstruowanej do takiej iteracji, bo korzeń ma indeks 0, lewe dziecko 1, prawe 2, lewe lewego 3 itd.
   - level order - zwykły bfs
 
-Są inne ale te najwazniejsze
+Są inne ale te najważniejsze
 
 Niektóre starają się stworzyć minimalne drzewo rozpinające, czyli dla grafu ważone takie, których suma wag krawędzi jest najmniejsza możliwa (minimalna)
 
@@ -422,7 +422,7 @@ Notacja Theta: ścisłe ograniczenie. Może być tylko, kiedy Omega=O. Wtedy The
 
 ## 12. Warstwowa struktura systemu operacyjnego, pojęcie jądra systemu
 
-System operacyjny to złożony system informatyczny, który zarządzaja zasobami sprzętowymi komputera, umożliwia sprawne wykonywanie zadań, tworząc dla nich środowisko i je kontrolując. Pośredniczy między sprzętem a aplikacjami użytkownika.
+System operacyjny to złożony system informatyczny, który zarządzają zasobami sprzętowymi komputera, umożliwia sprawne wykonywanie zadań, tworząc dla nich środowisko i je kontrolując. Pośredniczy między sprzętem a aplikacjami użytkownika.
 
 Główne zadania systemu operacyjnego to:
 
@@ -445,7 +445,7 @@ Planista czasu procesora, przełącznik zadań, synchronizacja i komunikacja mi�
 
 Są 3 główne architektury jądra:
 
-- jądro monolityczne - ścisłe powiązanie ze sobą wszystkich zadań systemu operacyjnego. Łatwiejsze w stworzeniu, jest szybkie i lepiej zarządza pamięcia, ale mogą też wystąpić problemy przy dużej bazie kodu czy częstszym zatrzymaniem pracy systemu przez np. podłączenie urządzenia, do którego nie ma sterowników albo błąd w sterowniku nadpisze coś gdzie indziej w jądrze i zcrashe'uje komputer. Najważniejszy przykład to Linux
+- jądro monolityczne - ścisłe powiązanie ze sobą wszystkich zadań systemu operacyjnego. Łatwiejsze w stworzeniu, jest szybkie i lepiej zarządza pamięcią, ale mogą też wystąpić problemy przy dużej bazie kodu czy częstszym zatrzymaniem pracy systemu przez np. podłączenie urządzenia, do którego nie ma sterowników albo błąd w sterowniku nadpisze coś gdzie indziej w jądrze i zcrashe'uje komputer. Najważniejszy przykład to Linux
 - mikrokernel - podzielenie zadań na wiele różnych serwerów. Zwiększa skomplikowanie, ale zmniejsza to, jak ściśle powiązane są elementy systemu. Rzadki w użyciu do desktopów, częstszy w systemach embedded
 - jądro hybrydowe - łączy jądro monolityczne z mikrokernel. Jądro monolityczne dla najważniejszych zadań, które muszą być szybkie, ale delegacja części innych do własnych serwisów. Najważniejszy przykład to Windows, macOS
 
@@ -458,7 +458,7 @@ OSI to teoretyczny model referencyjny do komunikacji internetowej między komput
 Składa się z 7 warstw:
 
 - Warstwa fizyczna - zakodowanie danych w postaci bitów. Dodatkowo medium ich transportu, np. kabel RJ45, fale wi-fi.
-- Warstwa łącza danych - odbiór i przesył danych, oraz weryfikacji poprawności (CRC) danych. Przypisywany jest adres MAC. Np. ethernet
+- Warstwa łącza danych - odbiór i przesyłanie danych, oraz weryfikacji poprawności (CRC) danych. Przypisywany jest adres MAC. Np. ethernet
 - Warstwa sieciowa - zarządzanie routowaniem danych do odpowiedniego celu. Dołącza adres IP
 - Warstwa transportowa - segmentacja danych oraz przypisanie portu (80 dla HTTP, 443 for HTTPS). 2 metody:
   1. UDP - bez komunikacji zwrotnej, czy otrzymało się pakiet. Przydatne, gdy nie jest krytyczne otrzymać każdy pakiet, np. w niektórych grach czy streamingu
@@ -476,7 +476,7 @@ note dla mnie: Datagram (UDP) to jakby segment (TCP). Dlaczego nie używać adre
 Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request indentyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
 
 Ethernet to rodzina technologii działającej na warstwie łącza danych oraz fizycznej z modelu OSI. Jest to standard dla sieci lokalnej LAN. Ethernet wykorzystuje i opisuje ramki, schemat okablowania, złącza jak końcówki RJ45 w warstwie fizycznej OSI, aby przekazać dane, np. od routera do komputera.
-Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eleminujący kolizje), choć logicznie działa jak magistrala (broadcast)
+Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eliminujący kolizje), choć logicznie działa jak magistrala (broadcast)
 Ethernet 2 (teraz najczęściej używany) korzysta z ramki z adresem MAC, określającej fizyczny adres urządzenia, typ transmisji i CRC do detekcji błędów.
 
 TCP/IP to model oparty na OSI, upraszczający go do 4 warstw. Stos protokołów internetowych TCP/IP składa się z 4 warstw
@@ -565,9 +565,9 @@ Arraye mogą być arrayem wskaźników w C++. Tak samo wskaźnik może wskazywa�
 
 ## 18. Dobór paradygmatów programowania do rozwiązywania problemów informatycznych
 
-Paradygmat określa sposób myślnenia, aby rozwiązać problemy jako programista. Najważniejszy podział paradygmatów to podział na paradygmat deklaratywny i imperatywny. W deklaratywnym instrukcje dotyczą tego, jaki wynik chcemy osiągnąć (rezultat), a imperatywne, jakie kroki ma dokładnie wykonać program, aby osiągnąć wynik (kroki).
+Paradygmat określa sposób myślenia, aby rozwiązać problemy jako programista. Najważniejszy podział paradygmatów to podział na paradygmat deklaratywny i imperatywny. W deklaratywnym instrukcje dotyczą tego, jaki wynik chcemy osiągnąć (rezultat), a imperatywne, jakie kroki ma dokładnie wykonać program, aby osiągnąć wynik (kroki).
 
-Najwazniejsze podparadygmaty paradygmatu deklaratywnego:
+najważniejsze podparadygmaty paradygmatu deklaratywnego:
 
 - Funkcyjny: brak mutowalnego stanu. Program to wywołanie funkcji, a każdą funkcję można w każdym przypadku zastąpić jej wartością (bo nie ma skutków ubocznych). Funkcje to obywatele pierwszej rangi: funkcje mogą zwracać funkcje, przyjmować je jako argumenty czy mogą być częścią samych struktur danych. Plusy: jasny kod, łatwiejszy w utrzymaniu, brak problemów z współbieżnością. Minusy są takie, że nie nadaje się do każdego problemu (np. gry) i wymaga innego sposobu myślenia. Przykłady języków to Ocaml czy Scala.
 - Logiczny: pojęcie ograniczeń, przydatny do matematyki, formalny. Przykłady to np. Prolog, dziś jest mniej używany.
@@ -637,7 +637,7 @@ List, czyli rozszerzalną i modyfikowalną tablicę elementów, można zaimpleme
 
 Stack: pierwszy wchodzi, ostatni wychodzi. Czyli element dodany jako ostatni jest pierwszy w kolejce do pozyskania. KLasa Stack
 
-Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będącę w strukturze danych są pierwsze w kolejce do pozyskania. W tym przypadku w C\# jest PriorityQueue, który nadpisuje domyślne zachowanie - ustala kolejkę wychodzenia na podstawie "priorytetu" ustalonego wcześniej dla obiektu. Implementacje Queue (FIFO), PriorityQueue, ConcurrentQueue (bezpieczna wątkowo).
+Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będące w strukturze danych są pierwsze w kolejce do pozyskania. W tym przypadku w C\# jest PriorityQueue, który nadpisuje domyślne zachowanie - ustala kolejkę wychodzenia na podstawie "priorytetu" ustalonego wcześniej dla obiektu. Implementacje Queue (FIFO), PriorityQueue, ConcurrentQueue (bezpieczna wątkowo).
 
 Hash Map / Dictionary: zawiera unikalne klucze, do których przypisana jest wartość. Gwarantuje szybki dostęp do wartości dla kluczy. W C\# ADT to IDictionary, implementowane przez Dictionary, SortedList (klucze posortowane), ConcurrentDictionary (wielowątkowe).
 
@@ -653,8 +653,8 @@ Algorytm ten składa się z kroków.
 
 - Pierwszy to określenie obiektu identyfikacji: zrozumienie problemu, własności fizycznych. Wynikiem tego punktu jest określenie kształtu wektora danych wejściowych i wyjściowych, oraz określenie charakteru zakłóceń mogących wpływać na kształt danych. Zrozumienie celu badań
 - Określenie klasy modeli: dobranie odpowiedniego modelu (regresja liniowa, model fizyczny, sieć neuronowa) do problemu, na podstawie jego charakterystyk. Warto przeprowadzić analizę zjawisk fizykochemicznych lub analizę wymiarową (analiza sugerująca sposób przekształcenia/korelacje między danymi). Do problemu rozpoznania ras kotów prawdopodobnie najlepiej nadawałaby się sieć neuronowa
-- Ogranizacja eksperymentu - 2 sposoby: bierna i czynna. W czynnej przeprowadzamy dodatkowo planowanie eksperymentu, związane z identyfikacją danych, które mogłyby zakłócić algorytm przez niereprezentatywne własności, np. obrazki o zbyt niskiej jakości, dane, które po analizie numerycznej można określić jako błedne dane - anomalie. Określenie parametrów eksperymentów takich jak długość serii pomiarowej i ustalenie technik eksperymentu - anotatorów, wybór narzędzia pomiarowego
-- Opracowanie algorytmu identyfikacji - wybieramy sposób szukania modelu, np. optymalizacja wag sieci neuronowej gradientowo albo uzycie algorytmu genetycznego. Także dobranie funkcji i metody kosztu (F1 score, entropia)
+- Organizacja eksperymentu - 2 sposoby: bierna i czynna. W czynnej przeprowadzamy dodatkowo planowanie eksperymentu, związane z identyfikacją danych, które mogłyby zakłócić algorytm przez niereprezentatywne własności, np. obrazki o zbyt niskiej jakości, dane, które po analizie numerycznej można określić jako błędne dane - anomalie. Określenie parametrów eksperymentów takich jak długość serii pomiarowej i ustalenie technik eksperymentu - anotatorów, wybór narzędzia pomiarowego
+- Opracowanie algorytmu identyfikacji - wybieramy sposób szukania modelu, np. optymalizacja wag sieci neuronowej gradientowo albo uycie algorytmu genetycznego. Także dobranie funkcji i metody kosztu (F1 score, entropia)
 - Realizacja algorytmu identyfikacji - napisanie kodu, który implementuje algorytm
 
 Metody optymalizacji dotyczą znalezienia minimum/maksimum funkcji, dla podanych ograniczeń, jednej lub wielu zmiennych. Podam przykłady działania dla szukania minimum, bo do tego są często wykorzystywane (szukanie jak najmniejszej wartości dla funkcji kary/kosztu). Każdą funkcję można też przekształcić, aby szukać w niej maksimum zamiast minimum tym samym sposobem, co dla szukania minimum.
@@ -669,7 +669,7 @@ Metody analityczne:
 
 Numeryczne metody optymalizacji nie produkują zazwyczaj dokładnego wyniku, ale nadają się do prawie każdej funkcji. Działają na operacjach na liczbach zamiast przekształceń funkcji. Zazwyczaj są wykonywane przez komputer, z racji wymagania wielokrotnego obliczania funkcji w wielu pętlach. Metody można podzielić na te bez ograniczeń i z ograniczeniami.
 
-- Metoda podziału odcinka: dla funkcji jednoargumentowych, odrzucamy iteracyjnie przedziały, gdzie funkcja wydaje się rośnąć
+- Metoda podziału odcinka: dla funkcji jednoargumentowych, odrzucamy iteracyjnie przedziały, gdzie funkcja wydaje się rosnąć
 - Gradientowe: obliczamy pochodną, i podążamy w jej kierunku (dla maksimum, dla szukania minimum w kierunku antygradientu). Szeroko wykorzystywane w optymalizacji przez sieci neuronowe funkcji kosztu.
 - Algorytmy genetyczne i ewolucyjne: ileś osobników, każdy z własnym "genotypem" czyli zbiorem liczb które wstawiamy do funkcji, iteracyjnie usuwa się słabsze osobniki zastępując je krzyżówką mocniejszych / genetyczną mutacją pojedynczych. Celowo wprowadza się elementy losowe, aby wyjść z minimów lokalnych.
 
@@ -681,7 +681,7 @@ Internet rzeczy dotyczy integracji urządzeń elektronicznych (rzeczy) z kategor
 
 Obszary zastosowań są bardzo szerokie, są to np.:
 
-- Przemysł - kontrola lini produkcyjnej, monitorowanie i zarządzanie procesami produkcyjnymi, wczesne wykrywanie awarii, usprawnianie procesów
+- Przemysł - kontrola linii produkcyjnej, monitorowanie i zarządzanie procesami produkcyjnymi, wczesne wykrywanie awarii, usprawnianie procesów
 - Transport - zarządzanie flotą pojazdów, optymalizacja tras, monitorowanie warunków pogodowych, czujniki w dużych pojazdach jak samoloty/statki
 - Zdrowie - monitorowanie stanu pacjenta, zarządzanie systemami opieki zdrowotnej
 - Smart home - różne czujniki, sterowanie światłami, wentylacją, temperaturą i warunkami roślin itd.
@@ -701,7 +701,7 @@ Dodatkowo, samo adresowanie (przypisanie początkowego adresu IP) w dużych syst
 Z racji, że urządzenia są rozproszone na bardzo różne obszary - w innych państwach i regionach, w obszarach ze słabą/zawodną siecią Wi-Fi, wykorzystuje się szereg rozwiązań
 
 - Wykorzystanie platformy chmurowej dużych firm, jak AWS od Amazon czy Microsoft Azure
-- Wykorzystywanie kabli do niezawodnego połączenia, WiFi, Bluetooth, GSM, LTE, w zależności które ma najwięcej sensu i połączenie paru sposobów
+- Wykorzystywanie kabli do niezawodnego połączenia, Wi-Fi, Bluetooth, GSM, LTE, w zależności które ma najwięcej sensu i połączenie paru sposobów
 
 Trzeba pamiętać o odpowiednim zaprojektowaniu sieci, aby wspierała dużą przepustowość. Jeśli chodzi o bezpieczeństwo, nie zapominać o autoryzacji i autentykacji urządzeń, szyfrowaniu np. TLS,
 
@@ -715,8 +715,8 @@ Z racji, że urządzenia mogą generować ogromne ilości danych (np. czujniki w
 
 Rozwiązania sprzętowe rozróżnia się w zależności od wielkości sieci, w której urządzenia muszą się komunikować. Wyróżnia się 4 grupy:
 
-- PAN (Personal Area Network) i HAN (Home Area Network). Maksymalne odległości od urządzeń w tej grupie to od paru centymetrów (RFID, NFC) do kilkunastu metrów (Bluetooth Low Power, WiFi). Dotyczy urządzeń znajdujących się na ciele i wewnątrz ciała, sensorów i urządzeń w smart home / laboratorium domowym. Dzięki bardzo niskiemu zasięgowi, komunikacja wymaga bardzo mało energii, dlatego urządzenia mogą wyjątkowo długo działać na baterii.
-- LAN (Local Area Network) - dotyczy skali biurowca / zakładu pracy. Główne rozwiązania to WiFi, Ethernet, ewentualnie Bluetooth 5. Wymaga więcej energii niż PAN, dlatego urządzenia są zwykle podłączone do sieci energetycznej.
+- PAN (Personal Area Network) i HAN (Home Area Network). Maksymalne odległości od urządzeń w tej grupie to od paru centymetrów (RFID, NFC) do kilkunastu metrów (Bluetooth Low Power, Wi-Fi). Dotyczy urządzeń znajdujących się na ciele i wewnątrz ciała, sensorów i urządzeń w smart home / laboratorium domowym. Dzięki bardzo niskiemu zasięgowi, komunikacja wymaga bardzo mało energii, dlatego urządzenia mogą wyjątkowo długo działać na baterii.
+- LAN (Local Area Network) - dotyczy skali biurowca / zakładu pracy. Główne rozwiązania to Wi-Fi, Ethernet, ewentualnie Bluetooth 5. Wymaga więcej energii niż PAN, dlatego urządzenia są zwykle podłączone do sieci energetycznej.
 - WAN (Wide Area Network) - skala obszarów geograficznych - miast, regionów. Zwyczajowo ograniczone do GSM (2G, 3G, 4G, 5G), ale od pewnego czasu udało się stworzyć rozwiązania pobierające znacznie mniej prądu, jak rodzina technologii LPWAN
 
 Protokoły komunikacyjne w warstwie aplikacji:
@@ -873,7 +873,7 @@ Metodyki ciężkie charakteryzują się dużą liczbą ról, artefaktów, dokume
 Przykłady metodyk ciężkich:
 
 - RUP (rational unified process) - iteracyjna i przyrostowa metodyka w IBM. Skupia się na wysokiej jakości wykonania, architektura oparta o komponenty, iteracyjne opracowywanie produktu, kojarzy mi się z UML. Dzieli się na 4 fazy (po każdej przekazanie klientowi):
-  1. rozpoczęcie - sformułowanie zadania biznesowego i opracowanie wstepnego modelu przypadków użycia
+  1. rozpoczęcie - sformułowanie zadania biznesowego i opracowanie wstępnego modelu przypadków użycia
   2. opracowanie - opracowanie architektury systemu, użytkowników, ról, plan całego projektu
   3. konstrukcja - budowa komponentów
   4. przekazanie - szkolenie użytkowników, testy akceptacyjne
@@ -1024,3 +1024,41 @@ Diagramy behawioralne:
 - Diagram maszyny stanów: opisuje możliwe stany obiektu i jego przejścia (transakcja - opłacony, do opłacenia, odrzucony...)
 
 Minusem UML jest to, że różne osoby mogą mieć przeciwstawne wizje, jak diagramy powinny być modelowane. Diagramy UML zajmują dodatkowo dużo czasu do wykonania. W procesie modelowania można odkryć różne informacje o wymaganiach biznesowych, ale w przypadku faktycznie nowych wymagań, występuje potrzeba modyfikacji diagramu. W dzisiejszych projektach o metodyce zwinnej wykorzystuje się tylko część diagramów, często o niskiej formalności
+
+## 32. Wzorce architektoniczne i projektowe – klasyfikacja, przykłady, zastosowania
+
+Wzorce to sprawdzone sposoby na rozwiązanie problemów w inżynierii oprogramowania. Wprowadzając abstrakcje lub używając standardowych wzorców, inni deweloperzy nie muszą analizować implementacji, albo znają dobrze te konkretne wzorce.
+
+Wzorce dzielimy na 2 główne kategorie. Architektoniczne dotyczą całej bazy kodu, i tworzą jasną i przewidywalną strukturę dla modułów / całego projektu. Wzorce projektowe rozwiązują problemy na poziomie klas, wprowadzając abstrakcję, aby schować implementację, pomagając z zależnościami i więcej.
+
+Przykłady architektoniczne:
+
+- Fizyczna
+  - Klient - baza danych: frontend (klient) ma prostą/średnio skomplikowaną logikę, i ma bezpośredni kontakt z bazą danych. Ok do małych projektów, CRUD-owych
+  - Architektura trójwarstwowa (zazwyczaj monolit): klient - logika biznesowa - baza danych: frontend nie ma żadnej logiki biznesowej, tylko wyświetla informacje od backendu (logiki biznesowej). Backend stoi między klientem a bazą danych - w nim znajduje się cała logika biznesowa, endpointy, komunikatory z bazą danych. Baza danych stoi jako osobny byt od backendu, odpowiadając na jego żądania. Uniwersalne i bardzo szeroko stosowane podejście. Nadaje się do małych i średnich projektów, przy dużych mogą pojawić się problemy z wydajnością i koordynacją dużego zespołu.
+  - Mikroserwisy: odpowiedź na problemy monolitu. Dzieli system na serwisy działające osobno i komunikujące się ze sobą przez HTTP/kolejki. Serwisy mogą być skalowane przy integracji z chmurą, dzięki czemu system powinien lepiej odpowiadać na dużo zapytań dla konkretnego części aplikacji. Zazwyczaj każdy serwis ma własną bazę danych i są utrzymywane przez różne zespoły. Dobre do dużych, skomplikowanych systemów. Minusem jest skomplikowana infrastruktura, opóźnienia sieciowe między serwisami, mniejsza spójność danych.
+
+- Logiczne
+  - Warstwowa: system dzieli się na warstwy, gdzie pierwsza to faza prezentacji, jedyna dostępna dla użytkownika. Charakteryzuje się zależnościami w dół, czyli np. baza danych może istnieć bez żadnych wyższych warstw.
+  - Heksagonalna: istnieje centralny punkt projektu (z logiką biznesową), który wystawia porty (interfejsy). Te interfejsy są implementowane przez inne projekty, np. frontend, bazę danych, inne serwisy. Łatwa wymiana projektów
+
+  - Interaktywne
+    - MVC - model, view, controller. Podstawowy wzorzec logiczny. Model: dane + logika biznesowa. View: np. HTML. Controller: odbiera input, aktualizuje model i wybiera widok.
+      - MVC pasywny: model zmienia się tylko pod wpływem działań użytkownika
+      - MVC aktywny: model sam może się zmienić (powiadamia kontroler o tym, Obserwator)
+    - MVP - prezenter zamiast controllera - view dostaje model tylko od prezentera
+    - Model - view - viewmodel - controller: z Ten Square Games, używany w Unity/GameDev. Model przychodzi z bazy danych i jest readonly. Controller ma model, i zawsze nasłuchuje na jego zmiany. Controller wystawia eventy, dzięki czemu jak user coś kliknie w view, to controller reaguje. View zarządza renderowaniem na podstawie viewmodelu, który dostaje od controllera. Viewmodel to model przetłumaczony na tylko dane potrzebne view, w odpowiednim formacie.
+
+Przykłady projektowe:
+
+- Kreacyjne:
+  - Abstrakcyjna fabryka: klasa abstrakcyjna, np. ButtonFactory. Mamy różne buttony dla Mac i Windows, to tworzymy MacButtonFactory i WindowsButtonFactory, zwracające różne rzeczy. Ale widok nie widzi implementacji
+  - Singleton: często definiowany jako zły wzorzec - anti-pattern. Singleton sprawia, że klasa udostępnia statyczne pole Instance z instancją siebie, dzięki czemu dostęp jest ekstremalnie prosty. Ale tak jak service locator, ukrywa on, ile klasy mają zależności. Bardzo łatwo mieszać wtedy zależności i mocno skomplikować flow logiki
+    - Dependency injection: odpowiedź na singleton. Jawne przekazywanie zależności w konstruktorze klas. Łatwo można wtedy testować klasy, przekazując mockowane zależności.
+  - Builder: ułatwia budowanie obiektów, oferując metody, aby za pomocą serii wywołań metod wybrać dokładnie funkcjonalności danego obiektu.
+- Strukturalne:
+  - Adapter: serwis dostosowuje się do innego schematu, tworząc adapter, gdzie "tłumaczymy" metody z nowego schematu do starego.
+  - Fasada: serwis ukrywa złożoność systemu za prostym interfejsem
+- Behawioralne:
+  - Obserwator: inna klasa subskrybuje na zmiany innej, np. jak w TSG Controller nasłuchuje na zmiany modelu
+  - Polecenie: klasa zamiast osobnych metod na funkcjonalności, ma 1 metodę otrzymującą polecenie danego typu + dane

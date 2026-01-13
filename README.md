@@ -277,3 +277,9 @@ Jest CEO firmy software'owej. Patrzy na programowanie z perspektywy biznesu, jak
 3. **Gdy pyta Kawalerowicz:** Odpowiadaj **procesowo i webowo**. Mów o "jakości", "testowaniu", "zadowoleniu klienta (Agile)" i "wydajności strony". Skup się na **metodykach (26, 27)** i **webie (15)**.
 
 To bardzo kompetentna komisja. Nie będą Cię "gnębić" o detale z lat 90., ale bardzo szybko wyczują, czy rozumiesz temat, czy tylko wykułeś regułkę. Powodzenia!
+
+## tools
+
+```sh
+pdftk docs/*wlasne.pdf cat 236-244 output tmp.pdf
+```
