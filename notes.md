@@ -1113,7 +1113,7 @@ Systemy danych dzielą się na transakcyjne (OLTP - online transaction processin
 
 - Transakcyjne dotyczą systemu danych zorientowanych procesowo (transakcjach), operacjach CRUD, wspierający ciągłe funkcjonowanie systemu. Na przykład, system danych dla sklepu internetowego: danych ciągle przybywa, ciągle są aktualizowane i usuwane. Dane historyczne są przechowywane w ograniczonej formie. Przechowuje dane elementarne. Stosunkowo niewielka ilość danych
 
-- Analityczne dotyczą systemu danych zorientowanych na analizie danych historycznych. Zazwyczaj agregują dane z wielu źródeł, i oferują prosty sposób na złożoną analizę faktów w czasie i innych wymiarach. Składa się z danych historycznych (i technicznie może z bieżących), jest zazwyczaj aktualizowana rzadko, często w zautomatyzowany sposób ETL (Extract, Tx, Load). Dane są zorientowane tematycznie. Przechowywane są dane elementarne i obliczone (sumy, średnie). Bardzo złożone zapytania. Ilość danych jest ogromna
+- Analityczne dotyczą systemu danych zorientowanych na analizie danych historycznych. Zazwyczaj agregują dane z wielu źródeł, i oferują prosty sposób na złożoną analizę faktów w czasie i innych wymiarach. Składa się z danych historycznych (i technicznie może z bieżących), jest zazwyczaj aktualizowana rzadko, często w zautomatyzowany sposób ETL (Extract, Transform, Load). Dane są zorientowane tematycznie. Przechowywane są dane elementarne i obliczone (sumy, średnie). Bardzo złożone zapytania. Ilość danych jest ogromna
 
 Analityczne struktury danych dzielą dane na 2 osobne grupy: fakty i wymiary. Dla faktu mierzone są miary, które zawsze są numeryczne. Np. faktem może być sprzedać produktu, miarą liczba sprzedanych sztuk i zysk. Wymiary istnieją w relacji do faktów, np. sprzedaż wystąpiła w określonym kwartale danego roku (wymiar Czas), dla danego produktu (Produkt) w określonym państwie (Geografia) itd.
 Analityczne struktury danych służą wyłącznie do analizy. Aby przyspieszyć proces, warto denormalizować tabele dla szybszych i prostszych zapytań.
@@ -1138,3 +1138,15 @@ Architektury hurtowni danych:
 - Scentralizowana: jedna, fizyczna baza danych
 - Federacyjna - wirtualne bazy danych, tak więc wymaga pobrania od nich danych przy kwerendach
 - Warstwowa - dane przechodzą przez warstwy hurtowni tematycznych o coraz wyższym stopniu agregacji. Wysoka wydajność
+
+## 36. Proces ETL
+
+Hurtownia danych to zorientowana tematycznie, zintegrowana (wiele źródeł), chronologiczna i trwała kolekcja danych o charakterze wspomagającym analizę i procesy podejmowania decyzji.
+
+ETL zasila hurtownię danych danymi. Jest to zautomatyzowany proces, złożony z wielu kroków, dzielących się na 3 kategorie: Extract, Transform, Load. Każdy taki krok należy jasno nazwać. Można ustawić, czy kroki będą wykonywać się równolegle, i co, jeśli w poprzednim wystąpi błąd. Można sterować kontrolą: pętle, ify.
+
+- Extract: etap pozyskania danych z heterogenicznych źródeł. Najprostsze to pliki jak Excel, csv, ale zdecydowanie częściej dane pochodzą z zewnętrznych systemów (SAP, ERP), baz danych, czy hurtowni danych na niższym poziomie. Dane należy opisać i zapisać w poprawnym formacie. Po ekstrakcji dane trafiają do pośredniej Staging Area, aby nie obciążać systemów źródłowych
+- Transform: często najbardziej pracochłonna część. Dane należy przeczyścić, zintegrować (standaryzować) i zagregować ze sobą dane z różnych źródeł. Zastosowanie logiki biznesowej. Często wykorzystuje się fuzzy matching, aby mr i mr. połączyć w jeden atrybut, ale trzeba uważać, żeby nie połączyło Ireland i Iceland. Transformacje mogą być bardzo różne, ale każdy krok warto jasno opisać. Filtrowanie danych, dzielenie i łączenie kolumn, transpozycje. Dokumentacja w postaci mapy logicznej danych: jak konkretne pole ze źródła ma trafić do konkretnej kolumny
+- Load: załadowanie danych do tabeli wymiarów, a potem faktów. Dlatego, że klucze obce muszą istnieć, zanim wstawimy fakt. Ładowanie może być pełne (wszystko od zera) lub przyrostowe (tylko nowe fakty). Z przyrostowym ciężej zadbać, żeby wszystki zmodyfikowane wiersze zostały zaktualizowane
+
+Alternatywą dla ETL jest proces ELT. Jest to więc zintegrowanie źródeł danych (E) w jednej bazie np. Data Lake (L), i dopiero na niej wykonywanie (T) w bazie docelowej. Dzięki temu wykorzystujemy moc obliczeniową docelowej bazy danych, a nie serwera ETL
