@@ -1062,3 +1062,28 @@ Przykłady projektowe:
 - Behawioralne:
   - Obserwator: inna klasa subskrybuje na zmiany innej, np. jak w TSG Controller nasłuchuje na zmiany modelu
   - Polecenie: klasa zamiast osobnych metod na funkcjonalności, ma 1 metodę otrzymującą polecenie danego typu + dane
+
+## 33. Metody ochrony danych
+
+Ochrona danych (treści przechowywanych, przetwarzanych i przesyłanych w systemie) to jedna z podstaw cyberbezpieczeństwa w inżynierii oprogramowania.
+
+Ochrona danych opiera się na 3 filarach - triada CIA (Confidentiality, Integrity, Availability):
+
+- Poufność: całkowity brak dostępu do danych dla osób nieupoważnionych. Zapewniane przez szyfrowanie w spoczynku i tranzycie oraz kontrolę dostępu.
+- Integralność: brak możliwości modyfikacji danych bez odpowiednich uprawnień. Zapewniane przez funkcje skrótu, sumy kontrolne, MAC
+- Dostępność: system działa i jest dostępny dla użytkowników, kiedy tego potrzebują. Zapewniamy redundancją, monitoringiem oraz skalowalnością. Zagrożenie: DDoS, awarie sprzętowe
+
+Jedną z podstaw ochrony danych jest rodzina rozwiązań MAC. Mając wiadomość i klucz, możemy porównać sygnaturę (skrót) wiadomości wygenerowaną przez klienta z obliczonym skrót dla wiadomości w surowej formie z kluczem, aby być pewnym, że korzystamy z tego samego klucza oraz że wiadomość nie została zmodyfikowana.
+Implementacją MAC jest HMAC, korzystający z hash (funkcji skrótu). Popularnym algorytmem jest np. SHA-256. Nie można użyć bezpośrednio na samej wiadomości, trzeba użyć na połączeniu wiadomości i klucza. A dokładniej przez pewne matematyczne własności, przez przeprowadzenie na nich paru operacji, w tym XOR. Z HMAC korzysta np. JWT, służący do autentykacji użytkowników w aplikacjach mobilnych.
+Broni to przed aktywnym atakiem man in the middle, czyli nie problem braku łączności, a problem kogoś specjalnie zmieniającego komunikaty i liczącego skrót.
+
+Podstawowe pojęcia:
+
+- autentykacja (uwierzytelnienie) - potwierdzenia, że klient jest konkretnym użytkownikiem
+- autoryzacja - potwierdzenie, że użytkownik ma dostęp do funkcji
+- hash: jednokierunkowana funkcja skrótu. Danych nie da się w żaden sposób "odszyfrować"
+- szyfrowanie/deszyfrowanie - wiadomość o tekście jawnym można zaszyfrować tak, aby tylko osoba z tym samym kluczem i algorytmem mogła ją odszyfrować. Broni to przed pasywnym atakiem man in the middle
+- metody ochrony komunikacji: TLS/SSL (HTTPS - standard) oraz IPSec (często w VPN, warstwa sieci)
+- niezaprzeczalność: nadawca nie może wyprzeć się komunikatu. Logi audytowe
+
+Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarzania zapytania. Należy pamiętać, że użytkownicy internetu mogą wysłać nam dowolne zapytanie oraz sprawdzić kod JavaScript w przeglądarce (a nawet wyłączyć wykonywanie go).
