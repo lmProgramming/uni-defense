@@ -1106,3 +1106,35 @@ Podział na kategorie:
   - SHA-2 i SHA-3 - bezpieczne
 
 Rainbow tables: time-memory trade off. Polega na użyciu gotowych tablic skrótków do szybkiego łamania haseł przez hakera. Skuteczne tylko na czyste funkcje hashujące. Nie zadziała, gdy dodamy sól, czyli taki sam tekst do każdego obliczania hasha hasła dla danego użytkownika.
+
+## 35. Wielowymiarowe modelowanie danych (transakcyjne i analityczne systemy danych, rodzaje wielowymiarowych struktur OLAP)
+
+Systemy danych dzielą się na transakcyjne (OLTP - online transaction processing) i analityczne (OLAP - online analitycal processing)
+
+- Transakcyjne dotyczą systemu danych zorientowanych procesowo (transakcjach), operacjach CRUD, wspierający ciągłe funkcjonowanie systemu. Na przykład, system danych dla sklepu internetowego: danych ciągle przybywa, ciągle są aktualizowane i usuwane. Dane historyczne są przechowywane w ograniczonej formie. Przechowuje dane elementarne. Stosunkowo niewielka ilość danych
+
+- Analityczne dotyczą systemu danych zorientowanych na analizie danych historycznych. Zazwyczaj agregują dane z wielu źródeł, i oferują prosty sposób na złożoną analizę faktów w czasie i innych wymiarach. Składa się z danych historycznych (i technicznie może z bieżących), jest zazwyczaj aktualizowana rzadko, często w zautomatyzowany sposób ETL (Extract, Tx, Load). Dane są zorientowane tematycznie. Przechowywane są dane elementarne i obliczone (sumy, średnie). Bardzo złożone zapytania. Ilość danych jest ogromna
+
+Analityczne struktury danych dzielą dane na 2 osobne grupy: fakty i wymiary. Dla faktu mierzone są miary, które zawsze są numeryczne. Np. faktem może być sprzedać produktu, miarą liczba sprzedanych sztuk i zysk. Wymiary istnieją w relacji do faktów, np. sprzedaż wystąpiła w określonym kwartale danego roku (wymiar Czas), dla danego produktu (Produkt) w określonym państwie (Geografia) itd.
+Analityczne struktury danych służą wyłącznie do analizy. Aby przyspieszyć proces, warto denormalizować tabele dla szybszych i prostszych zapytań.
+
+Są 3 rodzaje modeli analitycznych OLAP:
+
+- ROLAP - relacyjne: typowe dane relacyjne, jak SQL. Mniej miejsca, ale wolniejsze. Tabele faktów połączone z tabelami wymiarów przez klucze obce
+- MOLAP - wielowymiarowy: podział na kostki. Szybkie, ale zajmuje więcej miejsca. Zawiera atrybuty wymiarów i faktów na różnym poziomie agregacji
+- HOLAB - hybrydowe: łączy podejście relacyjne i wielowymiarowe. Agregacje w formacie wielowymiarowym, dane zarządzane relacyjnie. Wydajne i zajmuje mniej miejsca
+
+Schematy logiczne ROLAP:
+
+- Gwiazdy - ta z tabelą faktów na środku
+- Snowflake - normalizacja gwiazdy, czyli wymiary mają wymiary
+- Konstelacje - wiele tabel faktów, z własnymi i dzielonymi wymiarami
+
+Do przechowywania danych analitycznych służy hurtownia danych.
+Hurtownia to tematycznie zorientowana, zintegrowana (wiele źródeł), chronologiczna i trwała kolekcja danych do wspomagania procesów podejmowania decyzji.
+
+Architektury hurtowni danych:
+
+- Scentralizowana: jedna, fizyczna baza danych
+- Federacyjna - wirtualne bazy danych, tak więc wymaga pobrania od nich danych przy kwerendach
+- Warstwowa - dane przechodzą przez warstwy hurtowni tematycznych o coraz wyższym stopniu agregacji. Wysoka wydajność
