@@ -1087,3 +1087,22 @@ Podstawowe pojęcia:
 - niezaprzeczalność: nadawca nie może wyprzeć się komunikatu. Logi audytowe
 
 Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarzania zapytania. Należy pamiętać, że użytkownicy internetu mogą wysłać nam dowolne zapytanie oraz sprawdzić kod JavaScript w przeglądarce (a nawet wyłączyć wykonywanie go).
+
+## 34. Podstawowe algorytmy kryptograficzne
+
+Dzięki kryptografii jesteśmy w stanie przesyłać dane przez internet, gdzie na każdym kroku ktoś mógłby podsłuchiwać i sprawdzać wrażliwe dane (Man in the middle).
+Aby zapewnić bezpieczeństwo projektowi, nie należy stosować security przez obscurity, a używać silnych, sprawdzonych, open source algorytmów z poprawnymi kluczami. Trzeba pamiętać, że aplikacje są narażone na dekompilacje, a JavaScript w przeglądarce jest wolno dostępny i może być debugowany. Dodatkowo, każdy może spreparować dowolne zapytanie HTTP.
+
+Podział na kategorie:
+
+- Symetryczne: algorytmy te wykorzystują ten sam klucz do szyfrowania i deszyfrowania danych. Najczęściej używane, oraz osiągają wysoką wydajność nawet dla dużych bloków danych. Dzielimy je na algorytmy operujące na bitach i blokach (współcześnie częściej używane). Trzeba uważać na to, aby algorytm nie ujawnił struktury danych (np. kontury tekstury) przez szyfrowanie bloków w sposób przewidywalny.
+  - DES - przestarzały, przez zbyt małą długość klucza
+  - AES - standardowy i wszędzie używany. Nie jest podatny na problemy z rozpoznaniem struktury danych, gdy używany jest w trybie działania CBC (w przeciwieństwie do ECB)
+- Asymetryczne: A ma klucz prywatny i publiczny. Publiczny każdy zna, i B wyśle zapytanie do A, używając jego klucza publicznego. Ale klucz publiczny powstał jednostronnie na bazie prywatnego, więc tylko A może odkodować wiadomość. W HTTPS używane do bezpiecznej wymiany symetrycznych kluczy, aby komunikacja przebiegała szybko. Znacznie wolniejszy od alternatyw, dlatego stosuje się go w sposób ograniczony.
+  - RSA - dobry algorytm, używany szeroko na całym świecie. Opiera się na trudnej faktoryzacji dużych liczb
+  - Diffie-Hellman - bezpieczne uzgodnienie klucza symentrycznego przez niezaufany kanał
+- Skrótu: jednostronna generacja skrótu/hashu wiadomości. Nie da się uzyskać wiadomości ze skrótu, zresztą skrót ma określoną liczbę bitów, a wiadomość mogłaby być bardzo duża. Używana do ukrywania haseł w bazie danych czy weryfikacji, czy plik pobrany z internetu nie został zmieniony względem oryginału. Zmiana nawet 1 bitu sprawi, że hash będzie zupełnie inny. Odporny na kolizje, trudno znaleźć 2 teksty o tym samym hashu. W bazach danych nie przechowujemy jawnie hasła, tylko skrót z niego
+  - MD5 - przestarzały, podatny na kolizje
+  - SHA-2 i SHA-3 - bezpieczne
+
+Rainbow tables: time-memory trade off. Polega na użyciu gotowych tablic skrótków do szybkiego łamania haseł przez hakera. Skuteczne tylko na czyste funkcje hashujące. Nie zadziała, gdy dodamy sól, czyli taki sam tekst do każdego obliczania hasha hasła dla danego użytkownika.
