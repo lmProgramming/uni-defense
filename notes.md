@@ -1150,3 +1150,31 @@ ETL zasila hurtownię danych danymi. Jest to zautomatyzowany proces, złożony z
 - Load: załadowanie danych do tabeli wymiarów, a potem faktów. Dlatego, że klucze obce muszą istnieć, zanim wstawimy fakt. Ładowanie może być pełne (wszystko od zera) lub przyrostowe (tylko nowe fakty). Z przyrostowym ciężej zadbać, żeby wszystki zmodyfikowane wiersze zostały zaktualizowane
 
 Alternatywą dla ETL jest proces ELT. Jest to więc zintegrowanie źródeł danych (E) w jednej bazie np. Data Lake (L), i dopiero na niej wykonywanie (T) w bazie docelowej. Dzięki temu wykorzystujemy moc obliczeniową docelowej bazy danych, a nie serwera ETL
+
+## 38. Metody przetwarzania wiedzy w systemach ekspertowych
+
+System ekspertowy to program komputerowy, naśladujący proces eksperta podejmującego decyzję. Jest wyjaśnialny i zasady są oddzielone od silnika wnioskowania.
+
+Architektura systemów ekspertowych:
+
+- Baza wiedzy: reguły i fakty wprowadzone do systemu
+- Silnik wnioskowania - oddzielony od danych i reguł wnioskowania
+- Moduł pozyskiwania wiedzy - interfejs do wprowadzania danych przez eksperta
+- Moduł wyjaśniający - dzięki temu jest wyjaśnialny, w przeciwieństwie do sieci neuronowych (black box)
+
+Reprezentacje wiedzy:
+
+- Reguły produkcji (if/then): struktura jeżeli warunek, to akcja/fakt
+- Logika predykatów - formalny zapis matematyczny
+- Ramy - struktury obiektowe (prototypy) posiadające sloty (atrybuty). Paradygmat obiektowy, szczegółowy opis systemów, wbudowana logika i wartości domyślne
+- Sieć semantyczna (graf - węzły i krawędzie). Np. węzeł ptak i skrzydła połączone krawędzią ma_część
+
+Dzięki temu, że silnik jest oddzielony od reguł, reguły można dowolnie modyfikować bez potrzeby rekompilacji programu
+Można wykorzystywać logikę rozmytą (fuzzy logic). Logika rozmyta to nie jest prawdopodobieństwo, a bardziej procent przynależności do pewnego zbioru. Np. 50% burzy może oznaczać zwykły deszcz. Dzięki temu mozna używać współczynników pewności zamiast tylko prawda/fałsz
+
+Systemy ekspertowe wykorzystuje się do zaumatyzowanego podejmowania decyzji i wsparcia podejmowania decyzji przez ludzi. Zależne są tylko od logicznych reguł, więc powinny być bardziej obiektywne (w praktyce zależy to oczywiście od postaci reguł).
+
+System ekspertowy może wnioskować do przodu (forward chaining) i do tyłu (backwards chaining)
+
+- Wnioskowanie do przodu to pozyskiwanie nowych faktów z danych. Np. mamy logi systemowe, i generujemy z nich wnioski i akcje.
+- Wnioskowanie do tyłu to próba potwierdzenia/odrzucenia hipotezy. Np. mamy hipotezę, czy system jest bezpieczny, i sprawdzamy w tył, czy firewalle są włączone itd.
