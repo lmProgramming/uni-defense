@@ -1178,3 +1178,25 @@ System ekspertowy może wnioskować do przodu (forward chaining) i do tyłu (bac
 
 - Wnioskowanie do przodu to pozyskiwanie nowych faktów z danych. Np. mamy logi systemowe, i generujemy z nich wnioski i akcje.
 - Wnioskowanie do tyłu to próba potwierdzenia/odrzucenia hipotezy. Np. mamy hipotezę, czy system jest bezpieczny, i sprawdzamy w tył, czy firewalle są włączone itd.
+
+## 39. Wnioskowanie w logice niemonotonicznej – zadanie planowania
+
+Logika niemonotoniczna różni się od logiki monotonicznej tym, że w miarę jej wykonywania stan wiedzy może się zmieniać - niektóre fakty stają się fałszywe, a inne prawdziwe. W logice monotonicznej stan wiedzy tylko przyrasta. System jest niekomutatywny, co oznacza, że kolejność wykonywania operacji ma ogromne znaczenie.
+
+Klasycznym zastosowaniem wnioskowania w logice niemonotonicznej jest zadanie planowania (np. trasy logistycznej czy robota). W miarę wykonywania na nim operacji wg. reguł, stan się zmienia. Takie zadanie składa się z trzech elementów:
+
+- Stan początkowy (stan wszystkich zmiennych, np. robot znajduje się w punkcie A oraz piłka znajduje się w punkcie A)
+- Cel / stan końcowy (np. piłka znajduje się w punkcie B)
+- Operatory / akcje - zmieniają stan na podstawie dozwolonych operacji, np. robot podnosi piłkę. Każda operacja ma preconditions (np. robot i piłka są w tym samym miejscu), oraz postconditions, czyli jak stan zostanie zmieniony (np. piłka teraz jest trzymana w ręce robota). Dokładniej, jest to lista dopisków (nowe fakty) i lista skreśleń (usuwanie faktów)
+
+Do wykonywania takich zadań w standardowy sposób używa się STRIPS. Są różne algorytmy wykonania problemu opisanego w STRIPS, i niektóre standardy pozwalają np. na dodanie wagi operacjom, dzięki czemu nie tylko planujemy pewne rozwiązanie, ale szukamy też optymalnego.
+
+Zadania planowania można wykonywać na dwa sposoby:
+
+- W przód: zaczynamy w stanie początkowym, i mutujemy go operacjami, aż dojdziemy do stanu końcowego
+- W tył: zaczynamy w stanie końcowym, i mutujemy go operacjami, aż dojdziemy do stanu początkowego. Niekiedy prostszy, gdyż opis świata w stanie początkowym może być skomplikowany, a cel zazwyczaj jest prosty - np. do piłki w bramce może doprowadzić tylko kopnięcie.
+
+Należy uważać na pętle (powrót do pewnego poprzedniego stanu), wykrywać i pomijać.
+Innym problemem jest problem ramowy, czyli jak zaprezentować to, co nie zmienia się w trakcie akcji. W praktyce zakładamy, że wszystko, czego operacja jawnie nie zmienia, pozostaje takie samo.
+
+Dodatkowo, zazwyczaj występuje założenie zamkniętego świata - czyli wszystko, czego nie wiemy, jest uznawane za fałsz. To ważne założenie w STRIPS
