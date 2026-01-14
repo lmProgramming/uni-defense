@@ -12,6 +12,10 @@ Jak wygląda obrona? Macie wyznaczoną godzinę, przychodzicie do sali, jest 3-o
 
 ## todo
 
+### janek
+
+26 opisać model cyklu życia od pomysłu do
+
 ### 1. Układy cyfrowe (s. 1-2)
 
 * **Przerzutnik RS:** W tabeli prawdy jest stan `1 1` oznaczony jako "stan zabroniony". Warto wiedzieć **dlaczego**.

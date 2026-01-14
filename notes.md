@@ -59,7 +59,7 @@ Dla S i R = 0 stan pozostaje taki sam, czyli Q[n] = Q[n-1]\
 Dla S i R = 1 stan nie jest zdefiniowany (może być losowy przez sprzeczność logiczną układu). Taki stan nazywa się stanem zabronionym\
 Przerzutnik JK flip flop zachowuje się jak RS, różni się tym, że dla J i K = 1 => Q = !Q
 
-Przerzutniki D (Delay) flip flop i T (Toggle) flip flop - podstawowe przerzutniki synchroniczne. Wymagają sygnału zegara do ustawiania stanu. Dzięki temu ograniczone są zakłócenia ze strony danych wejściowych (debouncing)\
+Przerzutniki D (Delay) flip flop i T (Toggle) flip flop - podstawowe przerzutniki synchroniczne. Wymagają sygnału zegara do ustawiania stanu. Dzięki temu ograniczone są zakłócenia ze strony danych wejściowych (debouncing)
 
 - Delay: ustawia Q=D, gdy CLK ma stan opadający lub narastający. Korzysta wewnętrznie z SR flip flop
 - Toggle: ustawia Q=!Q, gdy T=1 i CLK ma stan opadający lub narastający
@@ -191,6 +191,8 @@ SOLID:
 
 ## 5. Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów
 
+Zbiór to dobrze określona kolekcja elementów, gdzie jednoznacznie można stwierdzyć, czy dany obiekt należy, czy nie do zbioru.
+
 Podstawowe operacje na zbiorach:
 
 - Suma zbiorów A + B czyli zbiór do którego należą wszystkie elementy w zbiorze A i w zbiorze B
@@ -202,7 +204,7 @@ Podstawowe operacje na zbiorach:
 - Przynależność A e B gdy każdy element A znajduje się również w zbiorze B
 
 Własności działań na zbiorach:
-Operacje sumy, różnicy są przemienne
+Operacje sumy, iloczynu są przemienne
 
 ```txt
 A * (B + C) = (A * B) + (A * C)
@@ -216,7 +218,7 @@ A \ B = A * B`
 
 Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.\
 Funkcje można składać, np h(x) = f(g(x)) = (f o g)(x)\
-Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja\
+Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja
 
 Relacja to podzbiór iloczynu kartezjańskiego\
 Relacje mogą mieć wiele własności
@@ -227,12 +229,12 @@ Relacje mogą mieć wiele własności
 - Antysymetryczna - jeśli x R y i y R x => x = y (takie wnioskowanie z symetrii: 2 elementy mogą być ze sobą w relacji dwustronnej, tylko jeśli są takie same)
 - Spójna - wszystkie elementy są w parze z wszystkimi innymi (przynajmniej w jedną stronę)
 
-Relacja jest relacją równoważności, gdy jest zwrotna, symetryczna i przechodnia (taki graf trochę niekierunkowy)
+Relacja jest relacją równoważności, gdy jest zwrotna, symetryczna i przechodnia (taki graf Google Maps trochę niekierunkowy)
 
 Rachunek zdań
 
 ```txt
-                    implikacja        xnor
+                    implikacja        równoważność (xnor)
 ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b (a => b) ∧ (b => a)    
 00  0      0        1       1         1                             
 10  0      1        0       1         0
@@ -247,14 +249,19 @@ negacja to wiadomo
 zdania są równoważne, gdy mają równe wartości logiczne dla wszystkich możliwości np. a = a * a\
 tautologia jest zawsze prawdziwa np. p + p` = 1
 
-Mamy kwantyfikatory A; V (dla każdego; istnieje)\
-Czyli np. Ax; x w zbiorze R; x*x >= 0\
-Vx; x w zbiorze R; x = 123.25\
+Mamy kwantyfikatory A; ∀ (ogólny - dla każdego; egzystencjalny - istnieje)
+
+Przykłady:
+
+- Ax; x w zbiorze R; x*x >= 0
+- ∀x; x w zbiorze R; x = 123.25
+
 Oba to prawda
 
 ## 6. Deterministyczne automaty skończone - definicja, zastosowania
 
-Chodzi o takie fajne rzeczy jak regex czy lekser.\
+Chodzi o takie fajne rzeczy jak regex czy lekser.
+
 Jest to abstrakcyjna maszyna stanów o skończonej liczbie stanów, która na podstawie aktualnie czytanej litery i aktualnego stanu (na początku pusty) przechodzi do kolejnego stanu. Gdy znajdzie się w stanie oznaczonym jako akceptujący (końcowy), przerywa działanie, klasyfikując czytane słowo/tekst do języka regularnego, do rozpoznawania którego jest zbudowane.
 
 ![alt text](imgs/6/deterministyczny_automat_skonczony.png)
@@ -298,7 +305,7 @@ Przykłady regexa:
 
 ## 7. Przykładowe architektury komputerów: von Neumana, Princeton, Harvard
 
-Komputer składa się z CPU (jednostki centralnej), magistrali, pamięci. CPU składa się z rejestrów, ALU (matematyka) i jednostki sterującej.
+Komputer składa się z CPU (jednostki centralnej), magistrali (drogi komunikacyjne), pamięci (dysk + RAM). CPU składa się z rejestrów (przechowują szybkie dane do procesora), ALU (matematyka + logiczne operatory) i jednostki sterującej (pobiera instrukcje, dekoduje i steruje ALU i rejestrami).
 
 Ze względu na liczbę strumieni danych a instrukcji powstała Taksonomia Flynna o 4 rodzajach:
 
@@ -343,8 +350,8 @@ Typy grafów:
 - nieskierowane: krawędź łączy 2 wierzchołki w 2 strony, można nim przejść w obie strony
 - spójne: z każdego wierzchołka można się dostać do każdego innego
 - niespójne: istnieją wierzchołki, między którymi nie da się wyznaczyć drogi
-- Eulerowskie: ma cykl Eulera
-- Hamiltonowski: ma cykl Hamiltona
+- Eulerowskie: ma cykl Eulera. Warunek istnienia: każdy wierzchołek ma stopień parzysty
+- Hamiltonowski: ma cykl Hamiltona. Warunek istnienia: NP trudny. Problem komiwojażera
 - regularne: każdy wierzchołek tego samego stopnia, czyli równa ilość krawędzi z każdego wierzchołka
 
 Ważne pojęcia:
@@ -354,9 +361,9 @@ Ważne pojęcia:
 - Cykl (droga zamknięta): A -> B -> A
 - Pętla: A -> A
 - Drzewo: graf spójny acykliczny (czyli nie ma żadnego cyklu)
-- Drzewo rozpinające: podgraf grafu zawierający wszystkie jego wierzchołki, ale pomijając krawędzie tworzące cykle. Dzięki temu jest niecykliczny i jest spójny. Dany graf może mieć wiele drzew rozpinających
+- Drzewo rozpinające: podgraf grafu zawierający wszystkie jego wierzchołki, ale pomijając krawędzie tworzące cykle. Dzięki temu jest niecykliczny i jest spójny. Dany graf może mieć wiele drzew rozpinających. Minimalne drzewo ma minimalną wagę
 
-W drzewach binarnych (są drzewami rozpinającymi) krawędzie mają najwyżej (i zazwyczaj dokładnie) dwójkę dzieci. Są one oznaczone jako lewe i prawe. Krawędzie, które nie mają dzieci, to liście (leaf). Korzeniem jest główny rodzic.
+W drzewach binarnych wierzchołki mają najwyżej (i zazwyczaj dokładnie) dwójkę dzieci. Są one oznaczone jako lewe i prawe. Krawędzie, które nie mają dzieci, to liście (leaf). Korzeniem jest główny rodzic.
 
 Cykle Eulera i Hamiltona:
 
@@ -366,13 +373,14 @@ Cykle Eulera i Hamiltona:
 
 Spójność: chodzi o to, że z każdego wierzchołka można by się dostać do każdego innego.
 
-Algorytmy przechodzenia po drzewie rozpinającym (w akademii zazwyczaj dotyczą drukowania etykiet/indeksów w jakiejś kolejności grafu):
+Algorytmy przechodzenia po wierzchołkach grafu (w akademii zazwyczaj dotyczą drukowania etykiet/indeksów w jakiejś kolejności grafu). Przejście rozpoczyna się od korzenia (lub, dla grafów, wybranego wierzchołka) i w każdej iteracji idziemy do sąsiada. Aby graf nie zapętlił się, notujemy, jakie wierzchołki odwiedziliśmy. 2 rodzaje:
 
-- DFS (depth first search): chciwe, eksplorują ściężki jak najgłębiej, zanim sprawdzą inne (rekurencyjne)
-  - pre order: zaczyna w głównym wierzchołku i wykonuje dla niego taki sam algorytm jak dla reszty, czyli najpierw operuje na sobie, potem idzie ciągle do lewego dziecka, jak je wyczerpie, to prawe, a potem wraca do rodzica (noo w przypadku korzenia rodzica nie ma, to koniec algorytmu).
-  - post order: pre order, ale operacja na wierzchołku dopiero na końcu, najpierw dzieci
-  - in order: najpierw wykonuje algorytm dla lewego dziecka, potem wypisuje siebie, potem prawego
-- BFS (breadth first search): jakby założenie, że każda ścieżka ma tyle samo potencjału (iteracyjne)
+- DFS (depth first search): chciwe, eksplorują ściężki jak najgłębiej, zanim sprawdzą inne (rekurencyjne). Wykorzystują stos LIFO
+  - Dla drzew binarnych są dodatkowe specyfikacje:
+    - pre order: zaczyna w głównym wierzchołku i wykonuje dla niego taki sam algorytm jak dla reszty, czyli najpierw operuje na sobie, potem idzie ciągle do lewego dziecka, jak je wyczerpie, to prawe, a potem wraca do rodzica (noo w przypadku korzenia rodzica nie ma, to koniec algorytmu).
+    - post order: pre order, ale operacja na wierzchołku dopiero na końcu, najpierw dzieci
+    - in order: najpierw wykonuje algorytm dla lewego dziecka, potem wypisuje siebie, potem prawego
+- BFS (breadth first search): jakby założenie, że każda ścieżka ma tyle samo potencjału (iteracyjne). Analiza całego poziomu, zanim pójdzie się głębiej. Kolejka
   - często takie drzewa binarne są w postaci idealnie skonstruowanej do takiej iteracji, bo korzeń ma indeks 0, lewe dziecko 1, prawe 2, lewe lewego 3 itd.
   - level order - zwykły bfs
 
@@ -380,7 +388,7 @@ Są inne ale te najważniejsze
 
 Niektóre starają się stworzyć minimalne drzewo rozpinające, czyli dla grafu ważone takie, których suma wag krawędzi jest najmniejsza możliwa (minimalna)
 
-Djikstra to algorytm zachłanny (BFS), mający szybko znaleźć połączenie dwóch krawędzi o najmniejszej wadze. Działa tylko dla wag nieujemnych
+Djikstra to algorytm zachłanny (BFS), mający szybko znaleźć połączenie dwóch wierzchołków o najmniejszej sumarycznej wadze. Działa tylko dla wag nieujemnych
 
 Travelling Salesman problem można wspomnieć (cykl hamiltona!), mrówczano-feromonowe rozwiązanie
 
@@ -1009,7 +1017,7 @@ Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Ja
 
 Proces a wątek: proces to program z własną przestrzenią adresową. Wątki działają w ramach jednego procesu, mogą współużywać pamięć i może być ich wiele dla procesu. Stworzenie wątku dla komputera ma mniejszy narzut niż procesu, ale oba mają różne zastosowania. Dzięki wątkom i procesom możemy osiągnąć szybszą i bardziej responsywną aplikację, przez zrównoleglenie obliczeń, czytania pliku czy odpowiedzi na requesty HTTP.
 
-GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O.\
+GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O. \
 Dlatego w Python wątki przydają się do operacji I/O (dysk, sieć, baza danych), a procesy do zadań CPU-intensive.
 
 Główne zagrożenia
