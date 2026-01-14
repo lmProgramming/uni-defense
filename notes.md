@@ -1,5 +1,7 @@
 # Obrona
 
+Informatyka Stosowana inżynierska obrona
+
 ## 1. Podstawowe układy cyfrowe: bramki logiczne, przełączniki, układy sekwencyjne
 
 Układy cyfrowe to zbiór połączonych elementów elektronicznych, w którym informacje reprezentowane są w sposób binarny. Jeśli chodzi o binarność stanu, to ma on dwa stany: stan wysoki (1 lub H), oznaczający potencjał względem masy bliski napięciu zasilania, i stan niski (0 lub L), potencjał względem masy bliski 0V. W logice stan wysoki reprezentowałby prawdę, a niski fałsz.
@@ -93,7 +95,7 @@ itd.
 
 Arytmetyka dwójkowa jest wykorzystywana w elektronice, i przez to w komputerach, z racji prostego wykrywania stanu 0 a 1 (reprezentowane przez potencjał względem masy zbliżonym do 0 dla 0 i potencjale względem masy zbliżonym do napięcia zasilania dla 1)
 
-Naturalny kod binarny NKB - liczby są zapisywane w formie słów o konkretnej długości, np. 8, co oznacza, że liczbę np. 115 (1110011[2])zapisałoby się jako 01110011, dopełniając po lewej zera, aby słowo miało tą długość. Wtedy długość słowa określa przedział możliwych do reprezentacji liczb w zbiorze N + <1;2^N>
+Naturalny kod binarny NKB - liczby są zapisywane w formie słów o konkretnej długości, np. 8, co oznacza, że liczbę np. 115 (1110011[2])zapisałoby się jako 01110011, dopełniając po lewej zera, aby słowo miało tą długość. Wtedy długość słowa określa przedział możliwych do reprezentacji liczb w zbiorze N = <0;2^N>
 
 Kod dwójkowo-dziesiętny - reprezentacja osobno każdej cyfry w liczbie dziesiętnej słowami o długości 4 (bo 2^4>9). Niektóre wartości np. 1111 są niemożliwe, przez co występuje redundancja (nadmiarowość). Wg. mnie naturalnie przekłada się to w system 16stkowy, gdzie 10=A, 15=F.
 
@@ -177,7 +179,15 @@ Podstawowe pojęcia:
 - Modyfikator dostępu: metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
 - Hermetyzacja: modyfikatory dostępu, interfejsy przydają się do implementacji hermetyzacji. Chodzi o to, aby dla innych klas najważniejszy był głównie wynik którego potrzebują od klasy, a nie wewnętrzna implementacja. Czyli klasa powinna udostępniać minimum metod i publicznych pól, aby inne klasy musiały w kontrolowany sposób ją mutować / uzyskiwać z niej wynik.
 
-Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie większe gry komputerowe są napisane w tym paradygmacie, ale też dużo aplikacji desktopowych, mobilnych, backendów, frontendów, systemy operacyjne...
+Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie większe gry komputerowe są napisane w tym paradygmacie, ale też dużo aplikacji desktopowych, mobilnych, backendów, frontendów...
+
+SOLID:
+
+- single responsibility: funkcja, klasa ma zajmować się tylko jedną rzeczą
+- open/closed: otwarte na rozszerzenie, zamknięte na modyfikację. Car rozszerza Vehicle "rozszerzając" metodę accelerate
+- liskov substitution: typ obiektu można zmienić na wyższy przy dziedziczeniu i dalej działa (np. traktować Car jako Vehicle). Nie powinno się metod rodziców w dzieciach ustawiać jako throw new Exception. Np ElectricVehicle: exception na shift() ```:(```
+- interface segregation: lepiej mieć więcej interfejsów niż mniej (tutaj podział samochodów na silniki spalinowe, elektryczne)
+- dependency inversion: moduły high level nie powinny zależeć od low-level: powinny zależeć od abstrakcji (interfejsy), a abstrakcje nie zależeć od implementacji
 
 ## 5. Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów
 
@@ -229,6 +239,8 @@ ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b (a => b) ∧ (b => a)
 01  0      1        1       0         0
 11  1      1        1       1         1
 ```
+
+(implikacji: z prawdy nie może wynikać fałsz)
 
 negacja to wiadomo
 
@@ -577,7 +589,7 @@ W przypadku, gdy programista zapomni dealokować dynamicznie alokowane dane, zos
 
 W C++ nowo alokowane zmienne nie czyszczą zaalokowanej sobie pamięci, czyli znajdują już się tam bity. Trzeba na to uważać zwłaszcza przy wskaźnikach, które bez odpowiedniej inicjalizacji mogą wskazywać na adresy niezalokowane przez komputer dla programu (crash) lub zmieniając taką zmienną, zmienić przypadkiem dane dla zupełnie innej zmiennej,
 
-Arraye w C++ działają jak wskaźniki w wielu kontekstach. Jeśli odwołamy się do elementu poza listą, np. elementu 5. dla 3 elementowej listy, operujemy po prostu na pamięci o adresie = adres arraya + 5. Powoduje to ten sam error lub błąd, co opisany wyżej.
+Arraye w C++ działają jak wskaźniki w wielu kontekstach. Jeśli odwołamy się do elementu poza listą, np. elementu 5. dla 3 elementowej listy, operujemy po prostu na pamięci o adresie = adres arraya + 5 (```5 * sizeof(int)``` dla listy intów). Powoduje to ten sam error lub błąd, co opisany wyżej.
 
 Arraye mogą być arrayem wskaźników w C++. Tak samo wskaźnik może wskazywać na wskaźnik - trzeba dodać odpowiednią liczbę gwiazdek do kodu. Używając delete, trzeba pamiętać o usunięciu danych z każdego stopnia wskaźnika, inaczej mamy memory leak. Do destrukcji arraya trzeba użyć ```delete[]```, ale ta sama uwaga jest aktualna dla arraya arrayi (arraya wskaźników) - trzeba dla każdego elementu delete/delete[] wykonać.
 
@@ -735,7 +747,7 @@ Z racji, że urządzenia mogą generować ogromne ilości danych (np. czujniki w
 Rozwiązania sprzętowe rozróżnia się w zależności od wielkości sieci, w której urządzenia muszą się komunikować. Wyróżnia się 4 grupy:
 
 - PAN (Personal Area Network) i HAN (Home Area Network). Maksymalne odległości od urządzeń w tej grupie to od paru centymetrów (RFID, NFC) do kilkunastu metrów (Bluetooth Low Power, Wi-Fi). Dotyczy urządzeń znajdujących się na ciele i wewnątrz ciała, sensorów i urządzeń w smart home / laboratorium domowym. Dzięki bardzo niskiemu zasięgowi, komunikacja wymaga bardzo mało energii, dlatego urządzenia mogą wyjątkowo długo działać na baterii.
-- LAN (Local Area Network) - dotyczy skali biurowca / zakładu pracy. Główne rozwiązania to Wi-Fi, Ethernet, ewentualnie Bluetooth 5. Wymaga więcej energii niż PAN, dlatego urządzenia są zwykle podłączone do sieci energetycznej.
+- LAN (Local Area Network) - dotyczy skali biurowca / zakładu pracy. Główne rozwiązania to Wi-Fi, Ethernet, bardzo ewentualnie Bluetooth 5. Wymaga więcej energii niż PAN, dlatego urządzenia są zwykle podłączone do sieci energetycznej.
 - WAN (Wide Area Network) - skala obszarów geograficznych - miast, regionów. Zwyczajowo ograniczone do GSM (2G, 3G, 4G, 5G), ale od pewnego czasu udało się stworzyć rozwiązania pobierające znacznie mniej prądu, jak rodzina technologii LPWAN
 
 Protokoły komunikacyjne w warstwie aplikacji:
@@ -844,7 +856,7 @@ Prócz samego wybierania danych, SQL wspiera dodawanie wierszy, usuwanie, aktual
 SQL ma parę podjęzyków, każdy odpowiedzialny za część funkcjonalności.
 
 - DQL (query) - SELECT + klauzule jak WHERE, GROUP, HAVING - używane do kwerendowania danych
-- DML (manipulation) - INSERT, UPDATE, DELETE - używane do tworzenia, aktualizowania i usuwania wierszy
+- DML (manipulation) - INSERT, UPDATE, DELETE - używane do tworzenia, aktualizowania i usuwania wierszy. TRUNCATE: szybki DELETE bez logowania
 - DDL (definition) - CREATE, DROP, ALTER - zarządzanie strukturami jak tabele, indeksy
 - DCL (control) - GRANT, REVOKE - zarządzanie użytkownikami i ich dostępami
 - TCL (transaction control) - COMMIT, ROLLBACK - zarządzanie transakcjami
@@ -1144,7 +1156,7 @@ Są 3 rodzaje modeli analitycznych OLAP:
 
 - ROLAP - relacyjne: typowe dane relacyjne, jak SQL. Mniej miejsca, ale wolniejsze. Tabele faktów połączone z tabelami wymiarów przez klucze obce
 - MOLAP - wielowymiarowy: podział na kostki. Szybkie, ale zajmuje więcej miejsca. Zawiera atrybuty wymiarów i faktów na różnym poziomie agregacji
-- HOLAB - hybrydowe: łączy podejście relacyjne i wielowymiarowe. Agregacje w formacie wielowymiarowym, dane zarządzane relacyjnie. Wydajne i zajmuje mniej miejsca
+- HOLAP - hybrydowe: łączy podejście relacyjne i wielowymiarowe. Agregacje w formacie wielowymiarowym, dane zarządzane relacyjnie. Wydajne i zajmuje mniej miejsca
 
 Schematy logiczne ROLAP:
 
