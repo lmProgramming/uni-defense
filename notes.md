@@ -6,36 +6,43 @@ Układy cyfrowe to zbiór połączonych elementów elektronicznych, w którym in
 
 Do obliczeń można wykorzystać algebrę boole'a, z oczywistymi przykładami, jak
 
+```txt
 1 ∧ 0 = 0
 1 ∨ 0 = 0
+```
 
 Zasady:
 
+```txt
 A ∧ A = A
 A ∨ A = A
 A ∧ (A ∨ B) = A ∧ B
+```
 
 lub zapis
+
+```txt
 AB = A ∧ B
 A + B = A ∨ B
+```
 
 Przykładowe bramki:
 
-AND = A ∧ B
-OR = A ∨ B
-NOT = !A
-XOR = (A ∨ B) ∧ !(A ∧ B)
-NOR = !(A ∨ B) odwrotność OR
-NAND = !(A ∧ B) odwrotność AND
-XNOR = (A ∧ B) ∨ (!A ∧ !B)
+- AND = A ∧ B
+- OR = A ∨ B
+- NOT = !A
+- XOR = (A ∨ B) ∧ !(A ∧ B)
+- NOR = !(A ∨ B) odwrotność OR
+- NAND = !(A ∧ B) odwrotność AND
+- XNOR = (A ∧ B) ∨ (!A ∧ !B)
 
 Bramki Nxyz działają jak bramki xyz, ale z negacją wyjścia
 
-Przełączniki to urządzenia wejścia - elementy mechaniczne lub elektromechaniczne.
+Przełączniki to urządzenia wejścia - elementy mechaniczne lub elektromechaniczne.\
 Niektóre utrzymują swój stan (stabilne - np. przełącznik światła nie zmienia sam stanu), a inne, jak klawisze klawiatury (chwilowe), wracają do domyślnego stanu.
 
-Ze względu na inercyjność, rozróżniamy układy na kombinacyjne i sekwencyjne.
-W układach sekwencyjnych wyjścia w nich zależą nie tylko od wejść, ale też od wewnętrznego stanu.
+Ze względu na inercyjność, rozróżniamy układy na kombinacyjne i sekwencyjne.\
+W układach sekwencyjnych wyjścia w nich zależą nie tylko od wejść, ale też od wewnętrznego stanu.\
 A w kombinacyjnych, wyjścia zależą bezpośrednio od wejść (funkcja wejść na wyjścia).
 
 Przerzutniki - układy sekwencyjne, które są w stanie zapamiętać stan i przekazać go dalej. Czyli nie są prostą funkcją wejść na wyjścia, bo do takiej funkcji jako argument trzeba dołączyć ich aktualny stan. Czyli posiadają wewnętrzny stan, który może zmieniać się w czasie i wpływa na działanie takiego układu (wyjście będzie rózne dla tych samych wejść przy różnych stanach)
@@ -47,20 +54,23 @@ Bardzo prosty i asynchroniczny (czyli nie wymaga obecności zegara)\
 S ustawia stan układu (Q) na wysoki dla S = 1\
 R ustawia stan układu na niski dla R = 1\
 Dla S i R = 0 stan pozostaje taki sam, czyli Q[n] = Q[n-1]\
-Dla S i R = 1 stan nie jest zdefiniowany (może być losowy przez sprzeczność logiczną układu)
-Przerzutnik JK flip flop to prawie przerzutnik SR, różni się tym, że dla J i K = 1 => Q = !Q
+Dla S i R = 1 stan nie jest zdefiniowany (może być losowy przez sprzeczność logiczną układu). Taki stan nazywa się stanem zabronionym\
+Przerzutnik JK flip flop zachowuje się jak RS, różni się tym, że dla J i K = 1 => Q = !Q
 
-Przerzutniki D (Delay) flip flop i T (Toggle) flip flop - podstawowe przerzutniki synchroniczne. Wymagają sygnału zegara do ustawiania stanu. Dzięki temu ograniczone są zakłócenia ze strony danych wejściowych (debouncing)
-Delay: ustawia Q=D, gdy CLK ma stan opadający lub narastający. Korzysta wewnętrznie z SR flip flop
-Toggle: ustawia Q=!Q, gdy T=1 i CLK ma stan opadający lub narastający
+Przerzutniki D (Delay) flip flop i T (Toggle) flip flop - podstawowe przerzutniki synchroniczne. Wymagają sygnału zegara do ustawiania stanu. Dzięki temu ograniczone są zakłócenia ze strony danych wejściowych (debouncing)\
+
+- Delay: ustawia Q=D, gdy CLK ma stan opadający lub narastający. Korzysta wewnętrznie z SR flip flop
+- Toggle: ustawia Q=!Q, gdy T=1 i CLK ma stan opadający lub narastający
 
 Inne układy sekwencyjne to na przykład:
-Licznik, który liczy liczbę zmian sygnału wejściowego
-Rejestr, który przechowuje wartość bitu
+
+- Licznik, który liczy liczbę zmian sygnału wejściowego
+- Rejestr, który przechowuje wartość bitu
 
 Przykładami układów kombinacyjnych są:
-Komparator, który zwraca, który z sygnałów jest większy, czy też są równe (taki if)
-Multiplekser, który przekazuje jedno z wejść na wyjście w zależności od wejścia sterującego (taki switch)
+
+- Komparator, który zwraca, który z sygnałów jest większy, czy też są równe (taki if)
+- Multiplekser, który przekazuje jedno z wejść na wyjście w zależności od wejścia sterującego (taki switch)
 
 Hazard to zjawisko, gdzie wynik układu może być chwilowo niepoprawny przez nienatychmiastową naturę prądu. Można walczyć z tym zjawiskiem wykorzystując zegar (układy synchroniczne) lub przez wprowadzenie redundancji elementów.
 
@@ -100,13 +110,13 @@ wartość dziesiętna to liczba jakby postawić a jako cyfrę najbardziej znacz�
 Dodatkowo, jeśli jakieś wartości są niepewne, to funkcja jest niezupełna i też możne te wartości podać
 ![alt text](imgs/2/zbiory_wartosci.png)
 
-Tablice Karnaugh można wykorzystać do uproszczenia, czyli minimalizacji funkcji boolowskich. Najlepiej działa, gdy liczba wejść jest niewielka, więc zacznę od przypadku cztero argumentowego. Gdy rozpiszemy tabelę prawdy dla cztero argumentowej funkcji z zachowaniem kodu grey'a (czyli kolumny i wiersze różnią się od sąsiadów wartością tylko 1 argumentu - bez tego te prostokąty byłyby bez sensu), to mamy te 0 i 1. Typowo kolumny to AB, a wiersze CD, bo można grupować w takiej tablicy argumenty w takie ciągi. Zaczynamy od narysowania największego prostokąta/ów, którego każdy bok jest potęgą 2 (1, 2, 4...), i wszystkie komórki wewnątrz są 1 (lub X dla niezdefiniowanych). Każdy krok algorytmu to wzięcie aktualnego N (pole tego kwadratu), znajdowanie kwadratów o takim polu które mają 1 lub X tylko w sobie. Potem dzielimy N przez 2 i ciągle robimy to samo, aż wszystkie 1 będą w prostokącie/prostokątach (mogą być naraz w dwóch, jeśli to optymalne). No i wynik to na logikę można zauważyć, że w takich prostokątach 1/2... argumenty się nie zmieniają i przedstawić funkcję np. jako ```Y = B*!C*D + A*B*!D```. Na logikę jak jest 1 w kwadracie gdzie A=0 i C=1 no to (!A*C). Prostokąty mogą przechodzić przez "ściany" tabeli na drugą stronę.
-Alternatywnie można zrobić to samo, ale szukać 0 to ```Y = !(B*D) + !(!A*CD)```
+Tablice Karnaugh można wykorzystać do uproszczenia, czyli minimalizacji funkcji boolowskich. Najlepiej działa, gdy liczba wejść jest niewielka, więc zacznę od przypadku cztero argumentowego. Gdy rozpiszemy tabelę prawdy dla cztero argumentowej funkcji z zachowaniem kodu grey'a (czyli kolumny i wiersze różnią się od sąsiadów wartością tylko 1 argumentu - bez tego te prostokąty byłyby bez sensu), to mamy te 0 i 1. Typowo kolumny to AB, a wiersze CD, bo można grupować w takiej tablicy argumenty w takie ciągi. Zaczynamy od narysowania największego prostokąta/ów, którego każdy bok jest potęgą 2 (1, 2, 4...), i wszystkie komórki wewnątrz są 1 (lub X dla niezdefiniowanych). Każdy krok algorytmu to wzięcie aktualnego N (pole tego kwadratu), znajdowanie kwadratów o takim polu które mają 1 lub X tylko w sobie. Potem dzielimy N przez 2 i ciągle robimy to samo, aż wszystkie 1 będą w prostokącie/prostokątach (mogą być naraz w dwóch, jeśli to optymalne). No i wynik to na logikę można zauważyć, że w takich prostokątach 1/2... argumenty się nie zmieniają i przedstawić funkcję np. jako ```Y = B*!C*D + A*B*!D```. Na logikę jak jest 1 w kwadracie gdzie A=0 i C=1 no to (!A*C). Prostokąty mogą przechodzić przez "ściany" tabeli na drugą stronę.\
+Alternatywnie można zrobić to samo, ale szukać 0 to ```Y = !(B*D) + !(!A*CD)```\
 Tablice Karnaugh do max 4-6 zmiennych. Dla więcej niż 4 zmiennych, trzeba brać pod uwagę osie symetrii.
 
 ## 3. Programowanie strukturalne - zasady. Przegląd instrukcji strukturalnych
 
-Programowanie strukturalne to podstawa nowoczesnego programowania. Jej zasady pozwalają pisać kod, który ma jasny przepływ logiczny.
+Programowanie strukturalne to podstawa nowoczesnego programowania. Jej zasady pozwalają pisać kod, który ma jasny przepływ logiczny.\
 Liniowy przepływ najważniejszy, czyli ogólnie z góry do doły.
 
 Warto wspomnieć, że programowanie strukturalne jest podparadygmatem programowania imperatywnego. Często przedstawia się je jako przekazanie instrukcji komputerowi, co ma zrobić, w kontrze do programowania deklaratywnego, gdzie instrukcja dotyczy tego, co chcemy osiągnąć. Czyli programowanie imperatywne to po prostu ciąg instrukcji, które ma wykonać komputer i zmienia jego stan.
@@ -162,6 +172,7 @@ Podstawowe pojęcia:
 - Klasa abstrakcyjna: klasa oznaczona keywordem ```abstract```. Pewnie posiada metody abstrakcyjne z samą sygnaturą metody (nazwa, argumenty, return value). Nie można bezpośrednio instancjonować, dopiero nieabstrakcyjne klasy dziedziczące mogą.
 - Przesłanianie metody: nadpisanie działania metody w klasie dziedziczącej. Często wykorzystuje się np. ```base().TaMetoda();```, ale nie trzeba
 - Przeciążanie metody: zdefiniowanie metody parę razy w klasie, ale każda z różnymi argumentami. Przydatne, gdy klasa akceptuje różne metody wywołania. Częstą praktyką jest to, że wszystkie te metody zwracają wynik z jednej, głównej, wybranej, która przyjmuje argumenty w dogodnej postaci. Np. w Unity instancja obiektu w scenie może mieć pozycję, rotację, rodzica... różnego rodzaju typ layera... każda metoda przekazuje argumenty jakiejś jednej.
+- Polimorfizm parametryczny: template/generics np. ```List<T>```
 - Polimorfizm: jak kot dziedziczy po zwierzęciu to można traktować go tak i tak, czyli wsadzić do listy zwierząt i traktować jak zwierzę, bez zwracania uwagi na konkretny typ.
 - Modyfikator dostępu: metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
 - Hermetyzacja: modyfikatory dostępu, interfejsy przydają się do implementacji hermetyzacji. Chodzi o to, aby dla innych klas najważniejszy był głównie wynik którego potrzebują od klasy, a nie wewnętrzna implementacja. Czyli klasa powinna udostępniać minimum metod i publicznych pól, aby inne klasy musiały w kontrolowany sposób ją mutować / uzyskiwać z niej wynik.
@@ -172,13 +183,13 @@ Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie
 
 Podstawowe operacje na zbiorach:
 
-Suma zbiorów A + B czyli zbiór do którego należą wszystkie elementy w zbiorze A i w zbiorze B
-Różnica zbiorów A - B czyli wszystkie elementy zbioru A, poza tymi, które są w zbiorze B (jest też różnica symetryczna taki xor)
-Iloczyn A i B czyli wszystkie elementy będące naraz w zbiorze A i B
-Dopełnienie A czyli wszystkie elementy, które są poza A w jakimś zbiorze dostępnych wartości U (czyli U - A) (U to zbiór wszystkich możliwych wartości)
-Iloczyn kartezjański A x B czyli wszystkie możliwe pary każdy element a R b zebrane w pary uporządkowane.
-Pary uporządkowane to takie, że jeśli (a,b) = (c,d), to a=c i b=d
-Przynależność A e B gdy każdy element A znajduje się również w zbiorze B
+- Suma zbiorów A + B czyli zbiór do którego należą wszystkie elementy w zbiorze A i w zbiorze B
+- Różnica zbiorów A - B czyli wszystkie elementy zbioru A, poza tymi, które są w zbiorze B (jest też różnica symetryczna taki xor)
+- Iloczyn A i B czyli wszystkie elementy będące naraz w zbiorze A i B
+- Dopełnienie A czyli wszystkie elementy, które są poza A w jakimś zbiorze dostępnych wartości U (czyli U - A) (U to zbiór wszystkich możliwych wartości)
+- Iloczyn kartezjański A x B czyli wszystkie możliwe pary każdy element a R b zebrane w pary uporządkowane.
+- Pary uporządkowane to takie, że jeśli (a,b) = (c,d), to a=c i b=d
+- Przynależność A e B gdy każdy element A znajduje się również w zbiorze B
 
 Własności działań na zbiorach:
 Operacje sumy, różnicy są przemienne
@@ -193,17 +204,17 @@ A \ B = A * B`
 (A + B)` = A` * B`
 ```
 
-Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.
-Funkcje można składać, np h(x) = f(g(x)) = (f o g)(x)
+Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.\
+Funkcje można składać, np h(x) = f(g(x)) = (f o g)(x)\
 Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja\
 
-Relacja to podzbiór iloczynu kartezjańskiego
+Relacja to podzbiór iloczynu kartezjańskiego\
 Relacje mogą mieć wiele własności
 
 - Symetryczna - jeśli x R b, to b R x
 - Zwrotna - każde x jest x R x
 - Przechodnia - jeśli x R y i y R z, to x R z
-- Antysymetryczna - jeśli x R y i y R x, to x = y (takie wnioskowanie z symetrii)
+- Antysymetryczna - jeśli x R y i y R x => x = y (takie wnioskowanie z symetrii: 2 elementy mogą być ze sobą w relacji dwustronnej, tylko jeśli są takie same)
 - Spójna - wszystkie elementy są w parze z wszystkimi innymi (przynajmniej w jedną stronę)
 
 Relacja jest relacją równoważności, gdy jest zwrotna, symetryczna i przechodnia (taki graf trochę niekierunkowy)
@@ -221,55 +232,57 @@ ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b (a => b) ∧ (b => a)
 
 negacja to wiadomo
 
-zdania są równoważne, gdy mają równe wartości logiczne dla wszystkich możliwości np. a = a * a
+zdania są równoważne, gdy mają równe wartości logiczne dla wszystkich możliwości np. a = a * a\
 tautologia jest zawsze prawdziwa np. p + p` = 1
 
-Mamy kwantyfikatory A; V (dla każdego; istnieje)
-Czyli np. Ax; x w zbiorze R; x*x >= 0
-Vx; x w zbiorze R; x = 123.25
+Mamy kwantyfikatory A; V (dla każdego; istnieje)\
+Czyli np. Ax; x w zbiorze R; x*x >= 0\
+Vx; x w zbiorze R; x = 123.25\
 Oba to prawda
 
 ## 6. Deterministyczne automaty skończone - definicja, zastosowania
 
-Chodzi o takie fajne rzeczy jak regex czy lekser.
+Chodzi o takie fajne rzeczy jak regex czy lekser.\
 Jest to abstrakcyjna maszyna stanów o skończonej liczbie stanów, która na podstawie aktualnie czytanej litery i aktualnego stanu (na początku pusty) przechodzi do kolejnego stanu. Gdy znajdzie się w stanie oznaczonym jako akceptujący (końcowy), przerywa działanie, klasyfikując czytane słowo/tekst do języka regularnego, do rozpoznawania którego jest zbudowane.
 
 ![alt text](imgs/6/deterministyczny_automat_skonczony.png)
 
 Formalnie, automat skończony to uporządkowana piątka ```A = <K, T, M, K0, H>```
-K = niepusty skończony zbiór - stanów
-T = niepusty skończony zbiór - alfabet
-M = relacja przejścia K x T -> K
-K0 e K - stany początkowe
-H e K - stany końcowe/akceptowalne
 
-Lekser jest używany w kompilatorach i interpreterach.
+- K = niepusty skończony zbiór - stanów
+- T = niepusty skończony zbiór - alfabet
+- M = relacja przejścia K x T -> K
+- K0 e K - stany początkowe
+- H e K - stany końcowe/akceptowalne
+
+Lekser jest używany w kompilatorach i interpreterach.\
 Regex jest wykorzystywany przy wytwarzaniu oprogramowania głównie do walidacji inputu użytkownika, znalezienie odpowiedniego tekstu/tekstów, zamienienia fragmentów tekstu.
 
 Przykłady regexa:
-znalezienie wszystkich słów w tekście (litery między innymi znakami)
 
-```regex
-[a-zA-Z]+
-```
+- znalezienie wszystkich słów w tekście (litery między innymi znakami)
 
-znalezienie wszystkich słów zaczynającego się na "pies"
+  ```regex
+  [a-zA-Z]+
+  ```
 
-```regex
-pies[a-zA-Z]*
-```
+- znalezienie wszystkich słów zaczynającego się na "pies"
 
-znalezienie liczb o długości 5
+  ```regex
+  pies[a-zA-Z]*
+  ```
 
-```regex
-\d\d\d\d\d
-```
+- znalezienie liczb o długości 5
 
-walidacja maila lvl easy
+  ```regex
+  \d\d\d\d\d
+  ```
 
-```regex
-.+@.+\..+
-```
+- walidacja maila lvl easy
+
+  ```regex
+  .+@.+\..+
+  ```
 
 ## 7. Przykładowe architektury komputerów: von Neumana, Princeton, Harvard
 
@@ -282,11 +295,11 @@ Ze względu na liczbę strumieni danych a instrukcji powstała Taksonomia Flynna
 - MISD - dąży do zmniejszenia marginesu błędu przez redundancję obliczeń (bardzo rzadkie, misje kosmiczne)
 - MIMD - wiele programów ma różne dane (komputery osobiste)
 
-von Neumann / Princeton
-Von Neumann i Princeton to dwie różne nazwy na tą samą architekturę komputerów. Charakteryzuje się przechowywaniem instrukcji razem z danymi. Instrukcje mogą łatwo modyfikować inne instrukcje. Problem, jaki występuje, to von Neumann/Princeton bottleneck, czyli ograniczenie wykonywania instrukcji przez czytanie danych (bottleneck). System powinien mieć skończoną i kompletną listę instrukcji.
+Podział na architektury:
 
-Harvardzka
-Rozdzielenie instrukcji od danych do osobnych szyn. Łagodzi to wcześniej opisany problem bottleneck.
+- Von Neumann i Princeton to dwie różne nazwy na tą samą architekturę komputerów. Charakteryzuje się przechowywaniem instrukcji razem z danymi. Instrukcje mogą łatwo modyfikować inne instrukcje. Problem, jaki występuje, to von Neumann/Princeton bottleneck, czyli ograniczenie wykonywania instrukcji przez czytanie danych (bottleneck). System powinien mieć skończoną i kompletną listę instrukcji.
+
+- Harvardzka: Rozdzielenie instrukcji od danych do osobnych szyn. Łagodzi to wcześniej opisany problem bottleneck.
 
 Większość komputerów i GPU korzysta ze zmodyfikowanej architektury Harvardzkiej, optymalizującej działanie. Logicznie jest to von Neumann, ale fizycznie ścieżki i cache są rozdzielone dla instrukcji i danych.
 
@@ -301,9 +314,10 @@ RISC (Reduced Instruction Set Computing) starał się zoptymalizować CISC, po z
 RISC są szybkie, ale trudniejsze bez abstrakcji CISC dla programisty. Dlatego niektóre procesory (x86) logicznie to CISC, a tak naprawdę mają wewnątrz jednostkę RISC. ARM to rodzaj procesorów, które są RISC, i są znane z małego poboru prądu i szybkości.
 
 Dodatkowe porównanie:
-RISC: 1 zegar i ograniczony tryb adresowania. CISC wykorzystuje wielodostępne tryby adresowania.
-RISC: ustalony format instrukcji 32 bity. CISC: zmienne zakresy od 16-64 bitów na instrukcję.
-RISC: sterowana na stałe bez konieczności pamięci sterującej. CISC kiedyś wymagało pamięci kontrolnej (ROM), ale teraz można tak jak RISC
+
+- RISC: 1 zegar i ograniczony tryb adresowania. CISC wykorzystuje wielodostępne tryby adresowania.
+- RISC: ustalony format instrukcji 32 bity. CISC: zmienne zakresy od 16-64 bitów na instrukcję.
+- RISC: sterowana na stałe bez konieczności pamięci sterującej. CISC kiedyś wymagało pamięci kontrolnej (ROM), ale teraz można tak jak RISC
 
 ## 9 Grafy. Drzewa rozpinające. Cykle Eulera i Hamiltona. Spójność. Algorytmy przechodzenia po grafie
 
@@ -321,20 +335,22 @@ Typy grafów:
 - Hamiltonowski: ma cykl Hamiltona
 - regularne: każdy wierzchołek tego samego stopnia, czyli równa ilość krawędzi z każdego wierzchołka
 
-Droga: lista krawędzi od wierzchołka początkowego do końcowego
-Ścieżka: droga co nie powtarza wierzchołków
-Cykl (droga zamknięta): A -> B -> A
-Pętla: A -> A
-Drzewo: graf spójny acykliczny (czyli nie ma żadnego cyklu)
+Ważne pojęcia:
 
-Drzewo rozpinające: podgraf grafu zawierający wszystkie jego wierzchołki, ale pomijając krawędzie tworzące cykle. Dzięki temu jest niecykliczny i jest spójny. Dany graf może mieć wiele drzew rozpinających
+- Droga: lista krawędzi od wierzchołka początkowego do końcowego
+- Ścieżka: droga co nie powtarza wierzchołków
+- Cykl (droga zamknięta): A -> B -> A
+- Pętla: A -> A
+- Drzewo: graf spójny acykliczny (czyli nie ma żadnego cyklu)
+- Drzewo rozpinające: podgraf grafu zawierający wszystkie jego wierzchołki, ale pomijając krawędzie tworzące cykle. Dzięki temu jest niecykliczny i jest spójny. Dany graf może mieć wiele drzew rozpinających
 
 W drzewach binarnych (są drzewami rozpinającymi) krawędzie mają najwyżej (i zazwyczaj dokładnie) dwójkę dzieci. Są one oznaczone jako lewe i prawe. Krawędzie, które nie mają dzieci, to liście (leaf). Korzeniem jest główny rodzic.
 
-Cykle Eulera i Hamiltona
-Cykl Eulera: można stworzyć drogę, rozpoczynającą się w jakimś wierzchołku, i przejść przez wszystkie krawędzie dokładnie raz
-Cykl Hamiltona: można stworzyć drogę, rozpoczynającą się w jakimś wierzchołku, przechodzącą przez wszystkie wierzchołki raz, prócz początkowego, w którym trzeba skończyć.
-Ścieżka Hamiltona:
+Cykle Eulera i Hamiltona:
+
+- Cykl Eulera: można stworzyć drogę, rozpoczynającą i kończąca się w jakimś wierzchołku, i przejść przez wszystkie krawędzie dokładnie raz
+- Ścieżka Hamiltona: ścieżka, która przechodzi przez każdy wierzchołek dokładnie raz
+- Cykl Hamiltona: ścieżka Hamiltona, ale odwiedza początkowy dodatkowo na końcu
 
 Spójność: chodzi o to, że z każdego wierzchołka można by się dostać do każdego innego.
 
@@ -371,7 +387,7 @@ Algorytmy sortowania: często występuje potrzeba uporządkowania obiektów wed�
 Przedstawię algorytmy sortowania, posortowane malejąco po ich własności - średniej złożoności czasowej.
 
 - Bubble sort - przechodzi od lewej do prawej, sprawdzając po drodze, czy sąsiedzi są w dobrej kolejności. Jeśli nie, zamienia ich kolejność. Bubble, bo jeśli duża wartość jest na początku, to bąbelkuje do góry.\
-Czas: O(n^2). Pamięć: O(1)
+Czas: O(n^2) (optymistycznie O(n)). Pamięć: O(1)
 - Insertion sort - jak karty w ręce. Bierzemy kartę do posortowanej listy, potem kolejno bierzemy karty, umieszczającym je w odpowiednie miejsce, między jakieś karty.\
 Czas: O(n^2). Pamięć: O(1)
 - Selection sort: za każdym razem szukamy minimum/maksimum i umieszczamy na końcu/początku posortowanej listy.\
@@ -380,7 +396,7 @@ Czas: O(n^2). Pamięć: O(1)
 Czas: średnia O(n*log n). Pesymistyczna: O(n^2). Pamięć: O(log n), pesymistycznie O(n)
 - Heap sort: użycie kolejki priorytetowej przy wykorzystaniu binarnego kopca zupełnego (które mają dostęp łatwy do min i max, szybkie wstawianie i usuwanie elementów - logarytmiczny czas). Najpierw się kopcujesz, potem właściwe sortowanie.\
 Czas: O(n*log n). Pamięć: O(n) lub O(1) dla mądrej implementacji
-- Merge sort: Ciągle dzielimy ciąg na 2 równe części, aż mamy tylko 1 element (posortowany jest), a potem ciągle w górę i możemy scalać, bo łatwo scalić 2 posortowane ciągi w 1.
+- Merge sort: Ciągle dzielimy ciąg na 2 równe części, aż mamy tylko 1 element (posortowany jest), a potem ciągle w górę i możemy scalać, bo łatwo scalić 2 posortowane ciągi w 1.\
 Czas: O(n*log n). Pamięć: O(n)
 - Counting sort: bardzo fajny algorytm. Jeśli znamy zakres liczb, to możemy po prostu zrobić listę prewypełnioną zerami o długości max-min (= k). Potem przechodzimy przez każde do posortowania i robimy ```sorted[num]++;```. Overkill dla paru liczb, działa na całkowitych liczbach tylko\
 Czas: O(n + k). Pamięć: O(n + k)
@@ -416,9 +432,10 @@ Typowe rzędy złożoności (przykłady czasu):
 Przyjmuje się, że akceptowalna jest <= wielomianowa. Niektóre problemy są jednak prawdopodobnie zbyt skomplikowane, aby opracować takie algorytmy, np. optymalne rozwiązanie travelling salesman. Wtedy innym rozwiązaniem może być szukanie nienajlepszego, ale akceptowalnego rozwiązania (mrówki)
 
 Wykorzystuje się 3 notacje:
-Notacja O: najlepsze górne ograniczenie, czyli jak O(n^2), to algorytm też jest być O(n^3), ale Big O = O(n^2)
-Notacja Omega: asymptotyczne dolne ograniczenie złożoności, czyli lepiej niż O(n) nie będzie, ale może być O(n^2)
-Notacja Theta: ścisłe ograniczenie. Może być tylko, kiedy Omega=O. Wtedy Theta=Omega=O.
+
+- Notacja O: najlepsze górne ograniczenie, czyli jak O(n^2), to algorytm też jest być O(n^3), ale Big O = O(n^2)
+- Notacja Omega: asymptotyczne dolne ograniczenie złożoności, czyli lepiej niż O(n) nie będzie, ale może być O(n^2)
+- Notacja Theta: ścisłe ograniczenie. Może być tylko, kiedy Omega=O. Wtedy Theta=Omega=O.
 
 ## 12. Warstwowa struktura systemu operacyjnego, pojęcie jądra systemu
 
@@ -440,7 +457,8 @@ Warstwy systemu operacyjnego:
 - Jądro systemu operacyjnego (później opisane)
 - Powłoka systemowa: program umożliwiający użytkownikowi komunikację z systemem operacyjnym, np. w formie tekstowej (bash, powershell) lub graficznej (gnome, cinammon). Aplikacje komunikują się z jądrem poprzez API i wywołania systemowe.
 
-Jądro systemu realizuje zadania systemu operacyjnego.
+Jądro systemu realizuje zadania systemu operacyjnego, czyli:
+
 Planista czasu procesora, przełącznik zadań, synchronizacja i komunikacja między zadaniami, obsługa przerwań i urządzeń, obsługa pamięci i jej ochrona.
 
 Są 3 główne architektury jądra:
@@ -471,12 +489,12 @@ Swoją drogą, chrome i edge korzystają z tego samego portu 443? Tak, bo tworz�
 
 ## 14. Protokoły warstwy łącza danych. Sieć Ethernet. Stos protokołów internetowych TCP/IP
 
-note dla mnie: Datagram (UDP) to jakby segment (TCP). Dlaczego nie używać adresu MAC zamiast IP? Bo IP jest hierarchiczne i z drugiego końca świata wiadomo, do kogo uderzać po kolei, a MAC to jak nazwa człowieka/adres domu bez miasta i ulicy
+note dla mnie: Datagram (UDP) to jakby segment (TCP). IP pakiet, Ethernet ramka. Dlaczego nie używać adresu MAC zamiast IP? Bo IP jest hierarchiczne i z drugiego końca świata wiadomo, do kogo uderzać po kolei, a MAC to jak nazwa człowieka/adres domu bez miasta i ulicy
 
 Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request indentyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
 
-Ethernet to rodzina technologii działającej na warstwie łącza danych oraz fizycznej z modelu OSI. Jest to standard dla sieci lokalnej LAN. Ethernet wykorzystuje i opisuje ramki, schemat okablowania, złącza jak końcówki RJ45 w warstwie fizycznej OSI, aby przekazać dane, np. od routera do komputera.
-Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eliminujący kolizje), choć logicznie działa jak magistrala (broadcast)
+Ethernet to rodzina technologii działającej na warstwie łącza danych oraz fizycznej z modelu OSI. Jest to standard dla sieci lokalnej LAN. Ethernet wykorzystuje i opisuje ramki, schemat okablowania, złącza jak końcówki RJ45 w warstwie fizycznej OSI, aby przekazać dane, np. od routera do komputera.\
+Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eliminujący kolizje), choć logicznie działa jak magistrala (broadcast)\
 Ethernet 2 (teraz najczęściej używany) korzysta z ramki z adresem MAC, określającej fizyczny adres urządzenia, typ transmisji i CRC do detekcji błędów.
 
 TCP/IP to model oparty na OSI, upraszczający go do 4 warstw. Stos protokołów internetowych TCP/IP składa się z 4 warstw
@@ -591,10 +609,11 @@ Aby wybrać odpowiedni paradygmat, należy wziąć pod uwagę następujące czyn
 
 ## 19. Programowanie funkcyjne a programowanie imperatywne
 
-Paradygmaty w programowaniu dzielą się na 2 główne paradygmaty i ich podparadygmaty.
+Paradygmaty w programowaniu dzielą się na 2 główne paradygmaty i ich podparadygmaty.\
 Jednym z tych 2 paradygmatów jest paradygmat deklaratywny, a drugim imperatywny.
-Programowanie funkcyjne wywodzi się z paradygmatu deklaratywnego, więc jest na innym "poziomie" niż imperatywne.
-Paradygmat imperatywny dzieli się na podparadygmaty, jak strukturalny (bloki kodu, bez goto), aż po proceduralne (podział na procedury) i obiektowe.
+
+- Programowanie funkcyjne wywodzi się z paradygmatu deklaratywnego, więc jest na innym "poziomie" niż imperatywne.\
+- Paradygmat imperatywny dzieli się na podparadygmaty, jak strukturalny (bloki kodu, bez goto), aż po proceduralne (podział na procedury) i obiektowe.
 
 Paradygmat deklaratywny skupia się na rezultacie - programista podaje to, czego oczekuje jako wynik i to komputer tworzy listę kroków, które wykona. Programowanie imperatywne skupia się na krokach, jest to więc lista instrukcji, jakie programista podaje komputerowi.
 
@@ -763,7 +782,7 @@ Modele baz danych:
   - Rodzina kolumn: przechowuje dane po kolumnach zamiast po wierszach, przydatne, gdy np. analiza wykorzystuje tylko część kolumn, albo jak struktura jest rozproszona i szerokie wiersze
 - Relacyjny
 
-Relacyjna baza danych to fundament nowoczesnych baz danych, wykorzystując język SQL w jego różnych wariantach, aby większość produktów IT działała.
+Relacyjna baza danych to fundament nowoczesnych baz danych, wykorzystując język SQL w jego różnych wariantach, aby większość produktów IT działała.\
 Opiera się na relacjach i związkach między nimi. Relacja to jest tabela, czyli struktura zawierająca atrybuty (kolumny) oraz wiersze (krotki). Nazwa atrybutu w skali tabeli musi być unikalna i mieć ustalony typ danych. Kolejność atrybutów jest bez znaczenia. Każdy wiersz opisuje wszystkie atrybuty w relacji. Superklucz to zbiór atrybutów identyfikujących wiersz, klucz kandydujący to jeden z superkluczy, klucz główny to zazwyczaj 1-2 kolumny identyfikujące wiersz powstaje z klucza kandydującego. Związki między tabelami polegają na kolumnach odwołujących się do kluczy głównych innych tabel (klucze obce).
 
 Stosuje się 3 rózne typy związków:
@@ -773,11 +792,12 @@ Stosuje się 3 rózne typy związków:
 - Wiele do wielu (N-N) - wiele tabel może być połączone do wielu tabel. Realizowane przez użycie tabeli asocjacyjnej z dwoma kolumnami - klucze A i B. Typowy przykład to studenci i kursy, czyli students: student_id; courses: course_id, student_course: student_id, course_id
 
 Postać normalna służy do tego, aby przekształcić źle zorganizowaną bazę danych z redundancjami/anomaliami w prostą w utrzymaniu i usunięciu redundancji. Aby być w x NF, trzeba być w x-1 NF
+
 Postacie normalne:
 
 1. Pierwsza postać normalna wymaga użycia klucza głównego, dane atomowe, brak atrybutów wielowartościowych
-2. Druga postać normalna: wydzielenie kolumn do tabel, które zależne są w całości tylko od części klucza złożonego, na przykład źle orders: product_id, buyer_id, x buyer_name, x product_price
-3. Trzecia postać normalna: wydzielić każdą kolumnę zależną od innej kolumny niż klucz do osobnych tabel (przechodnia zależność), np. źle employees: employee_id, department_id, department_name
+2. Druga postać normalna: wydzielenie kolumn do tabel, które zależne są w całości tylko od części klucza złożonego, na przykład źle orders: product_id, buyer_id, x buyer_name, x product_price. Jeśli klucz to tylko jedna kolumna, to 1 NF = 2 NF.
+3. Trzecia postać normalna: wydzielić każdą kolumnę zależną od innej kolumny niż klucz do osobnych tabel (przechodnia zależność), np. źle employees: employee_id, department_id, department_name. Brak zależności przechodnich.
 
 Jest więcej postaci normalnych (4 NF, 5 NF), ale deweloperzy zazwyczaj ograniczają się do trzech. Trzeba też pamiętać, że niekiedy warto niestety zdenormalizować krytyczne dla wydajności tabele, ale takie wypadki trzeba dokładnie badać. Ale często przyspiesza to przez lepsze indeksy, mniej danych do przetworzenia
 
@@ -977,7 +997,7 @@ Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Ja
 
 Proces a wątek: proces to program z własną przestrzenią adresową. Wątki działają w ramach jednego procesu, mogą współużywać pamięć i może być ich wiele dla procesu. Stworzenie wątku dla komputera ma mniejszy narzut niż procesu, ale oba mają różne zastosowania. Dzięki wątkom i procesom możemy osiągnąć szybszą i bardziej responsywną aplikację, przez zrównoleglenie obliczeń, czytania pliku czy odpowiedzi na requesty HTTP.
 
-GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O.
+GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O.\
 Dlatego w Python wątki przydają się do operacji I/O (dysk, sieć, baza danych), a procesy do zadań CPU-intensive.
 
 Główne zagrożenia
@@ -988,9 +1008,9 @@ Główne zagrożenia
 
 Do programowania równoległego w Pythonie wykorzystuje się 3 biblioteki: threading, asyncio i multiprocessing
 
-Threading / concurrent.futures.ThreadPoolExecutor: wątki. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np.
-Asyncio: wielozadaniowość kooperacyjna. Czyli chodzi o kontrolowanie przepływu sterowania programu tak, aby nie zatrzymywał się tylko na wykonywaniu pewnego zadania, a ignorował np. wybranie opcji przez użytkownika. Czyli jeden wątek, pętla zdarzeń, zadania same oddają sterowanie (bo czekają na coś). Lżejsze niż wątki/procesy, ale nie wykonuje kodu równolegle
-Multiprocessing / concurrent.futures.ProcesPoolExecutor: procesy. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np. Aby przekazać dane między procesami, używa się Queue/Pipe, serializujących dane
+- Threading / concurrent.futures.ThreadPoolExecutor: wątki. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np.
+- Asyncio: wielozadaniowość kooperacyjna. Czyli chodzi o kontrolowanie przepływu sterowania programu tak, aby nie zatrzymywał się tylko na wykonywaniu pewnego zadania, a ignorował np. wybranie opcji przez użytkownika. Czyli jeden wątek, pętla zdarzeń, zadania same oddają sterowanie (bo czekają na coś). Lżejsze niż wątki/procesy, ale nie wykonuje kodu równolegle
+- Multiprocessing / concurrent.futures.ProcesPoolExecutor: procesy. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np. Aby przekazać dane między procesami, używa się Queue/Pipe, serializujących dane
 
 Aby uniknąć wyścigów, stosuje się:
 
@@ -1047,6 +1067,7 @@ Przykłady architektoniczne:
       - MVC pasywny: model zmienia się tylko pod wpływem działań użytkownika
       - MVC aktywny: model sam może się zmienić (powiadamia kontroler o tym, Obserwator)
     - MVP - prezenter zamiast controllera - view dostaje model tylko od prezentera
+    - MVVM: data binding view z viewmodel. View pokazuje dane, zmiana danych w ViewModel update'uje model, który update'uje ViewModel. ViewModel update'uje View.
     - Model - view - viewmodel - controller: z Ten Square Games, używany w Unity/GameDev. Model przychodzi z bazy danych i jest readonly. Controller ma model, i zawsze nasłuchuje na jego zmiany. Controller wystawia eventy, dzięki czemu jak user coś kliknie w view, to controller reaguje. View zarządza renderowaniem na podstawie viewmodelu, który dostaje od controllera. Viewmodel to model przetłumaczony na tylko dane potrzebne view, w odpowiednim formacie.
 
 Przykłady projektowe:
@@ -1073,8 +1094,8 @@ Ochrona danych opiera się na 3 filarach - triada CIA (Confidentiality, Integrit
 - Integralność: brak możliwości modyfikacji danych bez odpowiednich uprawnień. Zapewniane przez funkcje skrótu, sumy kontrolne, MAC
 - Dostępność: system działa i jest dostępny dla użytkowników, kiedy tego potrzebują. Zapewniamy redundancją, monitoringiem oraz skalowalnością. Zagrożenie: DDoS, awarie sprzętowe
 
-Jedną z podstaw ochrony danych jest rodzina rozwiązań MAC. Mając wiadomość i klucz, możemy porównać sygnaturę (skrót) wiadomości wygenerowaną przez klienta z obliczonym skrót dla wiadomości w surowej formie z kluczem, aby być pewnym, że korzystamy z tego samego klucza oraz że wiadomość nie została zmodyfikowana.
-Implementacją MAC jest HMAC, korzystający z hash (funkcji skrótu). Popularnym algorytmem jest np. SHA-256. Nie można użyć bezpośrednio na samej wiadomości, trzeba użyć na połączeniu wiadomości i klucza. A dokładniej przez pewne matematyczne własności, przez przeprowadzenie na nich paru operacji, w tym XOR. Z HMAC korzysta np. JWT, służący do autentykacji użytkowników w aplikacjach mobilnych.
+Jedną z podstaw ochrony danych jest rodzina rozwiązań MAC. Mając wiadomość i klucz, możemy porównać sygnaturę (skrót) wiadomości wygenerowaną przez klienta z obliczonym skrót dla wiadomości w surowej formie z kluczem, aby być pewnym, że korzystamy z tego samego klucza oraz że wiadomość nie została zmodyfikowana.\
+Implementacją MAC jest HMAC, korzystający z hash (funkcji skrótu). Popularnym algorytmem jest np. SHA-256. Nie można użyć bezpośrednio na samej wiadomości, trzeba użyć na połączeniu wiadomości i klucza. A dokładniej przez pewne matematyczne własności, przez przeprowadzenie na nich paru operacji, w tym XOR. Z HMAC korzysta np. JWT, służący do autentykacji użytkowników w aplikacjach mobilnych.\
 Broni to przed aktywnym atakiem man in the middle, czyli nie problem braku łączności, a problem kogoś specjalnie zmieniającego komunikaty i liczącego skrót.
 
 Podstawowe pojęcia:
@@ -1091,6 +1112,7 @@ Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarza
 ## 34. Podstawowe algorytmy kryptograficzne
 
 Dzięki kryptografii jesteśmy w stanie przesyłać dane przez internet, gdzie na każdym kroku ktoś mógłby podsłuchiwać i sprawdzać wrażliwe dane (Man in the middle).
+
 Aby zapewnić bezpieczeństwo projektowi, nie należy stosować security przez obscurity, a używać silnych, sprawdzonych, open source algorytmów z poprawnymi kluczami. Trzeba pamiętać, że aplikacje są narażone na dekompilacje, a JavaScript w przeglądarce jest wolno dostępny i może być debugowany. Dodatkowo, każdy może spreparować dowolne zapytanie HTTP.
 
 Podział na kategorie:
@@ -1115,7 +1137,7 @@ Systemy danych dzielą się na transakcyjne (OLTP - online transaction processin
 
 - Analityczne dotyczą systemu danych zorientowanych na analizie danych historycznych. Zazwyczaj agregują dane z wielu źródeł, i oferują prosty sposób na złożoną analizę faktów w czasie i innych wymiarach. Składa się z danych historycznych (i technicznie może z bieżących), jest zazwyczaj aktualizowana rzadko, często w zautomatyzowany sposób ETL (Extract, Transform, Load). Dane są zorientowane tematycznie. Przechowywane są dane elementarne i obliczone (sumy, średnie). Bardzo złożone zapytania. Ilość danych jest ogromna
 
-Analityczne struktury danych dzielą dane na 2 osobne grupy: fakty i wymiary. Dla faktu mierzone są miary, które zawsze są numeryczne. Np. faktem może być sprzedać produktu, miarą liczba sprzedanych sztuk i zysk. Wymiary istnieją w relacji do faktów, np. sprzedaż wystąpiła w określonym kwartale danego roku (wymiar Czas), dla danego produktu (Produkt) w określonym państwie (Geografia) itd.
+Analityczne struktury danych dzielą dane na 2 osobne grupy: fakty i wymiary. Dla faktu mierzone są miary, które zawsze są numeryczne. Np. faktem może być sprzedać produktu, miarą liczba sprzedanych sztuk i zysk. Wymiary istnieją w relacji do faktów, np. sprzedaż wystąpiła w określonym kwartale danego roku (wymiar Czas), dla danego produktu (Produkt) w określonym państwie (Geografia) itd.\
 Analityczne struktury danych służą wyłącznie do analizy. Aby przyspieszyć proces, warto denormalizować tabele dla szybszych i prostszych zapytań.
 
 Są 3 rodzaje modeli analitycznych OLAP:
@@ -1130,7 +1152,7 @@ Schematy logiczne ROLAP:
 - Snowflake - normalizacja gwiazdy, czyli wymiary mają wymiary
 - Konstelacje - wiele tabel faktów, z własnymi i dzielonymi wymiarami
 
-Do przechowywania danych analitycznych służy hurtownia danych.
+Do przechowywania danych analitycznych służy hurtownia danych.\
 Hurtownia to tematycznie zorientowana, zintegrowana (wiele źródeł), chronologiczna i trwała kolekcja danych do wspomagania procesów podejmowania decyzji.
 
 Architektury hurtowni danych:
@@ -1169,7 +1191,7 @@ Reprezentacje wiedzy:
 - Ramy - struktury obiektowe (prototypy) posiadające sloty (atrybuty). Paradygmat obiektowy, szczegółowy opis systemów, wbudowana logika i wartości domyślne
 - Sieć semantyczna (graf - węzły i krawędzie). Np. węzeł ptak i skrzydła połączone krawędzią ma_część
 
-Dzięki temu, że silnik jest oddzielony od reguł, reguły można dowolnie modyfikować bez potrzeby rekompilacji programu
+Dzięki temu, że silnik jest oddzielony od reguł, reguły można dowolnie modyfikować bez potrzeby rekompilacji programu\
 Można wykorzystywać logikę rozmytą (fuzzy logic). Logika rozmyta to nie jest prawdopodobieństwo, a bardziej procent przynależności do pewnego zbioru. Np. 50% burzy może oznaczać zwykły deszcz. Dzięki temu mozna używać współczynników pewności zamiast tylko prawda/fałsz
 
 Systemy ekspertowe wykorzystuje się do zaumatyzowanego podejmowania decyzji i wsparcia podejmowania decyzji przez ludzi. Zależne są tylko od logicznych reguł, więc powinny być bardziej obiektywne (w praktyce zależy to oczywiście od postaci reguł).
@@ -1196,7 +1218,7 @@ Zadania planowania można wykonywać na dwa sposoby:
 - W przód: zaczynamy w stanie początkowym, i mutujemy go operacjami, aż dojdziemy do stanu końcowego
 - W tył: zaczynamy w stanie końcowym, i mutujemy go operacjami, aż dojdziemy do stanu początkowego. Niekiedy prostszy, gdyż opis świata w stanie początkowym może być skomplikowany, a cel zazwyczaj jest prosty - np. do piłki w bramce może doprowadzić tylko kopnięcie.
 
-Należy uważać na pętle (powrót do pewnego poprzedniego stanu), wykrywać i pomijać.
+Należy uważać na pętle (powrót do pewnego poprzedniego stanu), wykrywać i pomijać.\
 Innym problemem jest problem ramowy, czyli jak zaprezentować to, co nie zmienia się w trakcie akcji. W praktyce zakładamy, że wszystko, czego operacja jawnie nie zmienia, pozostaje takie samo.
 
 Dodatkowo, zazwyczaj występuje założenie zamkniętego świata - czyli wszystko, czego nie wiemy, jest uznawane za fałsz. To ważne założenie w STRIPS
