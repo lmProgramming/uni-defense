@@ -183,10 +183,10 @@ Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie
 
 SOLID:
 
-- single responsibility: funkcja, klasa ma zajmować się tylko jedną rzeczą
+- single responsibility: funkcja, klasa ma zajmować się tylko jedną rzeczą. Car nie zajmuje się przewidywaniem pogody
 - open/closed: otwarte na rozszerzenie, zamknięte na modyfikację. Car rozszerza Vehicle "rozszerzając" metodę accelerate
 - liskov substitution: typ obiektu można zmienić na wyższy przy dziedziczeniu i dalej działa (np. traktować Car jako Vehicle). Nie powinno się metod rodziców w dzieciach ustawiać jako throw new Exception. Np. ElectricVehicle: exception na shift() ```:(```
-- interface segregation: lepiej mieć więcej interfejsów niż mniej (tutaj podział samochodów na silniki spalinowe, elektryczne)
+- interface segregation: lepiej mieć więcej interfejsów niż mniej (tutaj podział samochodów na silniki spalinowe, elektryczne). ADT w C\#
 - dependency inversion: moduły high level nie powinny zależeć od low-level: powinny zależeć od abstrakcji (interfejsy), a abstrakcje nie zależeć od implementacji
 
 ## 5. Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów
@@ -351,7 +351,7 @@ Typy grafów:
 - spójne: z każdego wierzchołka można się dostać do każdego innego
 - niespójne: istnieją wierzchołki, między którymi nie da się wyznaczyć drogi
 - Eulerowskie: ma cykl Eulera. Warunek istnienia: każdy wierzchołek ma stopień parzysty
-- Hamiltonowski: ma cykl Hamiltona. Warunek istnienia: NP trudny. Problem komiwojażera
+- Hamiltonowski: ma cykl Hamiltona. Warunek istnienia: NP trudny. Problem komiwojażera, 100 miast = 100!
 - regularne: każdy wierzchołek tego samego stopnia, czyli równa ilość krawędzi z każdego wierzchołka
 
 Ważne pojęcia:
@@ -391,6 +391,8 @@ Niektóre starają się stworzyć minimalne drzewo rozpinające, czyli dla grafu
 Djikstra to algorytm zachłanny (BFS), mający szybko znaleźć połączenie dwóch wierzchołków o najmniejszej sumarycznej wadze. Działa tylko dla wag nieujemnych
 
 Travelling Salesman problem można wspomnieć (cykl hamiltona!), mrówczano-feromonowe rozwiązanie
+
+VRP to Vehicle Routing Problem - jak zaplanować trasy, aby obsłużyć wszystkich najniższym kosztem. Np. magazyn, klienci, pojazdy o ograniczonej pojemności
 
 ## 10. Pojęcie algorytmu. Algorytmy sortowania. Algorytmy wyszukiwania
 
@@ -533,6 +535,7 @@ Warstwa aplikacji to najwyższa warstwa w modelu OSI czy TCP/IP. Jest to jedyna 
 Stosuje się tu wiele protokołów, do przeglądania internetu, maili, zdalnego terminala, zdalnego systemu plików. Oto część najważniejszych:
 
 - HTTP (port 80) - służy do przesyłania hipertekstu (WWW, API). Protokół bezstanowy
+  - RESTful: bezstanowość, zasoby pod URL, używanie odpowiednich metod HTTP (GET, POST, DELETE, PUT...)
 - HTTPS (port 443) - szyfrowana przez TLS wersja HTTP. Ukrywa url, body, headery requestów, nie szyfrując tylko domeny na początku
 - DNS (port 53) - tłumaczy znane ludziom adresy stron np. onet.pl na adres ip tej strony (głównie UDP)
 - POP3 - do odbioru maili
@@ -573,6 +576,7 @@ Na bazie labów z TEP:
 - Jeśli ten sam blok instrukcji powtarza się, należy go wydzielić do funkcji lub metody. Nawet jeśli się nie powtarza, ale jest to osobna funkcja od reszty, należy to wydzielić i dać deskryptywną nazwę. Moją zasadą jest to, że prawie każdy komentarz można zastąpić wydzieleniem do funkcji czy metody.
 - O kod i architekturę należy dbać, a dodanie i utrzymywanie testów sprawi, że refactoring jest znacznie mniej bolesny (często jest się mądrym po pełnej implementacji, i wtedy można wprowadzić abstrakcje)
 - Usuwać nieużywane zmienne, klasy, metody - z kontrolą wersji nic nie zginie
+- Używać zautomatyzowanych testów na różnych poziomach. Testy jednostkowe do funkcji, integracyjne do połączeń między modułami, funkcjonalne do przypadków użycia, E2E dla skomplikowanych przypadków użycia i pewności, że aplikacja działa po paru akcjach. Każdy test niższego poziomu jest wielokrotnie szybszy, dlatego np. E2E należy ograniczyć do minimum (ale warto mieć choć parę).
 
 ## 17. Zarządzanie pamięcią. Typowe problemy. Wskaźniki
 
@@ -710,7 +714,7 @@ Numeryczne metody optymalizacji nie produkują zazwyczaj dokładnego wyniku, ale
 
 - Metoda podziału odcinka: dla funkcji jednoargumentowych, odrzucamy iteracyjnie przedziały, gdzie funkcja wydaje się rosnąć
 - Gradientowe: obliczamy pochodną, i podążamy w jej kierunku (dla maksimum, dla szukania minimum w kierunku antygradientu). Szeroko wykorzystywane w optymalizacji przez sieci neuronowe funkcji kosztu.
-- Algorytmy genetyczne i ewolucyjne: ileś osobników, każdy z własnym "genotypem" czyli zbiorem liczb które wstawiamy do funkcji, iteracyjnie usuwa się słabsze osobniki zastępując je krzyżówką mocniejszych / genetyczną mutacją pojedynczych. Celowo wprowadza się elementy losowe, aby wyjść z minimów lokalnych.
+- Algorytmy genetyczne i ewolucyjne: ileś osobników, każdy z własnym genotypem, czyli zbiorem liczb które wstawiamy do funkcji, iteracyjnie usuwa się słabsze osobniki zastępując je krzyżówką mocniejszych / genetyczną mutacją pojedynczych. Celowo wprowadza się elementy losowe, aby wyjść z minimów lokalnych. Fenotyp to interpretacja genotypu w świecie problemu. Genotyp -> fenotyp -> fitness score
 
 Funkcje kary dodają do funkcji kosztu wartość powiązaną z tym, jak daleko punkt wychodzi poza ograniczony zakres. Funkcja bariery dodaje składnik do funkcji rosnący do nieskończoności wraz z zbliżaniem się do barier (ograniczeń).
 
@@ -825,11 +829,18 @@ Transakcje:
 
 Niektóre czynności na bazie danych relacyjnej powinny być wykonane w całości albo w ogóle. Na przykład kupując coś, ale po drodze okaże się, że jednak brakuje pieniędzy, odrzuca się całą transakcję, nie wykonując żadnej czynności.
 
+CAP: Consistency, Availability, Partition tolerance (odporność na podział sieci). W systemie rozproszonym da się spełnić max 2 z 3. SQL zawsze wybiera C + A/P, NoSQL raczej AP
+
 ACID (SQL):
 
 - atomic - każda operacja to osobny byt i wszystko albo nic
 - consistency (spójność) - każdy stan i przejście są poprawne
-- izolacja - równolegle uruchomione transakcje nie wpływają na siebie i są izolowane (jakby sekwencyjne)
+- izolacja - równolegle uruchomione transakcje nie wpływają na siebie i są izolowane (jakby sekwencyjne). Są 4 poziomy izolacji, aby zapobiec brudnemu czy niepowtarzalnemu odczytowi (od najsłabszego do najmocniejszego, ale najwolniejszego):
+  1. Read Uncommited
+  2. Read Commited. Domyślny w większości SQL
+  3. Repeatable Read. Domyślny np. w MySQL
+  4. Serializable - prawdziwie sekwencyjne. Bardzo wolne
+  MVCC: czytający nie blokują piszących, a piszący czytających (parę wersji baz danych)
 - durability (trwałość) - dane są permanentne i na dysk, nawet w przypadku awarii
 
 BASE (noSQL):
@@ -853,7 +864,7 @@ WHERE age > 60
 
 Podstawowe elementy języka to polecenia, klauzule, wyrażenia, predykaty, średniki kończące polecenie, komentarze (uważać na SQL Injection przy nieparametryzowanych zapytaniach)
 
-Język wspiera użycie indeksów, optymalizator zapytań + execution plan automatycznie optymalizuje kwerendy. Język ma wiele wariantów, różniących się lekko składnią, wspieranymi typami i konkretnymi bazami danych, w których działają. Jest wykorzystywany wyłącznie do komunikacji z relacyjną bazą danych.
+Język wspiera użycie indeksów (drzewa binarne, bo wspierają <, > i =), optymalizator zapytań + execution plan automatycznie optymalizuje kwerendy. Język ma wiele wariantów, różniących się lekko składnią, wspieranymi typami i konkretnymi bazami danych, w których działają. Jest wykorzystywany wyłącznie do komunikacji z relacyjną bazą danych.
 
 Dodatkowe cechy: ograniczenie do tylko określonych typów danych (bez np. list - 1 NF) typu INT, VARCHAR, CHAR, NUMERIC, FLOAT, DATE + wiele więcej
 
@@ -882,7 +893,7 @@ Pełny cykl życia oprogramowania dotyczy nie tylko fazy wytwarzania, ale skład
 
 Modele SDLC (Software Development Life Cycle)
 
-- Waterfall (kaskadowy/wodospad) - tradycyjny model wytwarzania oprogramowania. Dzieli się na ściśle określone etapy jak zbieranie wymagań, analiza wymagań, projektowanie, implementacja, testy i wdrożenie. Model jest ciekawy, ale trudny do wykonania w praktyce przez wiele powodów. Głównym powodem jest to, jak zmienne są wymagania - zbieranie ich to długi proces, wymagania zawsze zmieniają się z czasem, niezrozumienie potrzeb biznesowych kończy się niepraktycznym produktem. Innym powodem jest to, że traci się czas przez tak sztywny podział na etapy, które potem i tak są choć częściowo mieszane ze sobą. Dziś dumnie odchodzi się od waterfalla, ale czysty waterfall jest po prostu niemożliwy do spełnienia w rzeczywistości. Dodatkową praktyczną wadą jest możliwość poczucia klienta, że jest odsunięty od projektu, a po miesiącach może oczekiwać czegoś innego.
+- Waterfall (kaskadowy/wodospad) - tradycyjny model wytwarzania oprogramowania. Dzieli się na ściśle określone etapy jak zbieranie wymagań, analiza wymagań, projektowanie, implementacja, testy i wdrożenie. Model jest ciekawy, ale trudny do wykonania w praktyce przez wiele powodów. Głównym powodem jest to, jak zmienne są wymagania - zbieranie ich to długi proces, wymagania zawsze zmieniają się z czasem, niezrozumienie potrzeb biznesowych kończy się niepraktycznym produktem. Innym powodem jest to, że traci się czas przez tak sztywny podział na etapy, które potem i tak są choć częściowo mieszane ze sobą. Dziś dumnie odchodzi się od waterfalla, ale czysty waterfall jest po prostu niemożliwy do spełnienia w rzeczywistości. Dodatkową praktyczną wadą jest możliwość poczucia klienta, że jest odsunięty od projektu, a po miesiącach może oczekiwać czegoś innego. Waterfall ma sens w systemach krytycznych lub tych, gdzie zmiany są bardzo drogie.
 - Iteracyjny - najpierw ogólna analiza wymagań, a potem osobne waterfalle dla dostarczania produktu w iteracjach
 - Spiralny - próba formalizacji podejścia iteracyjnego. Dodaje analizę ryzyka w każdej iteracji (monitorując uwagi użytkownika). Cykliczne powtarzanie planowania, analizy ryzyka, konstrukcja (mały waterfall), ocena przez klienta
 - V - waterfall, ale z rozbudowaną fazą testów z podziałem na testy modułów, integracyjne, walidacyjne i akceptacji, co zapewnia znacznie wyższą jakość produktu.
@@ -935,7 +946,7 @@ Metodyki lekkie/zwinne powstały w sprzeciwie do ciężkich. W manifeście Agile
 Przykłady metodyk lekkich
 
 - AUP (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
-- Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd, pair programming. Dla zespołu: continuous integration, collective code.
+- Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd (test driven development, nie ufaj testowi, który nigdy nie był fałszywy), pair programming. Dla zespołu: continuous integration, collective code.
 - Scrum - nie jset pełną metodyką wytwarzania, narzuca jedynie sposób organizacji pracy. Podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
 
 ## 28. Zastosowanie list, zbiorów i słowników w języku Python
@@ -1083,7 +1094,7 @@ Przykłady architektoniczne:
 - Fizyczna
   - Klient - baza danych: frontend (klient) ma prostą/średnio skomplikowaną logikę, i ma bezpośredni kontakt z bazą danych. Ok do małych projektów, CRUD-owych
   - Architektura trójwarstwowa (zazwyczaj monolit): klient - logika biznesowa - baza danych: frontend nie ma żadnej logiki biznesowej, tylko wyświetla informacje od backendu (logiki biznesowej). Backend stoi między klientem a bazą danych - w nim znajduje się cała logika biznesowa, endpointy, komunikatory z bazą danych. Baza danych stoi jako osobny byt od backendu, odpowiadając na jego żądania. Uniwersalne i bardzo szeroko stosowane podejście. Nadaje się do małych i średnich projektów, przy dużych mogą pojawić się problemy z wydajnością i koordynacją dużego zespołu.
-  - Mikroserwisy: odpowiedź na problemy monolitu. Dzieli system na serwisy działające osobno i komunikujące się ze sobą przez HTTP/kolejki. Serwisy mogą być skalowane przy integracji z chmurą, dzięki czemu system powinien lepiej odpowiadać na dużo zapytań dla konkretnego części aplikacji. Zazwyczaj każdy serwis ma własną bazę danych i są utrzymywane przez różne zespoły. Dobre do dużych, skomplikowanych systemów. Minusem jest skomplikowana infrastruktura, opóźnienia sieciowe między serwisami, mniejsza spójność danych.
+  - Mikroserwisy: odpowiedź na problemy monolitu. Dzieli system na serwisy działające osobno i komunikujące się ze sobą przez HTTP/kolejki. Serwisy mogą być skalowane przy integracji z chmurą, dzięki czemu system powinien lepiej odpowiadać na dużo zapytań dla konkretnego części aplikacji. Zazwyczaj każdy serwis ma własną bazę danych i są utrzymywane przez różne zespoły. Dobre do dużych, skomplikowanych systemów. Minusem jest skomplikowana infrastruktura, opóźnienia sieciowe między serwisami, mniejsza spójność danych. Utrudnione debugowanie, problem spójności danych między serwisami
 
 - Logiczne
   - Warstwowa: system dzieli się na warstwy, gdzie pierwsza to faza prezentacji, jedyna dostępna dla użytkownika. Charakteryzuje się zależnościami w dół, czyli np. baza danych może istnieć bez żadnych wyższych warstw.
@@ -1101,15 +1112,17 @@ Przykłady projektowe:
 
 - Kreacyjne:
   - Abstrakcyjna fabryka: klasa abstrakcyjna, np. ButtonFactory. Mamy różne buttony dla Mac i Windows, to tworzymy MacButtonFactory i WindowsButtonFactory, zwracające różne rzeczy. Ale widok nie widzi implementacji
-  - Singleton: często definiowany jako zły wzorzec - anti-pattern. Singleton sprawia, że klasa udostępnia statyczne pole Instance z instancją siebie, dzięki czemu dostęp jest ekstremalnie prosty. Ale tak jak service locator, ukrywa on, ile klasy mają zależności. Bardzo łatwo mieszać wtedy zależności i mocno skomplikować flow logiki
+  - Singleton: często definiowany jako zły wzorzec - anti-pattern. Singleton sprawia, że klasa udostępnia statyczne pole Instance z instancją siebie, dzięki czemu dostęp jest ekstremalnie prosty. Ale tak jak service locator, ukrywa on, ile klasy mają zależności. Bardzo łatwo mieszać wtedy zależności, mocno skomplikować flow logiki i utrudnić/uniemożliwić testowanie.
     - Dependency injection: odpowiedź na singleton. Jawne przekazywanie zależności w konstruktorze klas. Łatwo można wtedy testować klasy, przekazując mockowane zależności.
   - Builder: ułatwia budowanie obiektów, oferując metody, aby za pomocą serii wywołań metod wybrać dokładnie funkcjonalności danego obiektu.
 - Strukturalne:
   - Adapter: serwis dostosowuje się do innego schematu, tworząc adapter, gdzie "tłumaczymy" metody z nowego schematu do starego.
   - Fasada: serwis ukrywa złożoność systemu za prostym interfejsem
+  - Decorator: funkcja opakowywuje funkcję (albo klasa klasę bez dziedziczenia)
 - Behawioralne:
   - Obserwator: inna klasa subskrybuje na zmiany innej, np. jak w TSG Controller nasłuchuje na zmiany modelu
   - Polecenie: klasa zamiast osobnych metod na funkcjonalności, ma 1 metodę otrzymującą polecenie danego typu + dane
+  - Strategy: jasno deklarowane różne strategie. Przydatne np. w algorytmach Tabu Search różne heurystyki
 
 ## 33. Metody ochrony danych
 
@@ -1135,6 +1148,10 @@ Podstawowe pojęcia:
 - niezaprzeczalność: nadawca nie może wyprzeć się komunikatu. Logi audytowe
 
 Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarzania zapytania. Należy pamiętać, że użytkownicy internetu mogą wysłać nam dowolne zapytanie oraz sprawdzić kod JavaScript w przeglądarce (a nawet wyłączyć wykonywanie go).
+
+CORS: z jakiej domeny może być request.
+
+CSRF: używanie tokenów bez wiedzy użytkownika
 
 ## 34. Podstawowe algorytmy kryptograficzne
 
@@ -1165,7 +1182,7 @@ Systemy danych dzielą się na transakcyjne (OLTP - online transaction processin
 - Analityczne dotyczą systemu danych zorientowanych na analizie danych historycznych. Zazwyczaj agregują dane z wielu źródeł, i oferują prosty sposób na złożoną analizę faktów w czasie i innych wymiarach. Składa się z danych historycznych (i technicznie może z bieżących), jest zazwyczaj aktualizowana rzadko, często w zautomatyzowany sposób ETL (Extract, Transform, Load). Dane są zorientowane tematycznie. Przechowywane są dane elementarne i obliczone (sumy, średnie). Bardzo złożone zapytania. Ilość danych jest ogromna
 
 Analityczne struktury danych dzielą dane na 2 osobne grupy: fakty i wymiary. Dla faktu mierzone są miary, które zawsze są numeryczne. Np. faktem może być sprzedać produktu, miarą liczba sprzedanych sztuk i zysk. Wymiary istnieją w relacji do faktów, np. sprzedaż wystąpiła w określonym kwartale danego roku (wymiar Czas), dla danego produktu (Produkt) w określonym państwie (Geografia) itd.\
-Analityczne struktury danych służą wyłącznie do analizy. Aby przyspieszyć proces, warto denormalizować tabele dla szybszych i prostszych zapytań.
+Analityczne struktury danych służą wyłącznie do analizy. Aby przyspieszyć proces, warto denormalizować tabele dla szybszych i prostszych zapytań. Dodatkowo, systemy transakcyjne nie są przystosowane do analizy, więc wykorzystywanie ich do analizy zmniejszyłoby prędkość działania np. sklepu internetowego = utrata pieniędzy.
 
 Są 3 rodzaje modeli analitycznych OLAP:
 
@@ -1232,7 +1249,7 @@ System ekspertowy może wnioskować do przodu (forward chaining) i do tyłu (bac
 
 Logika niemonotoniczna różni się od logiki monotonicznej tym, że w miarę jej wykonywania stan wiedzy może się zmieniać - niektóre fakty stają się fałszywe, a inne prawdziwe. W logice monotonicznej stan wiedzy tylko przyrasta. System jest niekomutatywny, co oznacza, że kolejność wykonywania operacji ma ogromne znaczenie.
 
-Klasycznym zastosowaniem wnioskowania w logice niemonotonicznej jest zadanie planowania (np. trasy logistycznej czy robota). W miarę wykonywania na nim operacji wg. reguł, stan się zmienia. Takie zadanie składa się z trzech elementów:
+Klasycznym zastosowaniem wnioskowania w logice niemonotonicznej jest zadanie planowania (np. trasy logistycznej - VRP czy robota). W miarę wykonywania na nim operacji wg. reguł, stan się zmienia. Takie zadanie składa się z trzech elementów:
 
 - Stan początkowy (stan wszystkich zmiennych, np. robot znajduje się w punkcie A oraz piłka znajduje się w punkcie A)
 - Cel / stan końcowy (np. piłka znajduje się w punkcie B)
