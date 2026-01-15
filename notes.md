@@ -47,7 +47,7 @@ Ze względu na inercyjność, rozróżniamy układy na kombinacyjne i sekwencyjn
 W układach sekwencyjnych wyjścia w nich zależą nie tylko od wejść, ale też od wewnętrznego stanu.\
 A w kombinacyjnych, wyjścia zależą bezpośrednio od wejść (funkcja wejść na wyjścia).
 
-Przerzutniki - układy sekwencyjne, które są w stanie zapamiętać stan i przekazać go dalej. Czyli nie są prostą funkcją wejść na wyjścia, bo do takiej funkcji jako argument trzeba dołączyć ich aktualny stan. Czyli posiadają wewnętrzny stan, który może zmieniać się w czasie i wpływa na działanie takiego układu (wyjście będzie rózne dla tych samych wejść przy różnych stanach)
+Przerzutniki - układy sekwencyjne, które są w stanie zapamiętać stan i przekazać go dalej. Czyli nie są prostą funkcją wejść na wyjścia, bo do takiej funkcji jako argument trzeba dołączyć ich aktualny stan. Czyli posiadają wewnętrzny stan, który może zmieniać się w czasie i wpływa na działanie takiego układu (wyjście będzie różne dla tych samych wejść przy różnych stanach)
 
 Przykłady:
 
@@ -185,13 +185,13 @@ SOLID:
 
 - single responsibility: funkcja, klasa ma zajmować się tylko jedną rzeczą
 - open/closed: otwarte na rozszerzenie, zamknięte na modyfikację. Car rozszerza Vehicle "rozszerzając" metodę accelerate
-- liskov substitution: typ obiektu można zmienić na wyższy przy dziedziczeniu i dalej działa (np. traktować Car jako Vehicle). Nie powinno się metod rodziców w dzieciach ustawiać jako throw new Exception. Np ElectricVehicle: exception na shift() ```:(```
+- liskov substitution: typ obiektu można zmienić na wyższy przy dziedziczeniu i dalej działa (np. traktować Car jako Vehicle). Nie powinno się metod rodziców w dzieciach ustawiać jako throw new Exception. Np. ElectricVehicle: exception na shift() ```:(```
 - interface segregation: lepiej mieć więcej interfejsów niż mniej (tutaj podział samochodów na silniki spalinowe, elektryczne)
 - dependency inversion: moduły high level nie powinny zależeć od low-level: powinny zależeć od abstrakcji (interfejsy), a abstrakcje nie zależeć od implementacji
 
 ## 5. Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów
 
-Zbiór to dobrze określona kolekcja elementów, gdzie jednoznacznie można stwierdzyć, czy dany obiekt należy, czy nie do zbioru.
+Zbiór to dobrze określona kolekcja elementów, gdzie jednoznacznie można stwierdzić, czy dany obiekt należy, czy nie do zbioru.
 
 Podstawowe operacje na zbiorach:
 
@@ -217,7 +217,7 @@ A \ B = A * B`
 ```
 
 Potoczna definicja funkcji: Jeśli mamy 2 zbiory X i Y, i stworzymy relację dla każdego X dokładnie jeden Y, to takie przyporządkowanie to funkcja.\
-Funkcje można składać, np h(x) = f(g(x)) = (f o g)(x)\
+Funkcje można składać, np. h(x) = f(g(x)) = (f o g)(x)\
 Funkcje to relacje, więc można na nich wykonywać operacje mnogościowe, ale nie zawsze wyjdzie z tego funkcja
 
 Relacja to podzbiór iloczynu kartezjańskiego\
@@ -328,7 +328,7 @@ RISC a CISC to dwa podejścia do projektowania procesorów, różniące się fil
 
 CISC (Complex Instruction Set Computing) zakłada, że niektóre operacje mogą trwać kilka do nawet kilkunastu cykli zegara - złożone, specjalistyczne rozkazy. Dodatkowo, instrukcje mogą operować na danych z pamięci, a nie tylko na tych z rejestrów. Jest to swego rodzaju abstrakcja dla programisty. Przez to wszystko dekoder rozkazów jest skomplikowany.
 
-RISC (Reduced Instruction Set Computing) starał się zoptymalizować CISC, po zauweżeniu, jak niewielki procent ogólnie operacji faktycznie był wykonywany dłużej niż 1 cykl zegara. Jest to architektura mikroprocesorów. Zmniejsza o rząd wielkość liczbę możliwych operacji do parudziesięciu. Upraszcza to dekoder rozkazów. Każda operacja zajmuje 1 cykl zegara. Dane nie mogą operować bezpośrednio na danych z pamięci, dlatego stosuje się proces Load, Process, Store. Czyli załadowanie do jednego z wielu rejestrów w takim procesorze (może być ich 30 do ponad setki), przeprowadzenie obliczeń, i zapisanie wyniku.
+RISC (Reduced Instruction Set Computing) starał się zoptymalizować CISC, po zauważeniu, jak niewielki procent ogólnie operacji faktycznie był wykonywany dłużej niż 1 cykl zegara. Jest to architektura mikroprocesorów. Zmniejsza o rząd wielkość liczbę możliwych operacji do parudziesięciu. Upraszcza to dekoder rozkazów. Każda operacja zajmuje 1 cykl zegara. Dane nie mogą operować bezpośrednio na danych z pamięci, dlatego stosuje się proces Load, Process, Store. Czyli załadowanie do jednego z wielu rejestrów w takim procesorze (może być ich 30 do ponad setki), przeprowadzenie obliczeń, i zapisanie wyniku.
 
 RISC są szybkie, ale trudniejsze bez abstrakcji CISC dla programisty. Dlatego niektóre procesory (x86) logicznie to CISC, a tak naprawdę mają wewnątrz jednostkę RISC. ARM to rodzaj procesorów, które są RISC, i są znane z małego poboru prądu i szybkości.
 
@@ -511,7 +511,7 @@ Swoją drogą, chrome i edge korzystają z tego samego portu 443? Tak, bo tworz�
 
 note dla mnie: Datagram (UDP) to jakby segment (TCP). IP pakiet, Ethernet ramka. Dlaczego nie używać adresu MAC zamiast IP? Bo IP jest hierarchiczne i z drugiego końca świata wiadomo, do kogo uderzać po kolei, a MAC to jak nazwa człowieka/adres domu bez miasta i ulicy
 
-Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request indentyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
+Warstwa łącza danych to druga warstwa modelu OSI. Zaimplementowana jest w warstwie dostępu do sieci w modelu TCP/IP. Protokoły w tej warstwie przemieniają pakiety w ramki. Wykorzystywane są różne protokoły warstwy łącza danych, między innymi Ethernet, Wi-fi, PPP. Wykorzystywany jest też ARP do mapowania adresów IP na adresy MAC (ARP request identyfikuje, do kogo dokładnie przesłać wiadomość, ta informacja jest cache'owana do tabelki ARP, trzeba uważać na man in the middle ARP spoofing).
 
 Ethernet to rodzina technologii działającej na warstwie łącza danych oraz fizycznej z modelu OSI. Jest to standard dla sieci lokalnej LAN. Ethernet wykorzystuje i opisuje ramki, schemat okablowania, złącza jak końcówki RJ45 w warstwie fizycznej OSI, aby przekazać dane, np. od routera do komputera.\
 Ethernet wykorzystuje współcześnie topologię fizyczną gwiazdy (switch w centrum - przełącznik eliminujący kolizje), choć logicznie działa jak magistrala (broadcast)\
@@ -522,7 +522,7 @@ TCP/IP to model oparty na OSI, upraszczający go do 4 warstw. Stos protokołów 
 - Warstwa dostępu do sieci: połączenie warstwy fizycznej i łącza danych. Przypisanie adresu fizycznego MAC. Przypisanie ramek
 - Warstwa internetowa: odpowiednik warstwy sieciowej z OSI. Przypisanie adresu logicznego IP. Protokoły IPV4, IPV6. Podział na pakiety
 - Warstwa transportowa: implementacja warstwy transportowej z OSI. Przypisanie portu (np. 80 dla HTTP, 443 dla HTTPS). Tutaj występują największe różnice między TCP a UDP. Podział na segmenty.
-  - TCP: protokół zapewniający otrzymanie danych i ewentualną retransmiję w przypadku błędów. Gwarantuje też kolejność. Jednostka: segment
+  - TCP: protokół zapewniający otrzymanie danych i ewentualną retransmisję w przypadku błędów. Gwarantuje też kolejność. Jednostka: segment
   - UDP: protokół nie gwarantujący otrzymania wszystkich danych, za to znacznie szybszy. Przydatny, gdy program będzie działać w przypadku utraty części danych (np. streamowanie filmu). Jednostka datagram
 - Warstwa aplikacji: wykorzystuje protokoły HTTP, SMTP - email, DNS - nazwy domen. Jedyna warstwa, z jaką użytkownik ma bezpośredni kontakt.
 
@@ -632,7 +632,7 @@ Aby wybrać odpowiedni paradygmat, należy wziąć pod uwagę następujące czyn
 Paradygmaty w programowaniu dzielą się na 2 główne paradygmaty i ich podparadygmaty.\
 Jednym z tych 2 paradygmatów jest paradygmat deklaratywny, a drugim imperatywny.
 
-- Programowanie funkcyjne wywodzi się z paradygmatu deklaratywnego, więc jest na innym "poziomie" niż imperatywne.\
+- Programowanie funkcyjne wywodzi się z paradygmatu deklaratywnego, więc jest na innym "poziomie" niż imperatywne.
 - Paradygmat imperatywny dzieli się na podparadygmaty, jak strukturalny (bloki kodu, bez goto), aż po proceduralne (podział na procedury) i obiektowe.
 
 Paradygmat deklaratywny skupia się na rezultacie - programista podaje to, czego oczekuje jako wynik i to komputer tworzy listę kroków, które wykona. Programowanie imperatywne skupia się na krokach, jest to więc lista instrukcji, jakie programista podaje komputerowi.
@@ -693,7 +693,7 @@ Algorytm ten składa się z kroków.
 - Pierwszy to określenie obiektu identyfikacji: zrozumienie problemu, własności fizycznych. Wynikiem tego punktu jest określenie kształtu wektora danych wejściowych i wyjściowych, oraz określenie charakteru zakłóceń mogących wpływać na kształt danych. Zrozumienie celu badań
 - Określenie klasy modeli: dobranie odpowiedniego modelu (regresja liniowa, model fizyczny, sieć neuronowa) do problemu, na podstawie jego charakterystyk. Warto przeprowadzić analizę zjawisk fizykochemicznych lub analizę wymiarową (analiza sugerująca sposób przekształcenia/korelacje między danymi). Do problemu rozpoznania ras kotów prawdopodobnie najlepiej nadawałaby się sieć neuronowa
 - Organizacja eksperymentu - 2 sposoby: bierna i czynna. W czynnej przeprowadzamy dodatkowo planowanie eksperymentu, związane z identyfikacją danych, które mogłyby zakłócić algorytm przez niereprezentatywne własności, np. obrazki o zbyt niskiej jakości, dane, które po analizie numerycznej można określić jako błędne dane - anomalie. Określenie parametrów eksperymentów takich jak długość serii pomiarowej i ustalenie technik eksperymentu - anotatorów, wybór narzędzia pomiarowego
-- Opracowanie algorytmu identyfikacji - wybieramy sposób szukania modelu, np. optymalizacja wag sieci neuronowej gradientowo albo uycie algorytmu genetycznego. Także dobranie funkcji i metody kosztu (F1 score, entropia)
+- Opracowanie algorytmu identyfikacji - wybieramy sposób szukania modelu, np. optymalizacja wag sieci neuronowej gradientowo albo użycie algorytmu genetycznego. Także dobranie funkcji i metody kosztu (F1 score, entropia)
 - Realizacja algorytmu identyfikacji - napisanie kodu, który implementuje algorytm
 
 Metody optymalizacji dotyczą znalezienia minimum/maksimum funkcji, dla podanych ograniczeń, jednej lub wielu zmiennych. Podam przykłady działania dla szukania minimum, bo do tego są często wykorzystywane (szukanie jak najmniejszej wartości dla funkcji kary/kosztu). Każdą funkcję można też przekształcić, aby szukać w niej maksimum zamiast minimum tym samym sposobem, co dla szukania minimum.
@@ -805,7 +805,7 @@ Modele baz danych:
 Relacyjna baza danych to fundament nowoczesnych baz danych, wykorzystując język SQL w jego różnych wariantach, aby większość produktów IT działała.\
 Opiera się na relacjach i związkach między nimi. Relacja to jest tabela, czyli struktura zawierająca atrybuty (kolumny) oraz wiersze (krotki). Nazwa atrybutu w skali tabeli musi być unikalna i mieć ustalony typ danych. Kolejność atrybutów jest bez znaczenia. Każdy wiersz opisuje wszystkie atrybuty w relacji. Superklucz to zbiór atrybutów identyfikujących wiersz, klucz kandydujący to jeden z superkluczy, klucz główny to zazwyczaj 1-2 kolumny identyfikujące wiersz powstaje z klucza kandydującego. Związki między tabelami polegają na kolumnach odwołujących się do kluczy głównych innych tabel (klucze obce).
 
-Stosuje się 3 rózne typy związków:
+Stosuje się 3 różne typy związków:
 
 - Jeden do jeden (1-1) - max jedna tabela do max jednej tabeli (w przypadku braku połączenia wykorzystać NULL), np. users: user_id, name; user_profile: profile_id; unique user_id, profile
 - Jeden do wielu (1-N) - max jedna tabela do 0-wielu tabel. Czyli users: user_id, name; transactions: transaction_id, user_id, money...
@@ -873,7 +873,14 @@ SQL ma parę podjęzyków, każdy odpowiedzialny za część funkcjonalności.
 
 Modele cyklu życia oprogramowania dotyczą filozofii wobec podziału zadań dotyczących tworzenia oprogramowania na części składowe. Typowo dotyczą one podziału na etapy jak planowanie, implementacja, testy, a także poziom współpracy z biznesem czy podział na dostarczane produkty.
 
-Modele
+Pełny cykl życia oprogramowania dotyczy nie tylko fazy wytwarzania, ale składa się z następujących etapów:
+
+1. Inicjacja - koncepcja, analiz biznesowa, wykonalności
+2. Wytwarzanie - development
+3. Eksploatacja i utrzymanie - długie i drogie. Naprawianie błędów, udoskonalanie, portowanie do nowych wersji, prewencja zestarzenia się
+4. Wygaszanie - migracje danych, utylizacja, powiadomienie użytkowników
+
+Modele SDLC (Software Development Life Cycle)
 
 - Waterfall (kaskadowy/wodospad) - tradycyjny model wytwarzania oprogramowania. Dzieli się na ściśle określone etapy jak zbieranie wymagań, analiza wymagań, projektowanie, implementacja, testy i wdrożenie. Model jest ciekawy, ale trudny do wykonania w praktyce przez wiele powodów. Głównym powodem jest to, jak zmienne są wymagania - zbieranie ich to długi proces, wymagania zawsze zmieniają się z czasem, niezrozumienie potrzeb biznesowych kończy się niepraktycznym produktem. Innym powodem jest to, że traci się czas przez tak sztywny podział na etapy, które potem i tak są choć częściowo mieszane ze sobą. Dziś dumnie odchodzi się od waterfalla, ale czysty waterfall jest po prostu niemożliwy do spełnienia w rzeczywistości. Dodatkową praktyczną wadą jest możliwość poczucia klienta, że jest odsunięty od projektu, a po miesiącach może oczekiwać czegoś innego.
 - Iteracyjny - najpierw ogólna analiza wymagań, a potem osobne waterfalle dla dostarczania produktu w iteracjach
@@ -927,7 +934,7 @@ Metodyki lekkie/zwinne powstały w sprzeciwie do ciężkich. W manifeście Agile
 
 Przykłady metodyk lekkich
 
-- AUG (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
+- AUP (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
 - Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd, pair programming. Dla zespołu: continuous integration, collective code.
 - Scrum - nie jset pełną metodyką wytwarzania, narzuca jedynie sposób organizacji pracy. Podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
 
@@ -965,13 +972,13 @@ Lista implementuje również operatory mutacji jej, jak append do dodania elemen
 
 Dostęp po indeksie to O(1).
 
-Zbiory (set): kolejna struktura danych kolekcyjna. Tworzy się metodą set, przyjmującą kolekcję. Jest nieposortowana i nie przyjmuje duplikatów, to znaczy dodanie elementu do set doda go tylko, jeśli się tam nie znajduje. Trzeba nadpisać magiczne metody __eq__ i __hash__, jeśli chcemy traktować 2 instancje klasy o tych atrybutach jako równe, bo dla instancji klas porównanie będzie nie na podstawie ich wartości, a tego, czy referencują ten sam obiekt. Szybkie sprawdzanie, czy obiekt jest w set: O(1). Listę czasem przemienia się w set chociaż na chwilę, by pozbyć się duplikatów. Można nawet pisać
+Zbiory (set): kolejna struktura danych kolekcyjna. Tworzy się metodą set, przyjmującą kolekcję. Jest nieposortowana i nie przyjmuje duplikatów, to znaczy dodanie elementu do set doda go tylko, jeśli się tam nie znajduje. Trzeba nadpisać magiczne metody ```__eq__``` i ```__hash__```, jeśli chcemy traktować 2 instancje klasy o tych atrybutach jako równe, bo dla instancji klas porównanie będzie nie na podstawie ich wartości, a tego, czy reference'ują ten sam obiekt. Szybkie sprawdzanie, czy obiekt jest w set: O(1). Listę czasem przemienia się w set chociaż na chwilę, by pozbyć się duplikatów. Można nawet pisać
 
 ```py
 list_1 = list(set(list_1))
 ```
 
-Słownik: zbiór danych typu unikatowy klucz -> wartość. Metoda dict lub uzycie ```{ "Polska": "polacy", "Niemcy": "niemcy" }```. Bardzo szybki dostęp do uzyskania wartości dla klucza dzięki implementacji hash mapy - optymistycznie O(1), pesymistycznie O(n). Aby hashmapa działała, klucze muszą być niemutowalne - hashowalne. Często używany w zadaniach algorytmicznych do zwiększenia optymalizacji. Z ```collections``` można zaimportować ```defaultdict```, aby przypisać domyślną wartość, dla kluczy których nie ma
+Słownik: zbiór danych typu unikatowy klucz -> wartość. Metoda dict lub użycie ```{ "Polska": "polacy", "Niemcy": "niemcy" }```. Bardzo szybki dostęp do uzyskania wartości dla klucza dzięki implementacji hash mapy - optymistycznie O(1), pesymistycznie O(n). Aby hashmapa działała, klucze muszą być niemutowalne - hashowalne. Często używany w zadaniach algorytmicznych do zwiększenia optymalizacji. Z ```collections``` można zaimportować ```defaultdict```, aby przypisać domyślną wartość, dla kluczy których nie ma
 
 ```py
 d = defaultdict(list)
@@ -988,7 +995,7 @@ for key, value in my_dict.items():
   ...
 ```
 
-note: kolizje hashy rzadkie, ale jak są, to wywołanie __eq__
+note: kolizje hashy rzadkie, ale jak są, to wywołanie ```__eq__```
 
 ## 29. Różnice i podobieństwa języków Java i Python
 
@@ -1009,7 +1016,7 @@ Różnice:
 - Java jest kompilowana do kodu bajtowego, wykonywany przez maszynę wirtualną JVM. Python jest skryptowy - interpretowany. Też jest kompilowany do kodu bajtowego, ale nie jako jawny proces przed uruchomieniem
 - Pamięć: inicjalizacja JVM zajmuje dużo pamięci, ale potem reszta programu stosunkowo mniej niż Python
 - Szybkość: Java jest znacznie szybsza dzięki kompilacji do JIT. Aby przyspieszyć Python, można napisać biblioteki w językach niższego poziomu, jak np. C
-- WielowątkowośćL Java wspiera prawdziwy multithreading, a w Pythonie jest GIL ograniczający mozliwość wątków działających równoległe na wielu rdzeniach w jednym procesie
+- Wielowątkowość: Java wspiera prawdziwy multithreading, a w Pythonie jest GIL ograniczający możliwość wątków działających równoległe na wielu rdzeniach w jednym procesie
 
 Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Java, poza backendem, do skomplikowanych systemów jak bankowe, też okazjonalnie do aplikacji desktopowych i mobilnych.
 
@@ -1142,12 +1149,12 @@ Podział na kategorie:
   - AES - standardowy i wszędzie używany. Nie jest podatny na problemy z rozpoznaniem struktury danych, gdy używany jest w trybie działania CBC (w przeciwieństwie do ECB)
 - Asymetryczne: A ma klucz prywatny i publiczny. Publiczny każdy zna, i B wyśle zapytanie do A, używając jego klucza publicznego. Ale klucz publiczny powstał jednostronnie na bazie prywatnego, więc tylko A może odkodować wiadomość. W HTTPS używane do bezpiecznej wymiany symetrycznych kluczy, aby komunikacja przebiegała szybko. Znacznie wolniejszy od alternatyw, dlatego stosuje się go w sposób ograniczony.
   - RSA - dobry algorytm, używany szeroko na całym świecie. Opiera się na trudnej faktoryzacji dużych liczb
-  - Diffie-Hellman - bezpieczne uzgodnienie klucza symentrycznego przez niezaufany kanał
+  - Diffie-Hellman - bezpieczne uzgodnienie klucza symetrycznego przez niezaufany kanał
 - Skrótu: jednostronna generacja skrótu/hashu wiadomości. Nie da się uzyskać wiadomości ze skrótu, zresztą skrót ma określoną liczbę bitów, a wiadomość mogłaby być bardzo duża. Używana do ukrywania haseł w bazie danych czy weryfikacji, czy plik pobrany z internetu nie został zmieniony względem oryginału. Zmiana nawet 1 bitu sprawi, że hash będzie zupełnie inny. Odporny na kolizje, trudno znaleźć 2 teksty o tym samym hashu. W bazach danych nie przechowujemy jawnie hasła, tylko skrót z niego
   - MD5 - przestarzały, podatny na kolizje
   - SHA-2 i SHA-3 - bezpieczne
 
-Rainbow tables: time-memory trade off. Polega na użyciu gotowych tablic skrótków do szybkiego łamania haseł przez hakera. Skuteczne tylko na czyste funkcje hashujące. Nie zadziała, gdy dodamy sól, czyli taki sam tekst do każdego obliczania hasha hasła dla danego użytkownika.
+Rainbow tables: time-memory trade off. Polega na użyciu gotowych tablic skrótów do szybkiego łamania haseł przez hakera. Skuteczne tylko na czyste funkcje hashujące. Nie zadziała, gdy dodamy sól, czyli taki sam tekst do każdego obliczania hasha hasła dla danego użytkownika.
 
 ## 35. Wielowymiarowe modelowanie danych (transakcyjne i analityczne systemy danych, rodzaje wielowymiarowych struktur OLAP)
 
@@ -1189,7 +1196,7 @@ ETL zasila hurtownię danych danymi. Jest to zautomatyzowany proces, złożony z
 
 - Extract: etap pozyskania danych z heterogenicznych źródeł. Najprostsze to pliki jak Excel, csv, ale zdecydowanie częściej dane pochodzą z zewnętrznych systemów (SAP, ERP), baz danych, czy hurtowni danych na niższym poziomie. Dane należy opisać i zapisać w poprawnym formacie. Po ekstrakcji dane trafiają do pośredniej Staging Area, aby nie obciążać systemów źródłowych
 - Transform: często najbardziej pracochłonna część. Dane należy przeczyścić, zintegrować (standaryzować) i zagregować ze sobą dane z różnych źródeł. Zastosowanie logiki biznesowej. Często wykorzystuje się fuzzy matching, aby mr i mr. połączyć w jeden atrybut, ale trzeba uważać, żeby nie połączyło Ireland i Iceland. Transformacje mogą być bardzo różne, ale każdy krok warto jasno opisać. Filtrowanie danych, dzielenie i łączenie kolumn, transpozycje. Dokumentacja w postaci mapy logicznej danych: jak konkretne pole ze źródła ma trafić do konkretnej kolumny
-- Load: załadowanie danych do tabeli wymiarów, a potem faktów. Dlatego, że klucze obce muszą istnieć, zanim wstawimy fakt. Ładowanie może być pełne (wszystko od zera) lub przyrostowe (tylko nowe fakty). Z przyrostowym ciężej zadbać, żeby wszystki zmodyfikowane wiersze zostały zaktualizowane
+- Load: załadowanie danych do tabeli wymiarów, a potem faktów. Dlatego, że klucze obce muszą istnieć, zanim wstawimy fakt. Ładowanie może być pełne (wszystko od zera) lub przyrostowe (tylko nowe fakty). Z przyrostowym ciężej zadbać, żeby wszystkie zmodyfikowane wiersze zostały zaktualizowane
 
 Alternatywą dla ETL jest proces ELT. Jest to więc zintegrowanie źródeł danych (E) w jednej bazie np. Data Lake (L), i dopiero na niej wykonywanie (T) w bazie docelowej. Dzięki temu wykorzystujemy moc obliczeniową docelowej bazy danych, a nie serwera ETL
 
@@ -1212,7 +1219,7 @@ Reprezentacje wiedzy:
 - Sieć semantyczna (graf - węzły i krawędzie). Np. węzeł ptak i skrzydła połączone krawędzią ma_część
 
 Dzięki temu, że silnik jest oddzielony od reguł, reguły można dowolnie modyfikować bez potrzeby rekompilacji programu\
-Można wykorzystywać logikę rozmytą (fuzzy logic). Logika rozmyta to nie jest prawdopodobieństwo, a bardziej procent przynależności do pewnego zbioru. Np. 50% burzy może oznaczać zwykły deszcz. Dzięki temu mozna używać współczynników pewności zamiast tylko prawda/fałsz
+Można wykorzystywać logikę rozmytą (fuzzy logic). Logika rozmyta to nie jest prawdopodobieństwo, a bardziej procent przynależności do pewnego zbioru. Np. 50% burzy może oznaczać zwykły deszcz. Dzięki temu można używać współczynników pewności zamiast tylko prawda/fałsz
 
 Systemy ekspertowe wykorzystuje się do zaumatyzowanego podejmowania decyzji i wsparcia podejmowania decyzji przez ludzi. Zależne są tylko od logicznych reguł, więc powinny być bardziej obiektywne (w praktyce zależy to oczywiście od postaci reguł).
 
