@@ -11,5 +11,5 @@ powodzenia życzę! będzie dobrze
 ## tools
 
 ```sh
-pdftk docs/*wlasne.pdf cat 236-244 output tmp.pdf
+pdftk notes.pdf cat 1-3 output tmp.pdf
 ```
