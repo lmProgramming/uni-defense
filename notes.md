@@ -2,6 +2,47 @@
 
 Informatyka Stosowana inżynierska obrona
 
+## Spis treści
+
+- [**1.** Podstawowe układy cyfrowe: bramki logiczne, przełączniki, układy sekwencyjne](#1-podstawowe-układy-cyfrowe-bramki-logiczne-przełączniki-układy-sekwencyjne)
+- [**2.** Arytmetyka dwójkowa, funkcje boolowskie, tablice Karnaugh](#2-arytmetyka-dwójkowa-funkcje-boolowskie-tablice-karnaugh)
+- [**3.** Programowanie strukturalne - zasady. Przegląd instrukcji strukturalnych](#3-programowanie-strukturalne---zasady-przegląd-instrukcji-strukturalnych)
+- [**4.** Programowanie obiektowe - podstawowe pojęcia, zastosowania](#4-programowanie-obiektowe---podstawowe-pojęcia-zastosowania)
+- [**5.** Podstawowe operacje na zbiorach, funkcjach i relacjach. Rachunek zdań. Rachunek kwantyfikatorów](#5-podstawowe-operacje-na-zbiorach-funkcjach-i-relacjach-rachunek-zdań-rachunek-kwantyfikatorów)
+- [**6.** Deterministyczne automaty skończone - definicja, zastosowania](#6-deterministyczne-automaty-skończone---definicja-zastosowania)
+- [**7.** Przykładowe architektury komputerów: von Neumana, Princeton, Harvard](#7-przykładowe-architektury-komputerów-von-neumana-princeton-harvard)
+- [**8.** Procesory typu RISC i CISC - charakterystyka, różnice](#8-procesory-typu-risc-i-cisc---charakterystyka-różnice)
+- [**9.** Grafy. Drzewa rozpinające. Cykle Eulera i Hamiltona. Spójność. Algorytmy przechodzenia po grafie](#9-grafy-drzewa-rozpinające-cykle-eulera-i-hamiltona-spójność-algorytmy-przechodzenia-po-grafie)
+- [**10.** Pojęcie algorytmu. Algorytmy sortowania. Algorytmy wyszukiwania](#10-pojęcie-algorytmu-algorytmy-sortowania-algorytmy-wyszukiwania)
+- [**11.** Podstawy analizy algorytmów. Złożoność obliczeniowa](#11-podstawy-analizy-algorytmów-złożoność-obliczeniowa)
+- [**12.** Warstwowa struktura systemu operacyjnego, pojęcie jądra systemu](#12-warstwowa-struktura-systemu-operacyjnego-pojęcie-jądra-systemu)
+- [**13.** Model warstwowy OSI](#13-model-warstwowy-osi)
+- [**14.** Protokoły warstwy łącza danych. Sieć Ethernet. Stos protokołów internetowych TCP/IP](#14-protokoły-warstwy-łącza-danych-sieć-ethernet-stos-protokołów-internetowych-tcpip)
+- [**15.** Protokoły warstwy aplikacji](#15-protokoły-warstwy-aplikacji)
+- [**16.** Techniki efektywnego programowania - przykłady](#16-techniki-efektywnego-programowania---przykłady)
+- [**17.** Zarządzanie pamięcią. Typowe problemy. Wskaźniki](#17-zarządzanie-pamięcią-typowe-problemy-wskaźniki)
+- [**18.** Dobór paradygmatów programowania do rozwiązywania problemów informatycznych](#18-dobór-paradygmatów-programowania-do-rozwiązywania-problemów-informatycznych)
+- [**19.** Programowanie funkcyjne a programowanie imperatywne](#19-programowanie-funkcyjne-a-programowanie-imperatywne)
+- [**20.** Abstrakcyjne typy danych i ich realizacja w językach programowania](#20-abstrakcyjne-typy-danych-i-ich-realizacja-w-językach-programowania)
+- [**21.** Algorytmy identyfikacji obiektów statycznych. Analityczne i numeryczne metody optymalizacji](#21-algorytmy-identyfikacji-obiektów-statycznych-analityczne-i-numeryczne-metody-optymalizacji)
+- [**22.** Specyfika Internetu Rzeczy, obszary zastosowań, rozwiązywanie problemów z adresowaniem dużej liczby urządzeń, ich rozproszeniem i bardzo dużą ilością generowanych danych](#22-specyfika-internetu-rzeczy-obszary-zastosowań-rozwiązywanie-problemów-z-adresowaniem-dużej-liczby-urządzeń-ich-rozproszeniem-i-bardzo-dużą-ilością-generowanych-danych)
+- [**23.** Rozwiązania sprzętowe wspierające komunikację i protokoły komunikacyjne wykorzystywane w sprzęcie wbudowanym i Internecie Rzeczy](#23-rozwiązania-sprzętowe-wspierające-komunikację-i-protokoły-komunikacyjne-wykorzystywane-w-sprzęcie-wbudowanym-i-internecie-rzeczy)
+- [**24.** Modele baz danych. Relacyjna baza danych. Normalizacja. Transakcje](#24-modele-baz-danych-relacyjna-baza-danych-normalizacja-transakcje)
+- [**25.** Język SQL. Charakterystyka. Podjęzyki](#25-język-sql-charakterystyka-podjęzyki)
+- [**26.** Modele cyklu życia oprogramowania](#26-modele-cyklu-życia-oprogramowania)
+- [**27.** Metodyki wytwarzania oprogramowania](#27-metodyki-wytwarzania-oprogramowania)
+- [**28.** Zastosowanie list, zbiorów i słowników w języku Python](#28-zastosowanie-list-zbiorów-i-słowników-w-języku-python)
+- [**29.** Różnice i podobieństwa języków Java i Python](#29-różnice-i-podobieństwa-języków-java-i-python)
+- [**30.** Zasady programowania równoległego w języku skryptowym Python](#30-zasady-programowania-równoległego-w-języku-skryptowym-python)
+- [**31.** UML jako język specyfikacji projektu. Diagramy i ich zastosowanie](#31-uml-jako-język-specyfikacji-projektu-diagramy-i-ich-zastosowanie)
+- [**32.** Wzorce architektoniczne i projektowe – klasyfikacja, przykłady, zastosowania](#32-wzorce-architektoniczne-i-projektowe--klasyfikacja-przykłady-zastosowania)
+- [**33.** Metody ochrony danych](#33-metody-ochrony-danych)
+- [**34.** Podstawowe algorytmy kryptograficzne](#34-podstawowe-algorytmy-kryptograficzne)
+- [**35.** Wielowymiarowe modelowanie danych (transakcyjne i analityczne systemy danych, rodzaje wielowymiarowych struktur OLAP)](#35-wielowymiarowe-modelowanie-danych-transakcyjne-i-analityczne-systemy-danych-rodzaje-wielowymiarowych-struktur-olap)
+- [**36.** Proces ETL](#36-proces-etl)
+- [**38.** Metody przetwarzania wiedzy w systemach ekspertowych](#38-metody-przetwarzania-wiedzy-w-systemach-ekspertowych)
+- [**39.** Wnioskowanie w logice niemonotonicznej – zadanie planowania](#39-wnioskowanie-w-logice-niemonotonicznej--zadanie-planowania)
+
 ## 1. Podstawowe układy cyfrowe: bramki logiczne, przełączniki, układy sekwencyjne
 
 Układy cyfrowe to zbiór połączonych elementów elektronicznych, w którym informacje reprezentowane są w sposób binarny. Jeśli chodzi o binarność stanu, to ma on dwa stany: stan wysoki (1 lub H), oznaczający potencjał względem masy bliski napięciu zasilania, i stan niski (0 lub L), potencjał względem masy bliski 0V. W logice stan wysoki reprezentowałby prawdę, a niski fałsz.
@@ -36,7 +77,7 @@ Przykładowe bramki:
 - XOR = (A ∨ B) ∧ !(A ∧ B)
 - NOR = !(A ∨ B) odwrotność OR
 - NAND = !(A ∧ B) odwrotność AND
-- XNOR = (A ∧ B) ∨ (!A ∧ !B)
+- XNOR = (A ∧ B) ∨ (!A ∧ !B) odwrotność XOR
 
 Bramki Nxyz działają jak bramki xyz, ale z negacją wyjścia
 
@@ -51,7 +92,7 @@ Przerzutniki - układy sekwencyjne, które są w stanie zapamiętać stan i prze
 
 Przykłady:
 
-Przerzutnik RS (flip flop) - wejścia SR, wyjścia Q i !Q
+Przerzutnik RS (flip flop) - wejścia SR, wyjścia Q i !Q\
 Bardzo prosty i asynchroniczny (czyli nie wymaga obecności zegara)\
 S ustawia stan układu (Q) na wysoki dla S = 1\
 R ustawia stan układu na niski dla R = 1\
@@ -97,14 +138,14 @@ Arytmetyka dwójkowa jest wykorzystywana w elektronice, i przez to w komputerach
 
 Naturalny kod binarny NKB - liczby są zapisywane w formie słów o konkretnej długości, np. 8, co oznacza, że liczbę np. 115 (1110011[2])zapisałoby się jako 01110011, dopełniając po lewej zera, aby słowo miało tą długość. Wtedy długość słowa określa przedział możliwych do reprezentacji liczb w zbiorze N = <0;2^N>
 
-Kod dwójkowo-dziesiętny - reprezentacja osobno każdej cyfry w liczbie dziesiętnej słowami o długości 4 (bo 2^4>9). Niektóre wartości np. 1111 są niemożliwe, przez co występuje redundancja (nadmiarowość). Wg. mnie naturalnie przekłada się to w system 16stkowy, gdzie 10=A, 15=F.
+Kod dwójkowo-dziesiętny - reprezentacja osobno każdej cyfry w liczbie dziesiętnej słowami o długości 4 (bo 2^4 >= 9). Niektóre wartości np. 1111 są niemożliwe, przez co występuje redundancja (nadmiarowość). Wg. mnie naturalnie przekłada się to w system 16stkowy, gdzie 10=A, 15=F.
 
 Funkcje boolowskie: funkcje o n argumentach 0 lub 1 i o 1 wyjściu równym 0 lub 1. Układy elektroniczne realizujące funkcje boolowskie to układy kombinacyjne.
 
 Funkcje boolowskie można przedstawić na 4. sposoby:
 
 1. Przykładowa funkcja: F(a, b, c, d) = ab + (c + !d)
-2. Iloczyn sum ```F(A,B,C,D) = (A+!C)(!A+B+!D)``` lub suma iloczynów ```F(A,B,C,D) = (AB!D)+(!A!C). No wiadomo, iloczyn sum jest prawdziwy tylko, jak spełnimy w każdym nawiasie choć jeden, a suma iloczynów jak w choć jednym nawiasie każdy warunek.
+2. Iloczyn sum ```F(A,B,C,D) = (A+!C)(!A+B+!D)``` lub suma iloczynów ```F(A,B,C,D) = (AB!D)+(!A!C)```. No wiadomo, iloczyn sum jest prawdziwy tylko, jak spełnimy w każdym nawiasie choć jeden, a suma iloczynów jak w choć jednym nawiasie każdy warunek.
 3. Tabele prawdy
 ![alt text](imgs/2/tabela_prawdy.png)
 wartość dziesiętna to liczba jakby postawić a jako cyfrę najbardziej znaczącą i b jako najmniej.
@@ -112,14 +153,16 @@ wartość dziesiętna to liczba jakby postawić a jako cyfrę najbardziej znacz�
 Dodatkowo, jeśli jakieś wartości są niepewne, to funkcja jest niezupełna i też możne te wartości podać
 ![alt text](imgs/2/zbiory_wartosci.png)
 
-Tablice Karnaugh można wykorzystać do uproszczenia, czyli minimalizacji funkcji boolowskich. Najlepiej działa, gdy liczba wejść jest niewielka, więc zacznę od przypadku cztero argumentowego. Gdy rozpiszemy tabelę prawdy dla cztero argumentowej funkcji z zachowaniem kodu grey'a (czyli kolumny i wiersze różnią się od sąsiadów wartością tylko 1 argumentu - bez tego te prostokąty byłyby bez sensu), to mamy te 0 i 1. Typowo kolumny to AB, a wiersze CD, bo można grupować w takiej tablicy argumenty w takie ciągi. Zaczynamy od narysowania największego prostokąta/ów, którego każdy bok jest potęgą 2 (1, 2, 4...), i wszystkie komórki wewnątrz są 1 (lub X dla niezdefiniowanych). Każdy krok algorytmu to wzięcie aktualnego N (pole tego kwadratu), znajdowanie kwadratów o takim polu które mają 1 lub X tylko w sobie. Potem dzielimy N przez 2 i ciągle robimy to samo, aż wszystkie 1 będą w prostokącie/prostokątach (mogą być naraz w dwóch, jeśli to optymalne). No i wynik to na logikę można zauważyć, że w takich prostokątach 1/2... argumenty się nie zmieniają i przedstawić funkcję np. jako ```Y = B*!C*D + A*B*!D```. Na logikę jak jest 1 w kwadracie gdzie A=0 i C=1 no to (!A*C). Prostokąty mogą przechodzić przez "ściany" tabeli na drugą stronę.\
+Tablice Karnaugh można wykorzystać do uproszczenia, czyli minimalizacji funkcji boolowskich. Najlepiej działa, gdy liczba wejść jest niewielka, więc zacznę od przypadku cztero argumentowego. Gdy rozpiszemy tabelę prawdy dla cztero argumentowej funkcji z zachowaniem kodu grey'a (czyli kolumny i wiersze różnią się od sąsiadów wartością tylko 1 argumentu - bez tego te prostokąty byłyby bez sensu), to mamy te 0 i 1. Typowo kolumny to AB, a wiersze CD, bo można grupować w takiej tablicy argumenty w takie ciągi. Zaczynamy od narysowania największego prostokąta/ów, którego każdy bok jest potęgą 2 (1, 2, 4...), i wszystkie komórki wewnątrz są 1 (lub X dla niezdefiniowanych). Każdy krok algorytmu to wzięcie aktualnego N (pole tego kwadratu), znajdowanie kwadratów o takim polu które mają same 1 lub X tylko w sobie. Potem dzielimy N przez 2 i ciągle robimy to samo, aż wszystkie 1 będą w prostokącie/prostokątach (mogą być naraz w dwóch, jeśli to optymalne). No i wynik to na logikę można zauważyć, że w takich prostokątach 1/2... argumenty się nie zmieniają i przedstawić funkcję np. jako ```Y = B*!C*D + A*B*!D```. Na logikę jak jest 1 w kwadracie gdzie A=0 i C=1 no to (!A*C). Prostokąty mogą przechodzić przez "ściany" tabeli na drugą stronę.\
 Alternatywnie można zrobić to samo, ale szukać 0 to ```Y = !(B*D) + !(!A*CD)```\
 Tablice Karnaugh do max 4-6 zmiennych. Dla więcej niż 4 zmiennych, trzeba brać pod uwagę osie symetrii.
 
 ## 3. Programowanie strukturalne - zasady. Przegląd instrukcji strukturalnych
 
 Programowanie strukturalne to podstawa nowoczesnego programowania. Jej zasady pozwalają pisać kod, który ma jasny przepływ logiczny.\
-Liniowy przepływ najważniejszy, czyli ogólnie z góry do doły.
+Liniowy przepływ najważniejszy, czyli ogólnie z góry do doły. Programowanie strukturalne dotyczy głównie sposobu sterowania przepływem programu:
+
+Sekwencja, if i loop, zakaz goto
 
 Warto wspomnieć, że programowanie strukturalne jest podparadygmatem programowania imperatywnego. Często przedstawia się je jako przekazanie instrukcji komputerowi, co ma zrobić, w kontrze do programowania deklaratywnego, gdzie instrukcja dotyczy tego, co chcemy osiągnąć. Czyli programowanie imperatywne to po prostu ciąg instrukcji, które ma wykonać komputer i zmienia jego stan.
 
@@ -136,7 +179,7 @@ Należy ograniczyć korzystanie z break (w switch oczywiście dalej zezwolone), 
 
 Można wspomnieć o wielu dobrych praktykach, jak
 
-- wydzielanie zagnieżdżonych bloków do funkcji o jasnych nazwach
+- wydzielanie zagnieżdżonych bloków do funkcji o jasnych nazwach (to już technicznie proceduralny)
 - dzielenie długich bloków na funkcje
 - jasne nazywanie zmiennych i struktur (idealnie, brak potrzeby komentarzy, zamiast tego dobrze nazwane funkcje)
 - unikanie zmiennych globalnych
@@ -165,7 +208,7 @@ Paradygmat obiektowy to jeden z najpopularniejszych paradygmatów. Jest on intui
 
 Podstawowe pojęcia:
 
-- Obiekt: zbiór własności tego obiektu oraz metod
+- Obiekt: zbiór pól tego obiektu oraz metod
 - Klasa: instrukcja wykorzystywana do instancjonowania obiektów. Jest to blueprint z polami, metodami
 - Pole/atrybut: "zmienne" klasy. Klasa definiuje pola (zazwyczaj z typami), a obiekty typu tej klasy mogą zazwyczaj mieć różne wartości danego pola, oraz mogą je zmieniać w czasie (przy zmianie, klasa jest mutowalna, niezmienne typy to np. record czy struct z C\#)
 - Metoda: "funkcja" klasy. O ile nie jest oznaczona jako statyczna, to wykonując ją na instancji klasy mamy dostęp do jej pól zazwyczaj przez mechanizm self/this itd. W wielu językach jest to niejawne, w Python trzeba przekazać self do takiej metody. Metoda działa jak zwykła funkcja, może zwracać coś, może mutować pola klasy, może instancjonować itd itd
@@ -176,7 +219,7 @@ Podstawowe pojęcia:
 - Przeciążanie metody: zdefiniowanie metody parę razy w klasie, ale każda z różnymi argumentami. Przydatne, gdy klasa akceptuje różne metody wywołania. Częstą praktyką jest to, że wszystkie te metody zwracają wynik z jednej, głównej, wybranej, która przyjmuje argumenty w dogodnej postaci. Np. w Unity instancja obiektu w scenie może mieć pozycję, rotację, rodzica... różnego rodzaju typ layera... każda metoda przekazuje argumenty jakiejś jednej.
 - Polimorfizm parametryczny: template/generics np. ```List<T>```
 - Polimorfizm: jak kot dziedziczy po zwierzęciu to można traktować go tak i tak, czyli wsadzić do listy zwierząt i traktować jak zwierzę, bez zwracania uwagi na konkretny typ.
-- Modyfikator dostępu: metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
+- Modyfikator dostępu (enkapsulacja): metody i pola w klasach mogą być public, private, protected. Public wiadomo metoda dostępna dla innych klas, private tylko dla klasy (inna instancja może w kodzie metody korzystać z metody prywatnej innej instancji). Protected to jak private, ale dodatkowo dostępne dla klas dziedziczących.
 - Hermetyzacja: modyfikatory dostępu, interfejsy przydają się do implementacji hermetyzacji. Chodzi o to, aby dla innych klas najważniejszy był głównie wynik którego potrzebują od klasy, a nie wewnętrzna implementacja. Czyli klasa powinna udostępniać minimum metod i publicznych pól, aby inne klasy musiały w kontrolowany sposób ją mutować / uzyskiwać z niej wynik.
 
 Programowanie obiektowe można stosować praktycznie wszędzie. Prawie wszystkie większe gry komputerowe są napisane w tym paradygmacie, ale też dużo aplikacji desktopowych, mobilnych, backendów, frontendów...
@@ -235,7 +278,7 @@ Rachunek zdań
 
 ```txt
                     implikacja        równoważność (xnor)
-ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b (a => b) ∧ (b => a)    
+ab  a ∧ b  a ∨ b    a => b  b => a    a <=> b = (a => b) ∧ (b => a)    
 00  0      0        1       1         1                             
 10  0      1        0       1         0
 01  0      1        1       0         0
@@ -338,7 +381,7 @@ Dodatkowe porównanie:
 - RISC: ustalony format instrukcji 32 bity. CISC: zmienne zakresy od 16-64 bitów na instrukcję.
 - RISC: sterowana na stałe bez konieczności pamięci sterującej. CISC kiedyś wymagało pamięci kontrolnej (ROM), ale teraz można tak jak RISC
 
-## 9 Grafy. Drzewa rozpinające. Cykle Eulera i Hamiltona. Spójność. Algorytmy przechodzenia po grafie
+## 9. Grafy. Drzewa rozpinające. Cykle Eulera i Hamiltona. Spójność. Algorytmy przechodzenia po grafie
 
 Graf to taka struktura danych, która składa się z wierzchołków, połączonych z innymi wierzchołkami krawędziami. Wierzchołki, krawędzie i same grafy mogą mieć różne własności, w zależności od typu grafu.
 
@@ -427,11 +470,11 @@ Algorytmy wyszukiwania:
 
 - liniowy: porównujemy każdy element, aż znajdziemy. O(n)
 - logarytmiczny: dzielimy posortowany array na mniejsze połówki, patrząc, gdzie byłby szukany element. O(log n)
+- hash table - aby znaleźć element, obliczasz hash, i wiesz, że jeśli jest w tabeli, to w liście, która jest pod hashem obliczonym. Generalnie O(1), ale przez to, że kompresuje się różne hashe przy użyciu modulo do 1 listy, może być O(n) (kolizja)
+- bst - binarne drzewo przeszukiwań: mamy drzewo, gdzie dla każdego węzła dziecko po lewej jest mniejsze, dziecko po prawej większe. Warto równoważyć drzewa - AVL i Red-Black, to mamy O(log n). Bez równoważenia może być O(n)
 
 Jeszcze inne fajne struktury danych
 
-- hash table - aby znaleźć element, obliczasz hash, i wiesz, że jeśli jest w tabeli, to w liście, która jest pod hashem obliczonym. Generalnie O(1), ale przez to, że kompresuje się różne hashe przy użyciu modulo do 1 listy, może być O(n) (kolizja)
-- bst - binarne drzewo przeszukiwań: mamy drzewo, gdzie dla każdego węzła dziecko po lewej jest mniejsze, dziecko po prawej większe. Warto równoważyć drzewa - AVL i Red-Black, to mamy O(log n)
 - linked list - lista z obiektów, przechowujących następny i poprzedni element. Bardzo łatwe usuwanie i dodawanie elementów, niezależnie czy w środku itd
 
 ## 11. Podstawy analizy algorytmów. Złożoność obliczeniowa
@@ -461,7 +504,7 @@ Wykorzystuje się 3 notacje:
 
 ## 12. Warstwowa struktura systemu operacyjnego, pojęcie jądra systemu
 
-System operacyjny to złożony system informatyczny, który zarządzają zasobami sprzętowymi komputera, umożliwia sprawne wykonywanie zadań, tworząc dla nich środowisko i je kontrolując. Pośredniczy między sprzętem a aplikacjami użytkownika.
+System operacyjny to złożony system informatyczny, który zarządzając zasobami sprzętowymi komputera, umożliwia sprawne wykonywanie zadań, tworząc dla nich środowisko i je kontrolując. Pośredniczy między sprzętem a aplikacjami użytkownika.
 
 Główne zadania systemu operacyjnego to:
 
@@ -609,7 +652,7 @@ Arraye mogą być arrayem wskaźników w C++. Tak samo wskaźnik może wskazywa�
 
 Paradygmat określa sposób myślenia, aby rozwiązać problemy jako programista. Najważniejszy podział paradygmatów to podział na paradygmat deklaratywny i imperatywny. W deklaratywnym instrukcje dotyczą tego, jaki wynik chcemy osiągnąć (rezultat), a imperatywne, jakie kroki ma dokładnie wykonać program, aby osiągnąć wynik (kroki).
 
-najważniejsze podparadygmaty paradygmatu deklaratywnego:
+Najważniejsze podparadygmaty paradygmatu deklaratywnego:
 
 - Funkcyjny: brak mutowalnego stanu. Program to wywołanie funkcji, a każdą funkcję można w każdym przypadku zastąpić jej wartością (bo nie ma skutków ubocznych). Funkcje to obywatele pierwszej rangi: funkcje mogą zwracać funkcje, przyjmować je jako argumenty czy mogą być częścią samych struktur danych. Plusy: jasny kod, łatwiejszy w utrzymaniu, brak problemów z współbieżnością. Minusy są takie, że nie nadaje się do każdego problemu (np. gry) i wymaga innego sposobu myślenia. Przykłady języków to Ocaml czy Scala.
 - Logiczny: pojęcie ograniczeń, przydatny do matematyki, formalny. Przykłady to np. Prolog, dziś jest mniej używany.
@@ -676,15 +719,27 @@ Na końcu wspomnę, że granica między paradygmatami się zaciera. Większość
 
 Wiele języków implementuje podstawowe, przydatne struktury danych w bibliotekach standardowych. Ich implementacja nie jest jawna i ważna dla dewelopera - najważniejszy jest kontrakt ADT, który jest zadeklarowany. Czyli to, jakie są dozwolone metody (np. Get, Add, Pop...) oraz gwarantowane zachowania (np. pierwszy wchodzi pierwszy wychodzi). Różne implementacje mogą używać tego samego kontraktu, aby być lepiej przystosowanym do specyficznych przypadków użycia i optymalizacji - tak więc kontrakt całkowicie ignoruje implementację. W wielu językach można wykorzystać do tego słowa kluczowe ```interface``` albo ```abstract class```, i różne implementacje dziedziczą po klasie abstrakcyjnej lub implementują interfejs.
 
-List, czyli rozszerzalną i modyfikowalną tablicę elementów, można zaimplementować na wiele sposobów. Częstą implementacją listy jest stworzenie pod spodem tablicy, która gdy zostanie wypełniona, jest rozszerzana o ileś elementów, zachowując bufor. Inną implementacją, wspierającą szybkie usuwanie/dodawanie elementów na początku i środku, jest linked list. Zaimplementowana jest w postaci grafu, gdzie węzły są połączone z następnikami (i często z poprzednikami). Dla programisty ważne jest to, iż mimo bardzo różnią się implementacyjnie, może wykorzystać ich wspólny kontrakt/interejs. Np. w C\# jest interfejs IList, który jest implementowany przez List, jest też LinkedList, ale implementuje ICollection.
+W C\# podstawowe struktury danych implementują część z poniższych interfejsów:
 
-Stack: pierwszy wchodzi, ostatni wychodzi. Czyli element dodany jako ostatni jest pierwszy w kolejce do pozyskania. KLasa Stack
+- IList - dostanie elementu o indeksie ```[0]``` w O(1)
+- ICollection - metody Add, Remove, Clear, Count
+- ISet - metody Intersect i inne na zbiorach
+- IEnumerable - iterator, np. do ```foreach``` loop
+- IDictionary - wartości pod indeksami od kluczy
 
-Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będące w strukturze danych są pierwsze w kolejce do pozyskania. W tym przypadku w C\# jest PriorityQueue, który nadpisuje domyślne zachowanie - ustala kolejkę wychodzenia na podstawie "priorytetu" ustalonego wcześniej dla obiektu. Implementacje Queue (FIFO), PriorityQueue, ConcurrentQueue (bezpieczna wątkowo).
+W innych językach mógłby być IStack, IQueue itd, ale tutaj programiści C\# pomyśleli inaczej. Zastosowali zasady SOLID, i rozdzielili struktury danych na interfejsy, z których się składają.
 
-Hash Map / Dictionary: zawiera unikalne klucze, do których przypisana jest wartość. Gwarantuje szybki dostęp do wartości dla kluczy. W C\# ADT to IDictionary, implementowane przez Dictionary, SortedList (klucze posortowane), ConcurrentDictionary (wielowątkowe).
+List, czyli rozszerzalną i modyfikowalną tablicę elementów, można zaimplementować na wiele sposobów. Częstą implementacją listy jest stworzenie pod spodem tablicy, która gdy zostanie wypełniona, jest rozszerzana o ileś elementów, zachowując bufor. Inną implementacją, wspierającą szybkie usuwanie/dodawanie elementów na początku i środku, jest linked list. Zaimplementowana jest w postaci grafu, gdzie węzły są połączone z następnikami (i często z poprzednikami). Dla programisty ważne jest to, iż mimo bardzo różnią się implementacyjnie, może wykorzystać ich wspólny kontrakt/interfejs. Np. w C\# jest interfejs IList, który jest implementowany przez List. Dlaczego nie jest implementowany przez LinkedList? Bo dostęp do elementu po indeksie jest wolny - O(n), dzięki czemu programista pomyśli 2 razy, zanim weźmie element po indeksie. Wspólny kontrakt obu to ICollection i IEnumerable.
 
-Warto zauważyć, że ADT to teoria, ale język może powstrzymywać dewelopera przed niepoprawnym użyciem struktury danych. Np. LinkedList nie implementuje interfejsu IList, ponieważ indeksowanie jest wolne w pętli (a iterator mógłby być cyrkularny).
+Stack: pierwszy wchodzi, ostatni wychodzi. Czyli element dodany jako ostatni jest pierwszy w kolejce do pozyskania. Klasa Stack. Z interfejsów implementuje tylko IEnumerable
+
+Queue: pierwszy wchodzi, pierwszy wychodzi. Czyli elementy najdłużej będące w strukturze danych są pierwsze w kolejce do pozyskania. W tym przypadku w C\# jest PriorityQueue, który nadpisuje domyślne zachowanie - ustala kolejkę wychodzenia na podstawie "priorytetu" ustalonego wcześniej dla obiektu. Implementacje Queue (FIFO), PriorityQueue, ConcurrentQueue (bezpieczna wątkowo). Z interfejsów implementuje tylko IEnumerable
+
+Hash Map / Dictionary: zawiera unikalne klucze, do których przypisana jest wartość. Gwarantuje szybki dostęp do wartości dla kluczy. W C\# ADT to IDictionary, implementowane przez Dictionary, SortedList (klucze posortowane), ConcurrentDictionary (wielowątkowe). IDictionary, ICollection i IEnumerable
+
+HashSet: implementacja struktury danych zbioru, dobrze zoptymalizowana do szybkiego sprawdzania, czy element już jest w zbiorze (zakaz duplikatów). IEnumerable, ISet, ICollection
+
+Warto zauważyć, że ADT to teoria, ale język może powstrzymywać dewelopera przed niepoprawnym użyciem struktury danych. Np. LinkedList nie implementuje interfejsu IList, ponieważ indeksowanie jest wolne w pętli.
 
 ## 21. Algorytmy identyfikacji obiektów statycznych. Analityczne i numeryczne metody optymalizacji
 
@@ -790,7 +845,7 @@ Warstwa fizyczna:
 - RFID - może zasilać pasywne tagi energią z fali radiowj, komunikując się z nimi
 - Ethernet - kabelki
 
-Przykłady hardware to Raspberry PI (cały komputer z Python), Arduino - ESP32 (C)
+Przykłady hardware to Raspberry PI (cały komputer z Python), Arduino - ESP32 (C++)
 
 ## 24. Modele baz danych. Relacyjna baza danych. Normalizacja. Transakcje
 
@@ -839,8 +894,7 @@ ACID (SQL):
   1. Read Uncommited
   2. Read Commited. Domyślny w większości SQL
   3. Repeatable Read. Domyślny np. w MySQL
-  4. Serializable - prawdziwie sekwencyjne. Bardzo wolne
-  MVCC: czytający nie blokują piszących, a piszący czytających (parę wersji baz danych)
+  4. Serializable - prawdziwie sekwencyjne. Bardzo wolne. Ale jest MVCC: czytający nie blokują piszących, a piszący czytających (parę wersji baz danych)
 - durability (trwałość) - dane są permanentne i na dysk, nawet w przypadku awarii
 
 BASE (noSQL):
@@ -882,11 +936,11 @@ SQL ma parę podjęzyków, każdy odpowiedzialny za część funkcjonalności.
 
 ## 26. Modele cyklu życia oprogramowania
 
-Modele cyklu życia oprogramowania dotyczą filozofii wobec podziału zadań dotyczących tworzenia oprogramowania na części składowe. Typowo dotyczą one podziału na etapy jak planowanie, implementacja, testy, a także poziom współpracy z biznesem czy podział na dostarczane produkty.
+Modele cyklu życia oprogramowania dotyczą filozofii wobec podziału zadań dotyczących tworzenia oprogramowania na części składowe. Typowo dotyczą one podziału na etapy; takie jak planowanie, implementacja, testy, a także poziom współpracy z biznesem czy podział na dostarczane produkty.
 
 Pełny cykl życia oprogramowania dotyczy nie tylko fazy wytwarzania, ale składa się z następujących etapów:
 
-1. Inicjacja - koncepcja, analiz biznesowa, wykonalności
+1. Inicjacja - koncepcja, analiza biznesowa, wykonalności
 2. Wytwarzanie - development
 3. Eksploatacja i utrzymanie - długie i drogie. Naprawianie błędów, udoskonalanie, portowanie do nowych wersji, prewencja zestarzenia się
 4. Wygaszanie - migracje danych, utylizacja, powiadomienie użytkowników
@@ -910,7 +964,7 @@ Oto punkty:
 
 Idea jest taka, że elementy po prawej są ważne, ale po lewej ważniejsze.
 
-Scrum był z jedną z metod, która istniała przed manifestem Agile, ale po nim została uznana jako dobra, generalna implementacja Agile. Zakłada przyrostowe dostarczanie produktu klientowi, przydzielając do najbliższego sprintu (1-4 tygodnie) zadania do zrobienia. Występuje Scrum Master starający się usuwać blokady i wspierać zespół. Produkt Backlog to uporządkowana lista wymagań (user stories). Do każdego sprintu występuje planowanie sprintu (stworzenie Sprint Backlog) i recenzja oraz retrospekcja sprintu. Codziennie jest Daily Scrum (standup/daily), gdzie zespół się synchronizuje. Niestety, scrum czasem degeneruje się do micromanagement'u deweloperów.
+Scrum (technicznie metodyka wytwarzania oprogramowania, ale można wspomnieć) był z jedną z metod, która istniała przed manifestem Agile, ale po nim została uznana jako dobra, generalna implementacja Agile. Zakłada przyrostowe dostarczanie produktu klientowi, przydzielając do najbliższego sprintu (1-4 tygodnie) zadania do zrobienia. Występuje Scrum Master starający się usuwać blokady i wspierać zespół. Produkt Backlog to uporządkowana lista wymagań (user stories). Do każdego sprintu występuje planowanie sprintu (stworzenie Sprint Backlog) i recenzja oraz retrospekcja sprintu. Codziennie jest Daily Scrum (standup/daily), gdzie zespół się synchronizuje. Niestety, scrum czasem degeneruje się do micromanagement'u deweloperów.
 
 Scrum, jak i agile, charakteryzuje się częstym feedbackiem od biznesu, szybką reakcją na zmiany wymagań, nacisk na działające oprogramowanie i samoorganizację zespołu.
 
@@ -920,7 +974,7 @@ Metodyki wytwarzania oprogramowania to całe filozofie inżynierii oprogramowani
 
 - Zakres: które fazy wytwarzania oprogramowania są objęte metodyką, a także jakie role i aktywności są definiowane
 - Rozmiar: liczba elementów kontrolowanych przez metodykę (dokumentacja, opisy technik, miary jakości)
-- Ceremoniał (stopień formalizacji) - jak ważne i precyzyjne są dokumenty wytwarzane podczas wytwarzania oprogramowania
+- Ceremoniał (stopień formalizacji): jak ważne i precyzyjne są dokumenty wytwarzane podczas wytwarzania oprogramowania
 - Komunikacja z klientem: jak przebiega
 - Widzialność: łatwość oceny, czy projekt jest wykonywany zgodnie z metodyką
 - Waga: iloczyn rozmiaru i ceremoniału. Podział na lekkie/zwinne i ciężkie.
@@ -943,11 +997,11 @@ Metodyki lekkie/zwinne powstały w sprzeciwie do ciężkich. W manifeście Agile
 - WSPÓŁPRACA Z KLIENTEM zamiast renegocjacji kontraktu
 - AKCEPTACJA ZMIAN zamiast wykonywania planu
 
-Przykłady metodyk lekkich
+Przykłady metodyk lekkich (iteracyjne, mało formalne, szybka adaptacja, niewielka dokumentacja):
 
 - AUP (agile unified process) - przemienienie RUP w agile. Cykl życia sekwencyjny w długiej perspektywie, iteracyjny w małej. Opuszczenie części artefaktów i ról z RUP
 - Extreme programming - do małych/średnich projektów o wysokim ryzyku, gdzie nie wiadomo, jak dokładnie i czy da się dostarczyć rozwiązanie, tylko cześć wymagań. Pominięcie ceremoniałów i dokumentacji. Komunikacja ustna. Artefakty = kod + testy. Prosty projekt, ciągłe testowanie, standardy kodowania, ciągły kontakt z klientem. Dla programisty: tdd (test driven development, nie ufaj testowi, który nigdy nie był fałszywy), pair programming. Dla zespołu: continuous integration, collective code.
-- Scrum - nie jset pełną metodyką wytwarzania, narzuca jedynie sposób organizacji pracy. Podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
+- Scrum - podział projektu na sprinty (1-4 tygodnie). Efektem sprintu jest namacalna nowa wersja z nowymi funkcjonalnościami. Product backlog - user stories czekające na implementację. Sprint Backlog - zadania do zrobienia przez sprint. Scrum Master - pilnuje poprawnego wykonywania scrum i rozwiązuje konflikty. Sprint planning - spotkanie planujące sprint. Sprint Retrospective - retrospekcja, sprint review - recenzja. Ważnym elementem są Daily Scrum do synchronizacji. Ciągły kontakt z klientem i przywitanie zmian z otwartymi ramionami.
 
 ## 28. Zastosowanie list, zbiorów i słowników w języku Python
 
@@ -1024,7 +1078,7 @@ Różnice:
 - Typowanie statyczne dla Javy - zmienne mają określone typy, typowanie dynamiczne dla Pythona - typ zmiennych może się zmieniać, przez co mogą wystąpić błędy przy operacjach niedozwolonych na danym typie. W Pythonie dodano typowanie - można ale nie trzeba przydzielić zmiennym, funkcjom, parametrom dozwolony typ/typy, ale jest to tylko informacja do sprawdzenia przy statycznej analizie kodu - nie ma wpływu na działanie
 - "boilerplate" kodu - dla Javy przyjęło się pisać objętościowo dużo kodu, oraz samo napisanie tych samych funkcji zajmuje więcej miejsca, niż dla Pythona. Dodatkowo Python ma dużo bibliotek i bogatą bibliotekę standardową, umożliwiającą skracanie niektórych wyrażeń. Ogólnie czas wytwarzania oprogramowania jest krótszy w Pythonie, również dzięki specyfikacji wybieranych frameworków
 - Paradygmat: Java mocno obiektowy, i ma bogaty system słów kluczowych dla klas, dziedziczenia, interfejsów, modyfikatory dostępu itd. Python wspiera różne paradygmaty: również bardzo często jest wykorzystywany obiektowo, ale też funkcyjnie czy ogólnie imperatywnie. Python jest prostszy, jeśli chodzi o obiektowość - nie ma np. interfejsów, a multiinheritance - wielokrotne dziedziczenie. Występuje duck typing i można zaimportować klasy abstrakcyjne. Chociaż takie abstrakcje mogą być mniej intuicyjne dla programisty. Nowocześnie Java wprowadziła elementy funkcyjne, jak lambdy.
-- Java jest kompilowana do kodu bajtowego, wykonywany przez maszynę wirtualną JVM. Python jest skryptowy - interpretowany. Też jest kompilowany do kodu bajtowego, ale nie jako jawny proces przed uruchomieniem
+- Java jest kompilowana do kodu bajtowego, wykonywany przez maszynę wirtualną JVM. Python jest skryptowy - interpretowany. CPython też jest kompilowany do kodu bajtowego, ale nie jako jawny proces przed uruchomieniem, a podczas uruchomienia.
 - Pamięć: inicjalizacja JVM zajmuje dużo pamięci, ale potem reszta programu stosunkowo mniej niż Python
 - Szybkość: Java jest znacznie szybsza dzięki kompilacji do JIT. Aby przyspieszyć Python, można napisać biblioteki w językach niższego poziomu, jak np. C
 - Wielowątkowość: Java wspiera prawdziwy multithreading, a w Pythonie jest GIL ograniczający możliwość wątków działających równoległe na wielu rdzeniach w jednym procesie
@@ -1033,7 +1087,7 @@ Zastosowania: obie do backendu. Python do data science, ML, nauki, skryptów. Ja
 
 ## 30. Zasady programowania równoległego w języku skryptowym Python
 
-Proces a wątek: proces to program z własną przestrzenią adresową. Wątki działają w ramach jednego procesu, mogą współużywać pamięć i może być ich wiele dla procesu. Stworzenie wątku dla komputera ma mniejszy narzut niż procesu, ale oba mają różne zastosowania. Dzięki wątkom i procesom możemy osiągnąć szybszą i bardziej responsywną aplikację, przez zrównoleglenie obliczeń, czytania pliku czy odpowiedzi na requesty HTTP.
+Proces a wątek: proces to program z własną przestrzenią adresową. Wątki działają w ramach jednego procesu, mogą współużywać pamięć i może być ich wiele dla procesu. Stworzenie wątku dla komputera ma mniejszy narzut niż procesu, ale oba mają różne zastosowania. Dzięki wątkom i procesom możemy osiągnąć szybszą i bardziej responsywną aplikację, przez zrównoleglenie obliczeń, czytania pliku czy czekania na odpowiedzi na requesty HTTP.
 
 GIL (global interpreter lock) - specyficzne dla Python. Sprawia, że naraz tylko 1 wątek może wykonywać kod Python. Dlatego używanie wielu wątków w Python nie przyspieszy programu, jeśli jedyne, co wątki robią, to wykonywanie kodu Python przez CPU. Przyspieszy, gdy limitem jest z zewnątrz, np. GPU, operacje I/O. \
 Dlatego w Python wątki przydają się do operacji I/O (dysk, sieć, baza danych), a procesy do zadań CPU-intensive.
@@ -1044,17 +1098,17 @@ Główne zagrożenia
 - Race condition występuje, gdy poprawny wynik zależy od poprawnej kolejności wykonywania zadań przez wątki/procesy. Programista może źle przewidzieć, kiedy które procesy/wątki się skończą, przez co program zadziała w sposób nieprzewidziany. Dodatkowo wątki dzielą pamięć, i jest ryzyko nadpisanie globalnych stanów przez nie w sposób nieprzewidziany.
 - Deadlock (zakleszczenie): wątki blokują się nawzajem, oczekując na zasoby wzajemnie zajęte.
 
-Do programowania równoległego w Pythonie wykorzystuje się 3 biblioteki: threading, asyncio i multiprocessing
+Do programowania równoległego w Pythonie wykorzystuje się 4 biblioteki: threading, multiprocessing, asyncio i concurrent.futures
 
 - Threading / concurrent.futures.ThreadPoolExecutor: wątki. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np.
-- Asyncio: wielozadaniowość kooperacyjna. Czyli chodzi o kontrolowanie przepływu sterowania programu tak, aby nie zatrzymywał się tylko na wykonywaniu pewnego zadania, a ignorował np. wybranie opcji przez użytkownika. Czyli jeden wątek, pętla zdarzeń, zadania same oddają sterowanie (bo czekają na coś). Lżejsze niż wątki/procesy, ale nie wykonuje kodu równolegle
 - Multiprocessing / concurrent.futures.ProcesPoolExecutor: procesy. Executor: przypisujemy maksymalną liczbę zadań, wysyłamy zadanie przez e.submit albo e.map dla wykonania funkcji dla listy np. Aby przekazać dane między procesami, używa się Queue/Pipe, serializujących dane
+- Asyncio: wielozadaniowość kooperacyjna. Czyli chodzi o kontrolowanie przepływu sterowania programu tak, aby nie zatrzymywał się tylko na wykonywaniu pewnego zadania, a ignorował np. wybranie opcji przez użytkownika. Czyli jeden wątek, pętla zdarzeń, zadania same oddają sterowanie (bo czekają na coś). Lżejsze niż wątki/procesy, ale nie wykonuje kodu równolegle
 
 Aby uniknąć wyścigów, stosuje się:
 
 - lock - zapewnia wyłączny dostęp do zasobu
-- queue - bezpieczna współbieżnie metoda przekazywania danych
 - semaphore - ogranicza liczbę wątków mających dostęp do zasobu
+- queue - bezpieczna współbieżnie metoda przekazywania danych
 
 ## 31. UML jako język specyfikacji projektu. Diagramy i ich zastosowanie
 
@@ -1094,7 +1148,7 @@ Przykłady architektoniczne:
 - Fizyczna
   - Klient - baza danych: frontend (klient) ma prostą/średnio skomplikowaną logikę, i ma bezpośredni kontakt z bazą danych. Ok do małych projektów, CRUD-owych
   - Architektura trójwarstwowa (zazwyczaj monolit): klient - logika biznesowa - baza danych: frontend nie ma żadnej logiki biznesowej, tylko wyświetla informacje od backendu (logiki biznesowej). Backend stoi między klientem a bazą danych - w nim znajduje się cała logika biznesowa, endpointy, komunikatory z bazą danych. Baza danych stoi jako osobny byt od backendu, odpowiadając na jego żądania. Uniwersalne i bardzo szeroko stosowane podejście. Nadaje się do małych i średnich projektów, przy dużych mogą pojawić się problemy z wydajnością i koordynacją dużego zespołu.
-  - Mikroserwisy: odpowiedź na problemy monolitu. Dzieli system na serwisy działające osobno i komunikujące się ze sobą przez HTTP/kolejki. Serwisy mogą być skalowane przy integracji z chmurą, dzięki czemu system powinien lepiej odpowiadać na dużo zapytań dla konkretnego części aplikacji. Zazwyczaj każdy serwis ma własną bazę danych i są utrzymywane przez różne zespoły. Dobre do dużych, skomplikowanych systemów. Minusem jest skomplikowana infrastruktura, opóźnienia sieciowe między serwisami, mniejsza spójność danych. Utrudnione debugowanie, problem spójności danych między serwisami
+  - Mikroserwisy: odpowiedź na problemy monolitu. Dzieli system na serwisy działające osobno i komunikujące się ze sobą przez HTTP/kolejki. Serwisy mogą być skalowane przy integracji z chmurą, dzięki czemu system powinien lepiej odpowiadać na dużo zapytań dla konkretnej części aplikacji. Zazwyczaj każdy serwis ma własną bazę danych i są utrzymywane przez różne zespoły. Dobre do dużych, skomplikowanych systemów. Minusem jest skomplikowana infrastruktura, opóźnienia sieciowe między serwisami, mniejsza spójność danych między serwisami i utrudnione debugowanie
 
 - Logiczne
   - Warstwowa: system dzieli się na warstwy, gdzie pierwsza to faza prezentacji, jedyna dostępna dla użytkownika. Charakteryzuje się zależnościami w dół, czyli np. baza danych może istnieć bez żadnych wyższych warstw.
@@ -1106,13 +1160,13 @@ Przykłady architektoniczne:
       - MVC aktywny: model sam może się zmienić (powiadamia kontroler o tym, Obserwator)
     - MVP - prezenter zamiast controllera - view dostaje model tylko od prezentera
     - MVVM: data binding view z viewmodel. View pokazuje dane, zmiana danych w ViewModel update'uje model, który update'uje ViewModel. ViewModel update'uje View.
-    - Model - view - viewmodel - controller: z Ten Square Games, używany w Unity/GameDev. Model przychodzi z bazy danych i jest readonly. Controller ma model, i zawsze nasłuchuje na jego zmiany. Controller wystawia eventy, dzięki czemu jak user coś kliknie w view, to controller reaguje. View zarządza renderowaniem na podstawie viewmodelu, który dostaje od controllera. Viewmodel to model przetłumaczony na tylko dane potrzebne view, w odpowiednim formacie.
+    - Model - view - viewmodel - controller: z Ten Square Games, używany w Unity/GameDev. Model przychodzi z bazy danych i jest "readonly". Controller ma model, i zawsze nasłuchuje na jego zmiany. Controller wystawia eventy, dzięki czemu jak user coś kliknie w view, to controller reaguje. View zarządza renderowaniem na podstawie viewmodelu, który dostaje od controllera. Viewmodel to model przetłumaczony na tylko dane potrzebne view, w odpowiednim formacie.
 
 Przykłady projektowe:
 
 - Kreacyjne:
   - Abstrakcyjna fabryka: klasa abstrakcyjna, np. ButtonFactory. Mamy różne buttony dla Mac i Windows, to tworzymy MacButtonFactory i WindowsButtonFactory, zwracające różne rzeczy. Ale widok nie widzi implementacji
-  - Singleton: często definiowany jako zły wzorzec - anti-pattern. Singleton sprawia, że klasa udostępnia statyczne pole Instance z instancją siebie, dzięki czemu dostęp jest ekstremalnie prosty. Ale tak jak service locator, ukrywa on, ile klasy mają zależności. Bardzo łatwo mieszać wtedy zależności, mocno skomplikować flow logiki i utrudnić/uniemożliwić testowanie.
+  - Singleton: często definiowany jako zły wzorzec - anti-pattern. Singleton sprawia, że klasa udostępnia statyczne pole Instance z instancją siebie, dzięki czemu dostęp jest ekstremalnie prosty i zapewniamy, że będzie tylko 1 instancja klasy. Ale tak jak service locator, ukrywa on, ile klasy mają zależności. Bardzo łatwo mieszać wtedy zależności, mocno skomplikować flow logiki i utrudnić/uniemożliwić testowanie.
     - Dependency injection: odpowiedź na singleton. Jawne przekazywanie zależności w konstruktorze klas. Łatwo można wtedy testować klasy, przekazując mockowane zależności.
   - Builder: ułatwia budowanie obiektów, oferując metody, aby za pomocą serii wywołań metod wybrać dokładnie funkcjonalności danego obiektu.
 - Strukturalne:
@@ -1121,8 +1175,8 @@ Przykłady projektowe:
   - Decorator: funkcja opakowywuje funkcję (albo klasa klasę bez dziedziczenia)
 - Behawioralne:
   - Obserwator: inna klasa subskrybuje na zmiany innej, np. jak w TSG Controller nasłuchuje na zmiany modelu
-  - Polecenie: klasa zamiast osobnych metod na funkcjonalności, ma 1 metodę otrzymującą polecenie danego typu + dane
-  - Strategy: jasno deklarowane różne strategie. Przydatne np. w algorytmach Tabu Search różne heurystyki
+  - Polecenie: klasa zamiast osobnych metod na funkcjonalności, ma 1 metodę otrzymującą polecenie: typu rozkazu + dane
+  - Strategy: jasno deklarowane różne strategie. Przydatne np. w algorytmach jak Tabu Search - różne implementacje szczegółów
 
 ## 33. Metody ochrony danych
 
@@ -1134,9 +1188,10 @@ Ochrona danych opiera się na 3 filarach - triada CIA (Confidentiality, Integrit
 - Integralność: brak możliwości modyfikacji danych bez odpowiednich uprawnień. Zapewniane przez funkcje skrótu, sumy kontrolne, MAC
 - Dostępność: system działa i jest dostępny dla użytkowników, kiedy tego potrzebują. Zapewniamy redundancją, monitoringiem oraz skalowalnością. Zagrożenie: DDoS, awarie sprzętowe
 
-Jedną z podstaw ochrony danych jest rodzina rozwiązań MAC. Mając wiadomość i klucz, możemy porównać sygnaturę (skrót) wiadomości wygenerowaną przez klienta z obliczonym skrót dla wiadomości w surowej formie z kluczem, aby być pewnym, że korzystamy z tego samego klucza oraz że wiadomość nie została zmodyfikowana.\
-Implementacją MAC jest HMAC, korzystający z hash (funkcji skrótu). Popularnym algorytmem jest np. SHA-256. Nie można użyć bezpośrednio na samej wiadomości, trzeba użyć na połączeniu wiadomości i klucza. A dokładniej przez pewne matematyczne własności, przez przeprowadzenie na nich paru operacji, w tym XOR. Z HMAC korzysta np. JWT, służący do autentykacji użytkowników w aplikacjach mobilnych.\
-Broni to przed aktywnym atakiem man in the middle, czyli nie problem braku łączności, a problem kogoś specjalnie zmieniającego komunikaty i liczącego skrót.
+Jedną z podstaw ochrony danych jest rodzina rozwiązań MAC. Mając wiadomość i klucz, możemy porównać sygnaturę (skrót) wiadomości wygenerowaną przez klienta z obliczonym skrót dla wiadomości w surowej formie z kluczem, aby być pewnym, że korzystamy z tego samego klucza oraz że wiadomość nie została zmodyfikowana.
+
+Implementacją MAC jest HMAC, korzystający z hash (funkcji skrótu). Popularnym algorytmem jest np. SHA-256. Nie można użyć bezpośrednio na samej wiadomości, trzeba użyć na połączeniu wiadomości i klucza. A dokładniej przez pewne matematyczne własności, przez przeprowadzenie na nich paru operacji, w tym XOR. Z HMAC korzysta np. JWT, służący do autentykacji użytkowników np. w aplikacjach mobilnych.\
+Broni to przed aktywnym atakiem man in the middle, czyli nie problem braku łączności, a problem kogoś specjalnie zmieniającego komunikaty (i liczącego skrót).
 
 Podstawowe pojęcia:
 
@@ -1147,11 +1202,11 @@ Podstawowe pojęcia:
 - metody ochrony komunikacji: TLS/SSL (HTTPS - standard) oraz IPSec (często w VPN, warstwa sieci)
 - niezaprzeczalność: nadawca nie może wyprzeć się komunikatu. Logi audytowe
 
-Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarzania zapytania. Należy pamiętać, że użytkownicy internetu mogą wysłać nam dowolne zapytanie oraz sprawdzić kod JavaScript w przeglądarce (a nawet wyłączyć wykonywanie go).
+Tylko po pozytywnej autentykacji i autoryzacji można przystąpić do przetwarzania zapytania. Należy pamiętać, że użytkownicy internetu mogą wysłać nam dowolne zapytanie oraz sprawdzić i edytować kod JavaScript w przeglądarce (a nawet wyłączyć wykonywanie go).
 
 CORS: z jakiej domeny może być request.
 
-CSRF: używanie tokenów bez wiedzy użytkownika
+CSRF: używanie tokenów bez wiedzy użytkownika.
 
 ## 34. Podstawowe algorytmy kryptograficzne
 
@@ -1262,7 +1317,8 @@ Zadania planowania można wykonywać na dwa sposoby:
 - W przód: zaczynamy w stanie początkowym, i mutujemy go operacjami, aż dojdziemy do stanu końcowego
 - W tył: zaczynamy w stanie końcowym, i mutujemy go operacjami, aż dojdziemy do stanu początkowego. Niekiedy prostszy, gdyż opis świata w stanie początkowym może być skomplikowany, a cel zazwyczaj jest prosty - np. do piłki w bramce może doprowadzić tylko kopnięcie.
 
-Należy uważać na pętle (powrót do pewnego poprzedniego stanu), wykrywać i pomijać.\
+Należy uważać na pętle (powrót do pewnego poprzedniego stanu), wykrywać i pomijać.
+
 Innym problemem jest problem ramowy, czyli jak zaprezentować to, co nie zmienia się w trakcie akcji. W praktyce zakładamy, że wszystko, czego operacja jawnie nie zmienia, pozostaje takie samo.
 
 Dodatkowo, zazwyczaj występuje założenie zamkniętego świata - czyli wszystko, czego nie wiemy, jest uznawane za fałsz. To ważne założenie w STRIPS
